@@ -89,54 +89,97 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- 2. TRUST & SAFETY HIGHLIGHTS (Clean & Symmetrical, Zero Cheap Badges)     -->
+    <!-- 2. BRAND CREDIBILITY & TRUST STRIP (Dashed Dividers, Exact User Design)  -->
     <!-- ========================================================================= -->
-    <section class="bg-white py-10 sm:py-12 border-b border-purple-100/70">
+    <section class="bg-white py-8 sm:py-10 border-b border-purple-100/70 shadow-2xs">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-8 gap-x-4 lg:gap-0 items-center">
                 
-                <!-- Card 1: Safe & Gentle -->
-                <div class="bg-[#FAF9FC] rounded-2xl p-5 sm:p-6 border border-purple-100/60 hover:border-pastel-green/40 transition-all duration-300 flex flex-col justify-between group">
-                    <div class="w-11 h-11 rounded-xl bg-soft-green flex items-center justify-center text-pastel-green mb-3 group-hover:scale-105 transition-transform">
-                        <i class="ri-plant-line text-2xl"></i>
+                <!-- 1. Pin Codes Reached (Pink Theme) -->
+                <div class="flex flex-col items-center text-center px-3 sm:px-5 lg:border-r lg:border-dashed lg:border-gray-200/90 group">
+                    <div class="w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-[#FDF0F5] border border-[#FADCE8] flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-108 transition-transform duration-300">
+                        <svg class="w-8 h-8 sm:w-9 sm:h-9 text-[#E63980]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
                     </div>
-                    <div>
-                        <h4 class="font-bold text-[#1B2541] text-sm sm:text-base leading-snug group-hover:text-pastel-green transition-colors">Safe &amp; Gentle</h4>
-                        <p class="text-xs text-gray-500 mt-1">0% Harsh Chemicals &amp; Parabens</p>
+                    <div class="text-2xl sm:text-3xl font-extrabold font-heading text-[#E63980] tracking-tight">
+                        12,000+
                     </div>
+                    <p class="text-xs sm:text-[13px] font-bold text-[#1B2541] mt-1 tracking-tight">
+                        Pin codes reached
+                    </p>
                 </div>
 
-                <!-- Card 2: Dermatologist Tested -->
-                <div class="bg-[#FAF9FC] rounded-2xl p-5 sm:p-6 border border-purple-100/60 hover:border-sky-blue/40 transition-all duration-300 flex flex-col justify-between group">
-                    <div class="w-11 h-11 rounded-xl bg-soft-blue flex items-center justify-center text-sky-blue mb-3 group-hover:scale-105 transition-transform">
-                        <i class="ri-drop-line text-2xl"></i>
+                <!-- 2. Happy Customers (Green Theme) -->
+                <div class="flex flex-col items-center text-center px-3 sm:px-5 lg:border-r lg:border-dashed lg:border-gray-200/90 group">
+                    <div class="w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-[#F0F8EC] border border-[#DCF1D2] flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-108 transition-transform duration-300">
+                        <svg class="w-8 h-8 sm:w-9 sm:h-9 text-[#74B528]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="13" r="8"></circle>
+                            <path d="M9 13.5h.01"></path>
+                            <path d="M15 13.5h.01"></path>
+                            <path d="M10 16.5c.6.7 1.3 1 2 1s1.4-.3 2-1"></path>
+                            <path d="M12 5c-.5-1.5-1.8-2.5-3-2.5"></path>
+                            <path d="M12 5c.5-1.5 1.8-2.5 3-2.5"></path>
+                        </svg>
                     </div>
-                    <div>
-                        <h4 class="font-bold text-[#1B2541] text-sm sm:text-base leading-snug group-hover:text-sky-blue transition-colors">Dermatologist Tested</h4>
-                        <p class="text-xs text-gray-500 mt-1">Proven Safe for Sensitive Skin</p>
+                    <div class="text-2xl sm:text-3xl font-extrabold font-heading text-[#74B528] tracking-tight">
+                        120,000+
                     </div>
+                    <p class="text-xs sm:text-[13px] font-bold text-[#1B2541] mt-1 tracking-tight">
+                        Happy Customers
+                    </p>
                 </div>
 
-                <!-- Card 3: Pediatrician Approved -->
-                <div class="bg-[#FAF9FC] rounded-2xl p-5 sm:p-6 border border-purple-100/60 hover:border-soft-purple/40 transition-all duration-300 flex flex-col justify-between group">
-                    <div class="w-11 h-11 rounded-xl bg-purple-100/60 flex items-center justify-center text-[#6B57B2] mb-3 group-hover:scale-105 transition-transform">
-                        <i class="ri-user-smile-line text-2xl"></i>
+                <!-- 3. 5 Star Reviews (Amber Theme) -->
+                <div class="flex flex-col items-center text-center px-3 sm:px-5 lg:border-r lg:border-dashed lg:border-gray-200/90 group">
+                    <div class="w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-[#FEF5E7] border border-[#FDE8CA] flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-108 transition-transform duration-300">
+                        <svg class="w-8 h-8 sm:w-9 sm:h-9 text-[#F59E0B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
                     </div>
-                    <div>
-                        <h4 class="font-bold text-[#1B2541] text-sm sm:text-base leading-snug group-hover:text-[#6B57B2] transition-colors">Pediatrician Approved</h4>
-                        <p class="text-xs text-gray-500 mt-1">Daily Care for Newborns</p>
+                    <div class="text-2xl sm:text-3xl font-extrabold font-heading text-[#F59E0B] tracking-tight">
+                        50,000+
                     </div>
+                    <p class="text-xs sm:text-[13px] font-bold text-[#1B2541] mt-1 tracking-tight">
+                        5 Star Reviews
+                    </p>
                 </div>
 
-                <!-- Card 4: pH 5.5 Balanced -->
-                <div class="bg-[#FAF9FC] rounded-2xl p-5 sm:p-6 border border-purple-100/60 hover:border-warm-peach/40 transition-all duration-300 flex flex-col justify-between group">
-                    <div class="w-11 h-11 rounded-xl bg-soft-orange flex items-center justify-center text-warm-peach mb-3 group-hover:scale-105 transition-transform">
-                        <i class="ri-heart-3-line text-2xl"></i>
+                <!-- 4. Verified Safe. Tested. Trusted. (Blue Theme) -->
+                <div class="flex flex-col items-center text-center px-3 sm:px-5 lg:border-r lg:border-dashed lg:border-gray-200/90 group">
+                    <div class="w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-[#EBF7FC] border border-[#D0EEF9] flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-108 transition-transform duration-300">
+                        <svg class="w-8 h-8 sm:w-9 sm:h-9 text-[#2CB3DB]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            <polyline points="9 12 11 14 15 10"></polyline>
+                        </svg>
                     </div>
-                    <div>
-                        <h4 class="font-bold text-[#1B2541] text-sm sm:text-base leading-snug group-hover:text-warm-peach transition-colors">pH 5.5 Balanced</h4>
-                        <p class="text-xs text-gray-500 mt-1">Protects Natural Skin Barrier</p>
+                    <div class="text-2xl sm:text-3xl font-extrabold font-heading text-[#2CB3DB] tracking-tight">
+                        Verified
                     </div>
+                    <p class="text-xs sm:text-[13px] font-bold text-[#1B2541] mt-1 tracking-tight">
+                        Safe. Tested. Trusted.
+                    </p>
+                </div>
+
+                <!-- 5. Ayurveda Inspired Natural Goodness (Purple Theme) -->
+                <div class="flex flex-col items-center text-center px-3 sm:px-5 group col-span-2 md:col-span-1">
+                    <div class="w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-[#F4F1FA] border border-[#E4DCF5] flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-108 transition-transform duration-300">
+                        <svg class="w-8 h-8 sm:w-9 sm:h-9 text-[#6B57B2]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22V12"></path>
+                            <path d="M12 12C9.5 12 7 10 7 7c0-2.5 3-5 5-5s5 2.5 5 5c0 3-2.5 5-5 5z"></path>
+                            <path d="M12 16c2.5 0 5-1.5 5-4"></path>
+                            <path d="M12 18c-2.5 0-5-1.5-5-4"></path>
+                        </svg>
+                    </div>
+                    <div class="text-xl sm:text-2xl font-extrabold font-heading text-[#6B57B2] tracking-tight leading-tight">
+                        Ayurveda Inspired
+                    </div>
+                    <p class="text-xs sm:text-[13px] font-bold text-[#1B2541] mt-1 tracking-tight">
+                        Natural goodness
+                    </p>
                 </div>
 
             </div>
@@ -148,108 +191,22 @@
     <!-- ========================================================================= -->
     <section id="about-us" class="py-16 sm:py-24 bg-white border-b border-purple-100/70">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-stretch">
                 
-                <!-- Left Column: Video Player Showcase (Mirrors Reference Player Layout) -->
-                <div class="lg:col-span-6">
-                    <div 
-                        x-data="{ 
-                            isPlaying: true, 
-                            isMuted: false, 
-                            currentTime: '0:13', 
-                            duration: '0:30', 
-                            progress: 43,
-                            togglePlay() { this.isPlaying = !this.isPlaying; },
-                            toggleMute() { this.isMuted = !this.isMuted; }
-                        }"
-                        class="relative rounded-2xl overflow-hidden shadow-lg border border-gray-200/80 bg-gray-900 group aspect-[16/10] sm:aspect-[16/10] lg:aspect-[4/3] max-h-[480px] select-none"
-                    >
-                        <!-- Video Media Image / Poster -->
+                <!-- Left Column: Pure Editorial Image Showcase (Full Height Matching Content, Zero Badges) -->
+                <div class="lg:col-span-6 flex flex-col">
+                    <div class="relative w-full h-full min-h-[420px] sm:min-h-[480px] lg:min-h-full rounded-3xl overflow-hidden shadow-lg border border-purple-100/70 bg-gradient-to-tr from-purple-50 via-white to-pink-50/40 group">
+                        <!-- High Resolution Brand Visual (Mother's Love) -->
                         <img 
-                            src="/images/slider2.jpg" 
-                            alt="Fabie Baby Production and Care Philosophy" 
-                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-101"
+                            src="/images/mother_baby_care.jpg" 
+                            alt="Fabie Baby Mother and Child Care Philosophy" 
+                            class="w-full h-full object-cover object-center group-hover:scale-102 transition-transform duration-700 ease-out"
                         />
-
-                        <!-- Soft Dark Gradient on Bottom for Crystal Clear Controls -->
-                        <div class="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/85 via-black/40 to-transparent pointer-events-none"></div>
-
-                        <!-- Top Right Corner Tag (Minimalist) -->
-                        <div class="absolute top-4 left-4 z-10">
-                            <span class="px-3 py-1 rounded-md bg-black/40 backdrop-blur-md text-[11px] font-medium text-white/90 tracking-wide border border-white/10 flex items-center gap-1.5">
-                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                                Fabie Baby Brand Showcase
-                            </span>
-                        </div>
-
-                        <!-- Bottom Control Bar (Identical Layout to User's Video Reference) -->
-                        <div class="absolute inset-x-0 bottom-0 p-4 sm:p-5 flex flex-col gap-2.5 z-10 text-white">
-                            <!-- Progress Bar Scrubber -->
-                            <div 
-                                class="w-full h-1 sm:h-1.5 bg-white/25 hover:h-2 rounded-full cursor-pointer relative transition-all"
-                                @click="progress = Math.max(5, Math.min(95, $event.offsetX / $el.clientWidth * 100))"
-                            >
-                                <div 
-                                    class="h-full bg-vibrant-rose rounded-full relative" 
-                                    :style="`width: ${progress}%`"
-                                >
-                                    <!-- Scrubber Knob -->
-                                    <span class="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full shadow-md scale-0 group-hover:scale-100 transition-transform"></span>
-                                </div>
-                            </div>
-
-                            <!-- Controls Row -->
-                            <div class="flex items-center justify-between text-xs sm:text-sm font-medium">
-                                <!-- Left: Play/Pause & Time -->
-                                <div class="flex items-center gap-3">
-                                    <button 
-                                        @click="togglePlay()" 
-                                        type="button"
-                                        class="text-white hover:text-vibrant-rose transition-colors cursor-pointer focus:outline-none"
-                                        title="Play / Pause"
-                                    >
-                                        <i :class="isPlaying ? 'ri-pause-fill text-lg sm:text-xl' : 'ri-play-fill text-lg sm:text-xl'"></i>
-                                    </button>
-                                    
-                                    <span class="text-white/90 text-xs tracking-wider tabular-nums font-mono font-medium">
-                                        <span x-text="currentTime">0:13</span> / <span x-text="duration">0:30</span>
-                                    </span>
-                                </div>
-
-                                <!-- Right: Mute, Fullscreen, Options -->
-                                <div class="flex items-center gap-3.5 text-white/90">
-                                    <button 
-                                        @click="toggleMute()" 
-                                        type="button"
-                                        class="hover:text-vibrant-rose transition-colors cursor-pointer focus:outline-none"
-                                        title="Mute / Unmute"
-                                    >
-                                        <i :class="isMuted ? 'ri-volume-mute-line text-base' : 'ri-volume-up-line text-base'"></i>
-                                    </button>
-                                    
-                                    <button 
-                                        type="button"
-                                        class="hover:text-vibrant-rose transition-colors cursor-pointer focus:outline-none"
-                                        title="Fullscreen"
-                                    >
-                                        <i class="ri-fullscreen-line text-base"></i>
-                                    </button>
-
-                                    <button 
-                                        type="button"
-                                        class="hover:text-vibrant-rose transition-colors cursor-pointer focus:outline-none"
-                                        title="More options"
-                                    >
-                                        <i class="ri-more-2-fill text-base"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
                 <!-- Right Column: Clean Editorial Content (Strictly Matching Screenshot Hierarchy) -->
-                <div class="lg:col-span-6 space-y-5 text-left">
+                <div class="lg:col-span-6 space-y-5 text-left flex flex-col justify-center">
                     <!-- Clean Kicker (Icon + Letterspaced Text, Zero Badges) -->
                     <div class="flex items-center gap-2 text-xs sm:text-sm font-bold tracking-widest text-[#6B57B2] uppercase">
                         <i class="ri-home-5-line text-base"></i>
@@ -504,7 +461,7 @@
                         } else if (window.innerWidth < 1024) {
                             this.itemsPerPage = 2;
                         } else {
-                            this.itemsPerPage = 3;
+                            this.itemsPerPage = 4;
                         }
                     },
                     maxIndex() {
@@ -554,9 +511,9 @@
                         :style="`transform: translateX(-${currentIndex * (100 / itemsPerPage)}%)`"
                     >
                         @foreach($filteredProducts as $product)
-                        <div class="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
+                        <div class="w-full sm:w-1/2 lg:w-1/4 flex-shrink-0 px-3">
                             <!-- Ultra-Modern Clean Product Card -->
-                            <div class="h-full bg-white rounded-3xl p-5 sm:p-6 border border-purple-100/70 hover:border-purple-300/80 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-out flex flex-col justify-between group relative">
+                            <div class="h-full bg-white rounded-3xl p-4 sm:p-5 border border-purple-100/70 hover:border-purple-300/80 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-out flex flex-col justify-between group relative">
                                 
                                 <div>
                                     <!-- Top Meta Line: Category with Color Dot + Trust Cue -->
@@ -601,7 +558,7 @@
                                 <div class="pt-4 border-t border-purple-50/80">
                                     <button
                                         wire:click="openQuickView({{ $product['id'] }})"
-                                        class="w-full py-2.5 px-4 bg-[#FAF9FC] hover:bg-[#6B57B2] text-[#6B57B2] hover:text-white border border-purple-100/90 hover:border-[#6B57B2] text-xs font-bold rounded-full transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-2xs hover:shadow-xs active:scale-98 group/btn"
+                                        class="w-full py-2.5 px-4 bg-[#6B57B2] hover:bg-[#5725bb] text-white border border-[#6B57B2] hover:border-[#5725bb] text-xs font-bold rounded-full transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:shadow-md active:scale-98 group/btn"
                                     >
                                         <span>View Product Details</span>
                                         <i class="ri-arrow-right-line text-xs group-hover/btn:translate-x-1 transition-transform"></i>

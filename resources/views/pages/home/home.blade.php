@@ -193,7 +193,7 @@
                 @foreach(array_slice($products, 0, 4) as $product)
                     <div class="bg-white rounded-3xl p-5 sm:p-6 shadow-sm border border-purple-50 hover:shadow-xl transition-all duration-300 flex flex-col justify-between items-center text-center group relative overflow-hidden">
                         <!-- Full Size Image with Border -->
-                        <div wire:click="openQuickView({{ $product['id'] }})" class="w-full h-56 sm:h-60 border border-gray-200/90 rounded-2xl overflow-hidden p-3 bg-white flex items-center justify-center mb-4 cursor-pointer relative group-hover:border-purple-300 transition-colors">
+                        <div wire:click="openQuickView({{ $product['id'] }})" class="w-full h-56 sm:h-60  rounded-2xl overflow-hidden bg-white flex items-center justify-center mb-4 cursor-pointer relative  transition-colors">
                             <img src="{{ $product['image'] }}" alt="{{ $product['name'] }}" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
                         </div>
 

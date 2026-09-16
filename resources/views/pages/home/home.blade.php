@@ -672,7 +672,7 @@
                     <!-- Pillar 2: Quality Assurance -->
                     <div class="space-y-3 group">
                         <div class="flex justify-center lg:justify-end">
-                            <div class="w-12 h-12 rounded-2xl bg-[#3BB8DE]/15 border border-[#3BB8DE]/30 text-[#0284C7] flex items-center justify-center text-2xl group-hover:bg-[#3BB8DE] group-hover:text-white transition-all shadow-xs">
+                            <div class="w-12 h-12 rounded-2xl bg-[#F5A214]/15 border border-[#F5A214]/30 text-[#D97706] flex items-center justify-center text-2xl group-hover:bg-[#F5A214] group-hover:text-white transition-all shadow-xs">
                                 <i class="ri-medal-line"></i>
                             </div>
                         </div>
@@ -703,7 +703,7 @@
                     <!-- Pillar 3: Expert Formulation -->
                     <div class="space-y-3 group">
                         <div class="flex justify-center lg:justify-start">
-                            <div class="w-12 h-12 rounded-2xl bg-[#3BB8DE]/15 border border-[#3BB8DE]/30 text-[#0284C7] flex items-center justify-center text-2xl group-hover:bg-[#3BB8DE] group-hover:text-white transition-all shadow-xs">
+                            <div class="w-12 h-12 rounded-2xl bg-[#F5A214]/15 border border-[#F5A214]/30 text-[#D97706] flex items-center justify-center text-2xl group-hover:bg-[#F5A214] group-hover:text-white transition-all shadow-xs">
                                 <i class="ri-drop-line"></i>
                             </div>
                         </div>
@@ -737,13 +737,13 @@
             <div class="flex flex-wrap items-center justify-center gap-4 pt-2 reveal-on-scroll delay-200">
                 <a 
                     href="#products" 
-                    class="px-8 py-3.5 bg-[#3BB8DE] hover:bg-[#2BA5CB] text-white text-xs sm:text-sm font-bold rounded-full shadow-sm hover:shadow-md transition-all active:scale-95"
+                    class="px-8 py-3.5 bg-[#F5A214] hover:bg-[#D97706] text-white text-xs sm:text-sm font-bold rounded-full shadow-sm hover:shadow-md transition-all active:scale-95"
                 >
                     Our Products
                 </a>
                 <a 
                     href="#about-us" 
-                    class="px-8 py-3.5 bg-white hover:bg-gray-50 text-[#1B2541] border border-[#3BB8DE]/30 hover:border-[#3BB8DE] text-xs sm:text-sm font-bold rounded-full transition-all active:scale-95 inline-flex items-center gap-2 group shadow-xs"
+                    class="px-8 py-3.5 bg-white hover:bg-gray-50 text-[#1B2541] border border-[#F5A214]/40 hover:border-[#F5A214] text-xs sm:text-sm font-bold rounded-full transition-all active:scale-95 inline-flex items-center gap-2 group shadow-xs"
                 >
                     <span>Quality Standards</span>
                     <i class="ri-arrow-right-s-line text-sm text-[#F5A214] group-hover:translate-x-1 transition-transform"></i>
@@ -926,6 +926,200 @@
                     <i class="ri-arrow-right-line text-xs"></i>
                 </a>
             </div>
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 8.5. YOUTUBE SHORTS VIDEO REELS SLIDER                                    -->
+    <!-- ========================================================================= -->
+    <section 
+        x-data="{
+            currentIndex: 0,
+            total: 4,
+            perView: 4,
+            touchStartX: 0,
+            touchEndX: 0,
+            playingIndex: null,
+            shorts: [
+                {
+                    id: 'baUHRpMSWqQ',
+                    title: 'Gentle Newborn Diaper Routine',
+                    tag: 'Diaper Care',
+                    views: '14.2K Views'
+                },
+                {
+                    id: 'baUHRpMSWqQ',
+                    title: '99.9% Pure Water Wipes Test',
+                    tag: 'Pure Wipes',
+                    views: '19.8K Views'
+                },
+                {
+                    id: 'baUHRpMSWqQ',
+                    title: 'Bedtime Calming Massage & Lotion',
+                    tag: 'Hydrating Lotion',
+                    views: '25.6K Views'
+                },
+                {
+                    id: 'baUHRpMSWqQ',
+                    title: 'Tear-Free Gentle Bath Routine',
+                    tag: 'Hair &amp; Body Wash',
+                    views: '16.4K Views'
+                }
+            ],
+            updatePerView() {
+                if (window.innerWidth < 640) {
+                    this.perView = 1.25;
+                } else if (window.innerWidth < 1024) {
+                    this.perView = 2.5;
+                } else {
+                    this.perView = 4;
+                }
+            },
+            init() {
+                this.updatePerView();
+                window.addEventListener('resize', () => this.updatePerView());
+            },
+            next() {
+                const maxIndex = Math.max(0, Math.ceil(this.total - this.perView));
+                this.currentIndex = this.currentIndex >= maxIndex ? 0 : this.currentIndex + 1;
+            },
+            prev() {
+                const maxIndex = Math.max(0, Math.ceil(this.total - this.perView));
+                this.currentIndex = this.currentIndex <= 0 ? maxIndex : this.currentIndex - 1;
+            },
+            playInline(index) {
+                this.playingIndex = index;
+            },
+            stopInline() {
+                this.playingIndex = null;
+            }
+        }"
+        x-init="init()"
+        class="py-18 sm:py-24 bg-white border-b border-purple-100/70 relative overflow-hidden"
+    >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
+                <div class="max-w-xl text-left">
+                    <div class="flex items-center gap-2 text-xs font-bold tracking-widest text-red-600 uppercase mb-2 reveal-on-scroll">
+                        <i class="ri-youtube-fill text-base"></i>
+                        <span>YOUTUBE SHORTS</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-[#1B2541] tracking-tight reveal-on-scroll delay-100">
+                        Watch Gentle Care <span class="text-[#E63980]">in Action</span>
+                    </h2>
+                    <p class="text-sm sm:text-base text-gray-600 mt-2 reveal-on-scroll delay-150">
+                        Real baby routines, pediatric insights, and authentic parenting stories with Fabie Baby essentials.
+                    </p>
+                </div>
+
+                <!-- Navigation Arrows -->
+                <div class="flex items-center gap-2.5 self-start md:self-end reveal-on-scroll delay-150">
+                    <button
+                        @click="prev()"
+                        class="w-10 h-10 rounded-full border border-purple-200 bg-white hover:bg-gray-50 text-gray-700 flex items-center justify-center transition-all cursor-pointer shadow-xs active:scale-95"
+                        aria-label="Previous shorts"
+                    >
+                        <i class="ri-arrow-left-s-line text-lg"></i>
+                    </button>
+                    <button
+                        @click="next()"
+                        class="w-10 h-10 rounded-full border border-purple-200 bg-white hover:bg-gray-50 text-gray-700 flex items-center justify-center transition-all cursor-pointer shadow-xs active:scale-95"
+                        aria-label="Next shorts"
+                    >
+                        <i class="ri-arrow-right-s-line text-lg"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Shorts Slider Carousel -->
+            <div 
+                class="overflow-hidden py-2"
+                @touchstart="touchStartX = $event.touches[0].clientX"
+                @touchend="touchEndX = $event.changedTouches[0].clientX; if (touchStartX - touchEndX > 40) next(); if (touchEndX - touchStartX > 40) prev();"
+            >
+                <div 
+                    class="flex transition-transform duration-500 ease-out gap-4 sm:gap-6"
+                    :style="`transform: translateX(-${currentIndex * (100 / perView)}%)`"
+                >
+                    <template x-for="(short, index) in shorts" :key="index">
+                        <div 
+                            class="w-[80%] sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 group select-none"
+                        >
+                            <!-- Vertical 9:16 Video Reel Card -->
+                            <div class="relative aspect-[9/16] rounded-3xl overflow-hidden bg-gray-900 shadow-md hover:shadow-xl transition-all duration-300 border border-purple-100/80">
+                                
+                                <!-- State A: Playing Video Right There Inline -->
+                                <template x-if="playingIndex === index">
+                                    <div class="relative w-full h-full bg-black">
+                                        <iframe 
+                                            :src="`https://www.youtube-nocookie.com/embed/${short.id}?autoplay=1&rel=0&playsinline=1&modestbranding=1`"
+                                            :title="short.title"
+                                            class="w-full h-full rounded-3xl border-0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen
+                                        ></iframe>
+                                        <!-- Close/Reset Button -->
+                                        <button 
+                                            @click.stop="stopInline()"
+                                            class="absolute top-3 right-3 z-30 w-8 h-8 rounded-full bg-black/75 hover:bg-black text-white flex items-center justify-center transition-all cursor-pointer border border-white/30 shadow-lg"
+                                            title="Close video"
+                                        >
+                                            <i class="ri-close-line text-lg"></i>
+                                        </button>
+                                    </div>
+                                </template>
+
+                                <!-- State B: Video Thumbnail & Play Trigger -->
+                                <template x-if="playingIndex !== index">
+                                    <div 
+                                        class="relative w-full h-full cursor-pointer group/card"
+                                        @click="playInline(index)"
+                                    >
+                                        <!-- Video Thumbnail Cover -->
+                                        <img 
+                                            :src="`https://img.youtube.com/vi/${short.id}/hqdefault.jpg`" 
+                                            :alt="short.title"
+                                            class="w-full h-full object-cover object-center group-hover/card:scale-105 transition-transform duration-500 brightness-90"
+                                        />
+
+                                        <!-- Subtle Dark Gradient Overlays -->
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/40"></div>
+
+                                        <!-- Top Badges: Shorts Icon & Tag -->
+                                        <div class="absolute top-4 inset-x-4 flex items-center justify-between z-10">
+                                            <div class="flex items-center gap-1.5 bg-red-600/90 backdrop-blur-md px-2.5 py-1 rounded-full text-white text-[11px] font-bold tracking-wide">
+                                                <i class="ri-youtube-fill text-xs"></i>
+                                                <span>Shorts</span>
+                                            </div>
+                                            <span class="bg-black/50 backdrop-blur-md text-white/90 text-[11px] font-medium px-2.5 py-1 rounded-full border border-white/20" x-html="short.tag"></span>
+                                        </div>
+
+                                        <!-- Center Play Button with Soft Glowing Ring -->
+                                        <div class="absolute inset-0 flex items-center justify-center z-10">
+                                            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white/95 text-red-600 shadow-xl flex items-center justify-center text-2xl group-hover/card:scale-115 group-hover/card:bg-red-600 group-hover/card:text-white transition-all duration-300">
+                                                <i class="ri-play-fill ml-0.5"></i>
+                                            </div>
+                                        </div>
+
+                                        <!-- Bottom Content Overlay -->
+                                        <div class="absolute bottom-0 inset-x-0 p-4 sm:p-5 z-10 text-left space-y-1.5">
+                                            <div class="flex items-center gap-2 text-white/80 text-[11px] font-semibold">
+                                                <i class="ri-eye-line text-xs"></i>
+                                                <span x-text="short.views"></span>
+                                            </div>
+                                            <h3 class="text-white font-bold font-heading text-sm sm:text-base leading-snug drop-shadow-sm group-hover/card:text-pink-200 transition-colors" x-text="short.title"></h3>
+                                        </div>
+                                    </div>
+                                </template>
+
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+
         </div>
     </section>
 

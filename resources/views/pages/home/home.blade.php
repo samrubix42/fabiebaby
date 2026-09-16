@@ -1,8 +1,14 @@
 <div class="relative">
 
 
-    <!-- Full-Screen Edge-to-Edge Hero Slider Banner (No Padding) -->
-    <section class="relative w-full overflow-hidden">
+    <!-- Full-Screen Edge-to-Edge Hero Slider Banner (With Auto-Sliding & Hover-Pause) -->
+    <section 
+        x-data="{ timer: null }"
+        x-init="timer = setInterval(() => $wire.nextSlide(), 5000)"
+        @mouseenter="clearInterval(timer)"
+        @mouseleave="timer = setInterval(() => $wire.nextSlide(), 5000)"
+        class="relative w-full overflow-hidden"
+    >
         <div class="relative w-full h-[55vh] sm:h-[70vh] md:h-[80vh] overflow-hidden bg-gray-100 group">
                 <!-- Background Image Container -->
                 <div class="absolute inset-0 bg-cover bg-center transition-all duration-700 transform scale-100 group-hover:scale-102" style="background-image: url('{{ $activeSlide['bgImage'] }}');"></div>
@@ -34,13 +40,13 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Simple Small Dot Pagination (No Background, Pink Active, Equal Width) -->
                 <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2.5 z-20">
                     @foreach($slides as $index => $slide)
                         <button wire:click="setSlide({{ $index }})" class="w-2.5 h-2.5 rounded-full transition-all duration-300 {{ $currentSlide === $index ? 'bg-vibrant-rose shadow-sm scale-110' : 'bg-gray-400/60 hover:bg-gray-600' }}" title="Go to slide {{ $index + 1 }}"></button>
                     @endforeach
                 </div>
+        </div>
     </section>
 
     <!-- Trust & Safety Highlights Bar (Symmetrical & Perfectly Ordered) -->
@@ -175,6 +181,7 @@
         </div>
     </section>
 
+
     <!-- Featured Collection Grid Section -->
     <section class="py-16 bg-[#F4F7FC] border-t border-purple-50/60 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -213,234 +220,10 @@
         </div>
     </section>
 
-    <!-- Aiwibi-Style Gentle Science Showcase ("Why Choose Fabie Baby") -->
-    <section id="science" class="py-20 bg-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-xs font-bold uppercase tracking-wider text-pastel-green bg-soft-green px-4 py-1.5 rounded-full">Engineering Meets Pure Love</span>
-                <h2 class="text-3xl sm:text-4xl font-bold font-heading text-gray-900 mt-3">Why Mothers Trust Fabie Baby Every Day</h2>
-                <p class="text-gray-500 text-sm mt-2">Designed with medical precision to prevent diaper rash and keep skin silky smooth.</p>
-            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Feature 1 -->
-                <div class="p-8 rounded-3xl bg-soft-pink/40 border border-pink-100 text-center relative group hover:shadow-xl transition-all">
-                    <div class="w-16 h-16 mx-auto bg-vibrant-rose text-white rounded-2xl flex items-center justify-center text-3xl shadow-lg shadow-vibrant-rose/20 mb-6 group-hover:scale-110 transition-transform">
-                        <i class="ri-windy-line"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900">3D Air Topsheet</h3>
-                    <p class="text-xs text-gray-600 leading-relaxed mt-3">
-                        Micro-embossed 3D surface channels air freely under your baby’s bottom, reducing skin friction by up to 60%.
-                    </p>
-                </div>
 
-                <!-- Feature 2 -->
-                <div class="p-8 rounded-3xl bg-soft-purple/40 border border-purple-100 text-center relative group hover:shadow-xl transition-all">
-                    <div class="w-16 h-16 mx-auto bg-soft-purple text-white rounded-2xl flex items-center justify-center text-3xl shadow-lg shadow-soft-purple/20 mb-6 group-hover:scale-110 transition-transform">
-                        <i class="ri-water-flash-line"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900">12H Instant Core</h3>
-                    <p class="text-xs text-gray-600 leading-relaxed mt-3">
-                        Japanese Sumitomo SAP technology locks up to 1000ml of liquid within 5 seconds, staying dry through the whole night.
-                    </p>
-                </div>
 
-                <!-- Feature 3 -->
-                <div class="p-8 rounded-3xl bg-soft-green/40 border border-green-100 text-center relative group hover:shadow-xl transition-all">
-                    <div class="w-16 h-16 mx-auto bg-pastel-green text-white rounded-2xl flex items-center justify-center text-3xl shadow-lg shadow-pastel-green/20 mb-6 group-hover:scale-110 transition-transform">
-                        <i class="ri-shield-cross-line"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900">0% Harmful Additives</h3>
-                    <p class="text-xs text-gray-600 leading-relaxed mt-3">
-                        Free from elemental chlorine, artificial perfumes, parabens, and latex to ensure zero irritation on newborn skin.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive Diaper Size & Weight Calculator -->
-    <section id="size-calculator" class="py-16 bg-gradient-to-r from-soft-purple to-deep-purple text-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-6 space-y-4">
-                    <span class="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold text-warm-peach">
-                        <i class="ri-ruler-2-line"></i> Smart Size Assistant
-                    </span>
-                    <h2 class="text-3xl sm:text-4xl font-bold font-heading">Find Your Baby's Perfect Fit</h2>
-                    <p class="text-purple-100 text-sm leading-relaxed">
-                        A proper diaper fit prevents leaks and guarantees 360-degree mobility. Select your baby's weight to calculate the recommended size.
-                    </p>
-
-                    <!-- Interactive Slider Input -->
-                    <div class="pt-4 space-y-3">
-                        <div class="flex justify-between items-center text-sm font-bold">
-                            <span>Baby Weight:</span>
-                            <span class="text-xl font-heading text-warm-peach">{{ number_format($babyWeight, 1) }} kg ({{ number_format($babyWeight * 2.20462, 1) }} lbs)</span>
-                        </div>
-                        <input type="range" min="2" max="18" step="0.5" wire:model.live="babyWeight" class="w-full h-3 bg-purple-900/60 rounded-lg appearance-none cursor-pointer accent-vibrant-rose" />
-                        <div class="flex justify-between text-[11px] text-purple-200">
-                            <span>2 kg (Newborn)</span>
-                            <span>8 kg (Infant)</span>
-                            <span>18 kg (Toddler)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Result Card -->
-                <div class="lg:col-span-6">
-                    <div class="bg-white text-gray-900 p-8 rounded-3xl shadow-2xl border border-purple-200 space-y-4">
-                        <div class="flex items-center justify-between border-b border-gray-100 pb-4">
-                            <div>
-                                <div class="text-xs text-gray-400 font-bold uppercase tracking-wider">Recommended Size</div>
-                                <div class="text-3xl font-bold font-heading text-vibrant-rose mt-1">{{ $recommendedSize['size'] }}</div>
-                            </div>
-                            <span class="px-4 py-2 bg-soft-pink text-vibrant-rose rounded-full text-xs font-bold">
-                                {{ $recommendedSize['range'] }}
-                            </span>
-                        </div>
-                        <p class="text-xs text-gray-600 leading-relaxed">
-                            {{ $recommendedSize['desc'] }}
-                        </p>
-                        <div class="pt-2">
-                            <button wire:click="setCategory('Diapers')" class="w-full py-3.5 bg-soft-purple text-white text-xs font-bold rounded-full hover:bg-deep-purple transition-all shadow-md flex items-center justify-center gap-2">
-                                <span>Shop {{ $recommendedSize['size'] }} Diapers</span>
-                                <i class="ri-arrow-right-line"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Global Safety Certifications Banner -->
-    <section class="py-12 bg-gray-900 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-8">
-                <span class="text-xs font-bold uppercase tracking-wider text-warm-peach">Global Quality Certifications</span>
-                <h3 class="text-xl font-bold font-heading text-white mt-1">Verified Safety Without Compromise</h3>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
-                <div class="p-4 rounded-2xl bg-gray-800/60 border border-gray-700/50 flex flex-col items-center">
-                    <i class="ri-award-line text-3xl text-warm-peach mb-2"></i>
-                    <span class="text-xs font-bold text-gray-200">Dermatest 5-Star</span>
-                    <span class="text-[10px] text-gray-400 mt-0.5">Germany Certified</span>
-                </div>
-                <div class="p-4 rounded-2xl bg-gray-800/60 border border-gray-700/50 flex flex-col items-center">
-                    <i class="ri-shield-star-line text-3xl text-sky-blue mb-2"></i>
-                    <span class="text-xs font-bold text-gray-200">OEKO-TEX 100</span>
-                    <span class="text-[10px] text-gray-400 mt-0.5">Standard Cleared</span>
-                </div>
-                <div class="p-4 rounded-2xl bg-gray-800/60 border border-gray-700/50 flex flex-col items-center">
-                    <i class="ri-plant-line text-3xl text-pastel-green mb-2"></i>
-                    <span class="text-xs font-bold text-gray-200">FSC Wood Pulp</span>
-                    <span class="text-[10px] text-gray-400 mt-0.5">Sustainably Sourced</span>
-                </div>
-                <div class="p-4 rounded-2xl bg-gray-800/60 border border-gray-700/50 flex flex-col items-center">
-                    <i class="ri-heart-line text-3xl text-vibrant-rose mb-2"></i>
-                    <span class="text-xs font-bold text-gray-200">Cruelty Free</span>
-                    <span class="text-[10px] text-gray-400 mt-0.5">100% Vegan Care</span>
-                </div>
-                <div class="p-4 rounded-2xl bg-gray-800/60 border border-gray-700/50 flex flex-col items-center">
-                    <i class="ri-checkbox-circle-line text-3xl text-soft-purple mb-2"></i>
-                    <span class="text-xs font-bold text-gray-200">FDA Compliant</span>
-                    <span class="text-[10px] text-gray-400 mt-0.5">Strict ISO 9001</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Real Parent Reviews & Testimonials Section -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-xs font-bold uppercase tracking-wider text-vibrant-rose bg-soft-pink px-4 py-1.5 rounded-full">Real Mother Feedback</span>
-                <h2 class="text-3xl sm:text-4xl font-bold font-heading text-gray-900 mt-3">What Parents Say About Us</h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="p-8 rounded-3xl bg-cream-bg border border-purple-100 shadow-sm flex flex-col justify-between">
-                    <div>
-                        <div class="flex text-amber-400 text-sm mb-4">
-                            <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
-                        </div>
-                        <p class="text-xs text-gray-700 leading-relaxed italic">
-                            "Fabie Baby diapers completely changed our nights! No leakages at all, and my 4-month-old hasn’t had a single diaper rash since we switched."
-                        </p>
-                    </div>
-                    <div class="flex items-center gap-3 pt-6 border-t border-purple-100 mt-6">
-                        <div class="w-10 h-10 bg-soft-purple text-white rounded-full font-bold flex items-center justify-center text-sm">
-                            SK
-                        </div>
-                        <div>
-                            <div class="text-xs font-bold text-gray-900">Sarah Jenkins</div>
-                            <div class="text-[10px] text-gray-500">Verified Parent • Mother of 2</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="p-8 rounded-3xl bg-cream-bg border border-purple-100 shadow-sm flex flex-col justify-between">
-                    <div>
-                        <div class="flex text-amber-400 text-sm mb-4">
-                            <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
-                        </div>
-                        <p class="text-xs text-gray-700 leading-relaxed italic">
-                            "The 99% pure water wipes are extra thick and durable. I feel so confident using them on my newborn's sensitive face and hands!"
-                        </p>
-                    </div>
-                    <div class="flex items-center gap-3 pt-6 border-t border-purple-100 mt-6">
-                        <div class="w-10 h-10 bg-vibrant-rose text-white rounded-full font-bold flex items-center justify-center text-sm">
-                            EM
-                        </div>
-                        <div>
-                            <div class="text-xs font-bold text-gray-900">Emily Miller</div>
-                            <div class="text-[10px] text-gray-500">Verified Buyer • Sydney</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="p-8 rounded-3xl bg-cream-bg border border-purple-100 shadow-sm flex flex-col justify-between">
-                    <div>
-                        <div class="flex text-amber-400 text-sm mb-4">
-                            <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
-                        </div>
-                        <p class="text-xs text-gray-700 leading-relaxed italic">
-                            "The organic lotion has a subtle natural chamomile scent that calms my baby right before bedtime. Super fast delivery too!"
-                        </p>
-                    </div>
-                    <div class="flex items-center gap-3 pt-6 border-t border-purple-100 mt-6">
-                        <div class="w-10 h-10 bg-pastel-green text-white rounded-full font-bold flex items-center justify-center text-sm">
-                            JR
-                        </div>
-                        <div>
-                            <div class="text-xs font-bold text-gray-900">Jessica Reed</div>
-                            <div class="text-[10px] text-gray-500">Verified Parent • Melbourne</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter & 10% Off Club Banner -->
-    <section class="py-16 bg-soft-pink border-t border-pink-100">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <div class="w-14 h-14 bg-vibrant-rose text-white rounded-2xl mx-auto flex items-center justify-center text-2xl shadow-lg mb-4">
-                <i class="ri-mail-open-line"></i>
-            </div>
-            <h2 class="text-3xl font-bold font-heading text-gray-900">Join the Fabie Baby Mother's Club</h2>
-            <p class="text-xs text-gray-600 mt-2">Subscribe to receive exclusive parenting tips, product launches, and <strong>10% OFF</strong> your first order.</p>
-
-            <form x-data="{ email: '' }" @submit.prevent="alert('Thank you for subscribing! Your 10% off code is FABIE10'); email=''" class="mt-6 flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-                <input x-model="email" type="email" required placeholder="Enter your email address..." class="flex-1 bg-white text-xs px-5 py-3.5 rounded-full border border-pink-200 focus:outline-none focus:border-vibrant-rose shadow-sm" />
-                <button type="submit" class="px-7 py-3.5 bg-vibrant-rose text-white text-xs font-bold rounded-full hover:bg-pink-600 shadow-md transition-all">
-                    Get 10% Off
-                </button>
-            </form>
-        </div>
-    </section>
+   
 
     <!-- Slide-Over Cart Drawer -->
     @if($cartOpen)

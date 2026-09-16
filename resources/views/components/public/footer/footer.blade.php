@@ -1,39 +1,10 @@
-<footer id="contact" class="bg-[#F8F6FD] text-gray-600 pt-14 sm:pt-18 pb-10 border-t border-purple-100 text-xs relative overflow-hidden">
+<footer id="contact" class="bg-white text-gray-600 pt-14 sm:pt-18 pb-10 border-t border-purple-100 text-xs relative overflow-hidden">
     <!-- Subtle Background Ambient Glow -->
     <div class="absolute -left-20 top-0 w-72 h-72 bg-soft-pink/40 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute -right-20 bottom-0 w-72 h-72 bg-soft-blue/30 rounded-full blur-3xl pointer-events-none"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <!-- Top Newsletter & Parent Community Banner -->
-        <div class="bg-white rounded-3xl p-6 sm:p-8 mb-12 sm:mb-14 border border-purple-100/80 shadow-xs flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="max-w-md text-center md:text-left">
-                <span class="inline-flex items-center gap-1.5 text-xs font-bold text-vibrant-rose uppercase tracking-wider mb-1">
-                    <i class="ri-gift-line"></i> Join the Fabie Baby Family
-                </span>
-                <h3 class="text-xl sm:text-2xl font-bold font-heading text-[#1B2541]">
-                    Get 10% Off Your First Baby Care Order
-                </h3>
-                <p class="text-xs text-gray-500 mt-1">
-                    Subscribe for exclusive pediatric skin advice, gentle care tips, and parenting rewards.
-                </p>
-            </div>
-            <div class="w-full md:w-auto">
-                <form onsubmit="event.preventDefault(); alert('Thank you for joining the Fabie Baby family! Your 10% welcome coupon is: WELCOMEBABY10');" class="flex flex-col sm:flex-row gap-2 max-w-md w-full">
-                    <input 
-                        type="email" 
-                        required 
-                        placeholder="Enter your email address" 
-                        class="px-4 py-3 rounded-full bg-gray-50 border border-purple-100 text-xs focus:outline-none focus:border-vibrant-rose focus:bg-white text-gray-700 min-w-[240px] sm:min-w-[280px]"
-                    />
-                    <button 
-                        type="submit" 
-                        class="px-6 py-3 bg-vibrant-rose hover:bg-pink-600 text-white font-bold text-xs rounded-full shadow-sm hover:shadow-md transition-all shrink-0"
-                    >
-                        Subscribe
-                    </button>
-                </form>
-            </div>
-        </div>
+      
 
         <!-- Main 4-Column Footer Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">

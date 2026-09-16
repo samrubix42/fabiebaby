@@ -166,100 +166,100 @@
                   
                 </div>
 
-                <!-- Category Visual Bento Grid (Exact Layout from User Design) -->
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4 lg:gap-5">
+                <!-- Category Visual Bento Grid (Flawlessly Responsive on Mobile & Desktop) -->
+                <div class="grid grid-cols-2 md:grid-cols-12 gap-3 sm:gap-4 lg:gap-5">
                     
-                    <!-- 1. DIAPERS & PANTS (Top Left - Wide Span 6) -->
+                    <!-- 1. DIAPERS & PANTS (Top Left - Wide Span 6 on Desktop, Full Banner on Mobile) -->
                     <div
                         wire:click="setCategory('Diapers')"
-                        class="md:col-span-6 h-60 sm:h-72 lg:h-80 rounded-2xl sm:rounded-3xl overflow-hidden group cursor-pointer relative shadow-xs hover:shadow-lg transition-all duration-300">
+                        class="col-span-2 md:col-span-6 order-1 h-44 sm:h-56 md:h-72 lg:h-80 rounded-2xl sm:rounded-3xl overflow-hidden group cursor-pointer relative shadow-xs hover:shadow-lg transition-all duration-300">
                         <img 
                             src="/images/cat_diapers.jpg" 
                             alt="Diapers & Pants" 
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" 
                         />
-                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/35 transition-colors duration-300 flex items-center justify-center p-4">
-                            <h3 class="text-lg sm:text-xl lg:text-2xl font-black text-white uppercase tracking-widest drop-shadow-md text-center">
+                        <div class="absolute inset-0 bg-black/25 group-hover:bg-black/35 transition-colors duration-300 flex items-center justify-center p-4">
+                            <h3 class="text-base sm:text-xl lg:text-2xl font-black text-white uppercase tracking-wider sm:tracking-widest drop-shadow-md text-center">
                                 Diapers & Pants
                             </h3>
                         </div>
                     </div>
 
-                    <!-- 2. BODYCARE (Top Middle - Span 3) -->
+                    <!-- 2. BODYCARE (Top Middle - Span 3 on Desktop, Half Card on Mobile) -->
                     <div
                         wire:click="setCategory('Skincare')"
-                        class="md:col-span-3 h-60 sm:h-72 lg:h-80 rounded-2xl sm:rounded-3xl overflow-hidden group cursor-pointer relative shadow-xs hover:shadow-lg transition-all duration-300">
+                        class="col-span-1 md:col-span-3 order-2 h-36 sm:h-48 md:h-72 lg:h-80 rounded-2xl sm:rounded-3xl overflow-hidden group cursor-pointer relative shadow-xs hover:shadow-lg transition-all duration-300">
                         <img 
                             src="/images/cat_bodycare.jpg" 
                             alt="Bodycare" 
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" 
                         />
-                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/35 transition-colors duration-300 flex items-center justify-center p-4">
-                            <h3 class="text-lg sm:text-xl lg:text-2xl font-black text-white uppercase tracking-widest drop-shadow-md text-center">
+                        <div class="absolute inset-0 bg-black/25 group-hover:bg-black/35 transition-colors duration-300 flex items-center justify-center p-3 sm:p-4">
+                            <h3 class="text-xs sm:text-base lg:text-2xl font-black text-white uppercase tracking-wider sm:tracking-widest drop-shadow-md text-center">
                                 Bodycare
                             </h3>
                         </div>
                     </div>
 
-                    <!-- 3. CLEANING (Top Right - Span 3) -->
+                    <!-- 3. CLEANING (Top Right - Span 3 on Desktop, Half Card on Mobile) -->
                     <div
                         wire:click="setCategory('Bath')"
-                        class="md:col-span-3 h-60 sm:h-72 lg:h-80 rounded-2xl sm:rounded-3xl overflow-hidden group cursor-pointer relative shadow-xs hover:shadow-lg transition-all duration-300">
+                        class="col-span-1 md:col-span-3 order-3 h-36 sm:h-48 md:h-72 lg:h-80 rounded-2xl sm:rounded-3xl overflow-hidden group cursor-pointer relative shadow-xs hover:shadow-lg transition-all duration-300">
                         <img 
                             src="/images/cat_cleaning.jpg" 
                             alt="Cleaning" 
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" 
                         />
-                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/35 transition-colors duration-300 flex items-center justify-center p-4">
-                            <h3 class="text-lg sm:text-xl lg:text-2xl font-black text-white uppercase tracking-widest drop-shadow-md text-center">
+                        <div class="absolute inset-0 bg-black/25 group-hover:bg-black/35 transition-colors duration-300 flex items-center justify-center p-3 sm:p-4">
+                            <h3 class="text-xs sm:text-base lg:text-2xl font-black text-white uppercase tracking-wider sm:tracking-widest drop-shadow-md text-center">
                                 Cleaning
                             </h3>
                         </div>
                     </div>
 
-                    <!-- 4. ACCESSORIES (Bottom Left - Span 3) -->
+                    <!-- 4. ACCESSORIES (Bottom Left - Span 3 on Desktop, Half Card on Mobile) -->
                     <div
                         wire:click="setCategory('All')"
-                        class="md:col-span-3 h-52 sm:h-64 lg:h-72 rounded-2xl sm:rounded-3xl overflow-hidden group cursor-pointer relative shadow-xs hover:shadow-lg transition-all duration-300">
+                        class="col-span-1 md:col-span-3 order-5 md:order-4 h-36 sm:h-48 md:h-64 lg:h-72 rounded-2xl sm:rounded-3xl overflow-hidden group cursor-pointer relative shadow-xs hover:shadow-lg transition-all duration-300">
                         <img 
                             src="/images/cat_accessories.jpg" 
                             alt="Accessories" 
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" 
                         />
-                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/35 transition-colors duration-300 flex items-center justify-center p-4">
-                            <h3 class="text-lg sm:text-xl lg:text-2xl font-black text-white uppercase tracking-widest drop-shadow-md text-center">
+                        <div class="absolute inset-0 bg-black/25 group-hover:bg-black/35 transition-colors duration-300 flex items-center justify-center p-3 sm:p-4">
+                            <h3 class="text-xs sm:text-base lg:text-2xl font-black text-white uppercase tracking-wider sm:tracking-widest drop-shadow-md text-center">
                                 Accessories
                             </h3>
                         </div>
                     </div>
 
-                    <!-- 5. WET WIPES (Bottom Middle - Wide Span 6) -->
+                    <!-- 5. WET WIPES (Bottom Middle - Wide Span 6 on Desktop, Full Banner on Mobile) -->
                     <div
                         wire:click="setCategory('Wipes')"
-                        class="md:col-span-6 h-52 sm:h-64 lg:h-72 rounded-2xl sm:rounded-3xl overflow-hidden group cursor-pointer relative shadow-xs hover:shadow-lg transition-all duration-300">
+                        class="col-span-2 md:col-span-6 order-4 md:order-5 h-44 sm:h-56 md:h-64 lg:h-72 rounded-2xl sm:rounded-3xl overflow-hidden group cursor-pointer relative shadow-xs hover:shadow-lg transition-all duration-300">
                         <img 
                             src="/images/cat_wipes.jpg" 
                             alt="Wet Wipes" 
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" 
                         />
-                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/35 transition-colors duration-300 flex items-center justify-center p-4">
-                            <h3 class="text-lg sm:text-xl lg:text-2xl font-black text-white uppercase tracking-widest drop-shadow-md text-center">
+                        <div class="absolute inset-0 bg-black/25 group-hover:bg-black/35 transition-colors duration-300 flex items-center justify-center p-4">
+                            <h3 class="text-base sm:text-xl lg:text-2xl font-black text-white uppercase tracking-wider sm:tracking-widest drop-shadow-md text-center">
                                 Wet Wipes
                             </h3>
                         </div>
                     </div>
 
-                    <!-- 6. FEEDING (Bottom Right - Span 3) -->
+                    <!-- 6. FEEDING (Bottom Right - Span 3 on Desktop, Half Card on Mobile) -->
                     <div
                         wire:click="setCategory('All')"
-                        class="md:col-span-3 h-52 sm:h-64 lg:h-72 rounded-2xl sm:rounded-3xl overflow-hidden group cursor-pointer relative shadow-xs hover:shadow-lg transition-all duration-300">
+                        class="col-span-1 md:col-span-3 order-6 h-36 sm:h-48 md:h-64 lg:h-72 rounded-2xl sm:rounded-3xl overflow-hidden group cursor-pointer relative shadow-xs hover:shadow-lg transition-all duration-300">
                         <img 
                             src="/images/cat_feeding.jpg" 
                             alt="Feeding" 
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" 
                         />
-                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/35 transition-colors duration-300 flex items-center justify-center p-4">
-                            <h3 class="text-lg sm:text-xl lg:text-2xl font-black text-white uppercase tracking-widest drop-shadow-md text-center">
+                        <div class="absolute inset-0 bg-black/25 group-hover:bg-black/35 transition-colors duration-300 flex items-center justify-center p-3 sm:p-4">
+                            <h3 class="text-xs sm:text-base lg:text-2xl font-black text-white uppercase tracking-wider sm:tracking-widest drop-shadow-md text-center">
                                 Feeding
                             </h3>
                         </div>
@@ -309,9 +309,9 @@
                                 </span>
                             </div>
 
-                            <!-- Product Image Container -->
-                            <div wire:click="openQuickView({{ $product['id'] }})" class="w-full h-52 sm:h-56 rounded-2xl overflow-hidden bg-gradient-to-b from-[#F8F6FD]/60 to-white border border-purple-50 flex items-center justify-center mb-4 cursor-pointer p-4">
-                                <img src="{{ $product['image'] }}" alt="{{ $product['name'] }}" class="w-full h-full object-contain group-hover:scale-108 transition-transform duration-500 ease-out" />
+                            <!-- Product Image Container (Object Cover, No Padding) -->
+                            <div wire:click="openQuickView({{ $product['id'] }})" class="w-full h-56 sm:h-64 rounded-2xl overflow-hidden bg-gray-100 border border-purple-50/80 mb-4 cursor-pointer relative group/img">
+                                <img src="{{ $product['image'] }}" alt="{{ $product['name'] }}" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out" />
                             </div>
 
                             <!-- Title & Subtitle -->
@@ -421,16 +421,16 @@
                             </div>
 
                             <!-- CTA Buttons -->
-                            <div class="pt-2 flex flex-wrap items-center gap-3">
+                            <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                                 <a
                                     href="#products"
-                                    class="inline-flex items-center gap-2 px-7 py-3.5 bg-[#6B57B2] hover:bg-vibrant-rose text-white text-xs sm:text-sm font-bold rounded-full shadow-sm hover:shadow-md transition-all active:scale-95">
+                                    class="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#6B57B2] hover:bg-vibrant-rose text-white text-xs sm:text-sm font-bold rounded-full shadow-sm hover:shadow-md transition-all active:scale-95 text-center">
                                     <span>Explore Gentle Essentials</span>
                                     <i class="ri-arrow-right-line"></i>
                                 </a>
                                 <a
                                     href="#about-us"
-                                    class="inline-flex items-center gap-2 px-6 py-3.5 bg-white hover:bg-purple-50 text-[#1B2541] border border-purple-200/80 text-xs sm:text-sm font-bold rounded-full shadow-2xs hover:shadow-xs transition-all active:scale-95">
+                                    class="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white hover:bg-purple-50 text-[#1B2541] border border-purple-200/80 text-xs sm:text-sm font-bold rounded-full shadow-2xs hover:shadow-xs transition-all active:scale-95 text-center">
                                     <span>Our Dubai Story</span>
                                     <i class="ri-heart-3-line text-[#6B57B2]"></i>
                                 </a>
@@ -601,27 +601,27 @@
                         </div>
 
                         <!-- Main Headline -->
-                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold font-heading text-[#1B2541] tracking-tight leading-tight">
+                        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-bold font-heading text-[#1B2541] tracking-tight leading-tight">
                             Complete Baby Care, Crafted in Dubai with a Mother's Love
                         </h2>
 
                         <!-- Clean Description -->
-                        <p class="text-gray-600 text-base sm:text-lg leading-relaxed font-normal">
+                        <p class="text-gray-600 text-sm sm:text-base lg:text-lg leading-relaxed font-normal">
                             Researched and designed in Dubai under the guidance of seasoned pediatric experts, Fabie Baby is created with natural, safe ingredients that nourish, soothe, and protect. Our holistic approach provides the love, warmth, and peace of mind that babies and doting mothers deserve every single day.
                         </p>
 
                         <!-- Two Action Buttons -->
-                        <div class="pt-2 flex flex-wrap items-center gap-3 sm:gap-4">
+                        <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
                             <a 
                                 href="#products" 
-                                class="inline-flex items-center gap-2 px-8 py-3.5 bg-[#6B57B2] hover:bg-vibrant-rose text-white text-xs sm:text-sm font-bold rounded-full shadow-sm hover:shadow-md transition-all active:scale-95"
+                                class="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#6B57B2] hover:bg-vibrant-rose text-white text-xs sm:text-sm font-bold rounded-full shadow-sm hover:shadow-md transition-all active:scale-95"
                             >
                                 <span>Explore Essentials</span>
                                 <i class="ri-arrow-right-line"></i>
                             </a>
                             <a 
                                 href="#b2b-products" 
-                                class="inline-flex items-center gap-2 px-7 py-3.5 bg-white hover:bg-purple-50 text-[#1B2541] border border-purple-200/80 text-xs sm:text-sm font-bold rounded-full shadow-2xs hover:shadow-xs transition-all active:scale-95"
+                                class="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white hover:bg-purple-50 text-[#1B2541] border border-purple-200/80 text-xs sm:text-sm font-bold rounded-full shadow-2xs hover:shadow-xs transition-all active:scale-95"
                             >
                                 <span>Wholesale & B2B</span>
                                 <i class="ri-building-4-line text-[#6B57B2]"></i>
@@ -1019,16 +1019,16 @@
                         </div>
                     </div>
 
-                    <!-- Navigation Arrow Buttons -->
+                    <!-- Navigation Arrow Buttons (Hidden on mobile screens to prevent card overlap) -->
                     <button
                         @click="prev()"
-                        class="absolute -left-2 sm:-left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white shadow-md border border-purple-100 text-gray-700 hover:text-white hover:bg-vibrant-rose flex items-center justify-center transition-all z-20 focus:outline-none cursor-pointer"
+                        class="hidden sm:flex absolute -left-2 sm:-left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white shadow-md border border-purple-100 text-gray-700 hover:text-white hover:bg-vibrant-rose items-center justify-center transition-all z-20 focus:outline-none cursor-pointer"
                         aria-label="Previous testimonials">
                         <i class="ri-arrow-left-s-line text-xl"></i>
                     </button>
                     <button
                         @click="next()"
-                        class="absolute -right-2 sm:-right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white shadow-md border border-purple-100 text-gray-700 hover:text-white hover:bg-vibrant-rose flex items-center justify-center transition-all z-20 focus:outline-none cursor-pointer"
+                        class="hidden sm:flex absolute -right-2 sm:-right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white shadow-md border border-purple-100 text-gray-700 hover:text-white hover:bg-vibrant-rose items-center justify-center transition-all z-20 focus:outline-none cursor-pointer"
                         aria-label="Next testimonials">
                         <i class="ri-arrow-right-s-line text-xl"></i>
                     </button>
@@ -1294,71 +1294,6 @@
             </div>
         </section>
 
-        <!-- Slide-Over Cart Drawer -->
-        @if($cartOpen)
-        <div class="fixed inset-0 z-50 overflow-hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
-            <div wire:click="toggleCart" class="fixed inset-0 bg-gray-900/50 backdrop-blur-xs transition-opacity"></div>
-
-            <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-6 sm:pl-10">
-                <div class="pointer-events-auto w-screen max-w-md bg-white shadow-2xl flex flex-col justify-between">
-                    <!-- Drawer Header -->
-                    <div class="p-5 sm:p-6 bg-soft-pink/50 border-b border-pink-100 flex items-center justify-between">
-                        <div class="flex items-center gap-2">
-                            <i class="ri-shopping-bag-3-fill text-vibrant-rose text-xl"></i>
-                            <h2 class="text-base sm:text-lg font-bold font-heading text-gray-900">Your Baby Care Cart ({{ $cartCount }})</h2>
-                        </div>
-                        <button wire:click="toggleCart" class="p-2 text-gray-400 hover:text-gray-700 rounded-full hover:bg-white transition-colors">
-                            <i class="ri-close-line text-xl"></i>
-                        </button>
-                    </div>
-
-                    <!-- Items List -->
-                    <div class="flex-1 overflow-y-auto p-5 sm:p-6 space-y-4">
-                        @forelse($cart as $index => $item)
-                        <div class="flex items-center gap-3 sm:gap-4 p-3 rounded-2xl bg-cream-bg border border-purple-100">
-                            <img src="{{ $item['image'] }}" alt="{{ $item['name'] }}" class="w-14 h-14 sm:w-16 sm:h-16 object-contain rounded-xl bg-white p-1 shrink-0" />
-                            <div class="flex-1 min-w-0">
-                                <h4 class="text-xs font-bold text-gray-900 truncate">{{ $item['name'] }}</h4>
-                                <div class="text-[10px] text-gray-500">{{ $item['variant'] }}</div>
-                                <div class="text-xs sm:text-sm font-bold text-vibrant-rose mt-1">${{ number_format($item['price'], 2) }}</div>
-                            </div>
-                            <div class="flex items-center border border-gray-200 bg-white rounded-lg shrink-0">
-                                <button wire:click="updateQuantity({{ $index }}, -1)" class="px-2 py-1 text-gray-500 hover:text-gray-900 text-xs font-bold">-</button>
-                                <span class="px-2 text-xs font-bold">{{ $item['quantity'] }}</span>
-                                <button wire:click="updateQuantity({{ $index }}, 1)" class="px-2 py-1 text-gray-500 hover:text-gray-900 text-xs font-bold">+</button>
-                            </div>
-                        </div>
-                        @empty
-                        <div class="text-center py-12">
-                            <i class="ri-shopping-bag-line text-4xl text-gray-300"></i>
-                            <p class="text-xs text-gray-500 mt-2 font-medium">Your cart is empty.</p>
-                        </div>
-                        @endforelse
-                    </div>
-
-                    <!-- Footer Checkout -->
-                    <div class="p-5 sm:p-6 bg-gray-50 border-t border-gray-100 space-y-3">
-                        <div class="flex justify-between text-xs text-gray-600">
-                            <span>Subtotal:</span>
-                            <span class="font-bold text-gray-900">${{ number_format($cartSubtotal, 2) }}</span>
-                        </div>
-                        <div class="flex justify-between text-xs text-gray-600">
-                            <span>Estimated Express Shipping:</span>
-                            <span class="font-bold text-pastel-green">FREE</span>
-                        </div>
-                        <div class="flex justify-between text-sm font-bold border-t border-gray-200 pt-2">
-                            <span>Total:</span>
-                            <span class="text-vibrant-rose font-heading text-base">${{ number_format($cartSubtotal, 2) }}</span>
-                        </div>
-                        <button onclick="alert('Proceeding to checkout!')" class="w-full py-3 sm:py-3.5 bg-vibrant-rose hover:bg-pink-600 text-white font-bold text-xs rounded-full shadow-lg transition-all flex items-center justify-center gap-2">
-                            <i class="ri-lock-line"></i> Secure Checkout
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @endif
-
         <!-- Quick View Modal Popup -->
         @if($selectedProduct)
         <div class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -1372,8 +1307,8 @@
                         </button>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
-                            <div class="bg-cream-bg p-4 rounded-2xl flex items-center justify-center">
-                                <img src="{{ $selectedProduct['image'] }}" alt="{{ $selectedProduct['name'] }}" class="w-full h-48 object-contain" />
+                            <div class="rounded-2xl overflow-hidden flex items-center justify-center h-52 sm:h-64 bg-gray-100">
+                                <img src="{{ $selectedProduct['image'] }}" alt="{{ $selectedProduct['name'] }}" class="w-full h-full object-cover" />
                             </div>
                             <div class="space-y-3">
                                 <div class="flex items-center gap-2">

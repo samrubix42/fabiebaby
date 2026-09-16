@@ -4,6 +4,51 @@
 @source '../../storage/framework/views/*.php';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Quicksand', 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-heading: 'Quicksand', sans-serif;
+
+    /* Fabie Baby Intuitive Color Palette (Richer 1-Shade Deeper Palette) */
+    --color-soft-purple: #6B57B2;
+    --color-deep-purple: #5725bb;
+    --color-header-purple: #5725bb;
+    --color-soft-pink: #FCE8F3;
+    --color-vibrant-rose: #E63980;
+    --color-soft-green: #EFF8E3;
+    --color-pastel-green: #74B528;
+    --color-soft-orange: #FEF2E8;
+    --color-warm-peach: #E77420;
+    --color-soft-blue: #E8F7FC;
+    --color-sky-blue: #2CB3DB;
+    --color-soft-mint: #E1F6F3;
+    --color-mint-teal: #24A997;
+    --color-cream-bg: #F8F6FD;
 }
+
+@layer utilities {
+    .glass-card {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+    
+    .blob-bg {
+        border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+    }
+
+    .badge-pulse {
+        animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+}
+
+@keyframes pulse-ring {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.85;
+    }
+}
+

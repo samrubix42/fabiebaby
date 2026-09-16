@@ -62,7 +62,7 @@
         <script>
             document.addEventListener('DOMContentLoaded', () => {
                 const initScrollReveals = () => {
-                    const targets = document.querySelectorAll('.reveal-on-scroll, .reveal-on-scroll-left, .reveal-on-scroll-right, .reveal-on-scroll-scale');
+                    const targets = document.querySelectorAll('.reveal-on-scroll:not(.is-revealed), .reveal-on-scroll-left:not(.is-revealed), .reveal-on-scroll-right:not(.is-revealed), .reveal-on-scroll-scale:not(.is-revealed)');
                     if (!targets.length) return;
 
                     const observer = new IntersectionObserver((entries, obs) => {
@@ -73,15 +73,32 @@
                             }
                         });
                     }, {
-                        threshold: 0.1,
-                        rootMargin: '0px 0px -40px 0px'
+                        threshold: 0.05,
+                        rootMargin: '0px 0px -20px 0px'
                     });
 
-                    targets.forEach(el => observer.observe(el));
+                    targets.forEach(el => {
+                        // If element is already in viewport, reveal immediately
+                        const rect = el.getBoundingClientRect();
+                        if (rect.top < window.innerHeight && rect.bottom > 0) {
+                            el.classList.add('is-revealed');
+                        } else {
+                            observer.observe(el);
+                        }
+                    });
                 };
 
                 initScrollReveals();
                 document.addEventListener('livewire:navigated', initScrollReveals);
+                
+                // Keep scroll animations active if Livewire morphs components
+                document.addEventListener('livewire:init', () => {
+                    if (window.Livewire) {
+                        Livewire.hook('morph.updated', () => {
+                            initScrollReveals();
+                        });
+                    }
+                });
             });
         </script>
 

@@ -1,111 +1,152 @@
 <div class="relative">
 
-    <!-- Full-Screen Edge-to-Edge Hero Slider Banner (With Auto-Sliding & Hover-Pause) -->
+    <!-- Full-Screen Edge-to-Edge Hero Slider Banner (Pure Client-Side Alpine Slider with Butter-Smooth Transitions) -->
     <section
-        x-data="{ timer: null }"
-        x-init="timer = setInterval(() => $wire.nextSlide(), 5000)"
-        @mouseenter="clearInterval(timer)"
-        @mouseleave="timer = setInterval(() => $wire.nextSlide(), 5000)"
-        class="relative w-full overflow-hidden">
+        x-data="{
+            currentSlide: 0,
+            totalSlides: {{ count($slides) }},
+            timer: null,
+            init() {
+                this.startTimer();
+            },
+            startTimer() {
+                this.stopTimer();
+                this.timer = setInterval(() => this.next(), 5000);
+            },
+            stopTimer() {
+                if (this.timer) clearInterval(this.timer);
+            },
+            next() {
+                this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+            },
+            goTo(index) {
+                this.currentSlide = index;
+                this.startTimer();
+            }
+        }"
+        @mouseenter="stopTimer()"
+        @mouseleave="startTimer()"
+        class="relative w-full overflow-hidden"
+    >
         <div class="relative w-full h-[55vh] sm:h-[70vh] md:h-[80vh] overflow-hidden bg-gray-100 group">
-            <!-- Background Image Container -->
-            <div class="absolute inset-0 bg-cover bg-center transition-all duration-700 transform scale-100 group-hover:scale-102" style="background-image: url('{{ $activeSlide['bgImage'] }}');"></div>
+            @foreach($slides as $index => $slide)
+            <div
+                x-show="currentSlide === {{ $index }}"
+                x-transition:enter="transition ease-out duration-700"
+                x-transition:enter-start="opacity-0 scale-102"
+                x-transition:enter-end="opacity-100 scale-100"
+                x-transition:leave="transition ease-in duration-500 absolute inset-0"
+                x-transition:leave-start="opacity-100 scale-100"
+                x-transition:leave-end="opacity-0 scale-98"
+                class="absolute inset-0"
+                x-cloak
+            >
+                <!-- Background Image Container -->
+                <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 transform scale-100 group-hover:scale-102" style="background-image: url('{{ $slide['bgImage'] }}');"></div>
 
-            <!-- Gradient Overlay for High Contrast Text Legibility -->
-            <div class="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent w-full md:w-3/5 lg:w-1/2"></div>
+                <!-- Gradient Overlay for High Contrast Text Legibility -->
+                <div class="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent w-full md:w-3/5 lg:w-1/2"></div>
 
-            <!-- Left Content Overlay -->
-            <div class="absolute inset-0 px-[5%] flex items-center">
-                <div class="max-w-xl px-6 sm:px-12 lg:px-16 space-y-3 sm:space-y-5">
+                <!-- Left Content Overlay -->
+                <div class="absolute inset-0 px-[5%] flex items-center">
+                    <div class="max-w-xl px-6 sm:px-12 lg:px-16 space-y-3 sm:space-y-5">
+                        <div class="space-y-1">
+                            <span class="block text-xs sm:text-sm font-bold tracking-wider text-vibrant-rose uppercase">{{ $slide['subtitle'] }}</span>
+                            <h1 class="text-2xl sm:text-4xl lg:text-5xl font-bold font-heading text-gray-900 leading-tight">
+                                {{ $slide['title'] }}
+                            </h1>
+                        </div>
 
+                        <p class="text-xs sm:text-base text-gray-600 leading-relaxed line-clamp-2 sm:line-clamp-3">
+                            {{ $slide['description'] }}
+                        </p>
 
-                    <div class="space-y-1">
-                        <span class="block text-xs sm:text-sm font-bold tracking-wider text-vibrant-rose uppercase">{{ $activeSlide['subtitle'] }}</span>
-                        <h1 class="text-2xl sm:text-4xl lg:text-5xl font-bold font-heading text-gray-900 leading-tight">
-                            {{ $activeSlide['title'] }}
-                        </h1>
-                    </div>
-
-                    <p class="text-xs sm:text-base text-gray-600 leading-relaxed line-clamp-2 sm:line-clamp-3">
-                        {{ $activeSlide['description'] }}
-                    </p>
-
-                    <div class="pt-2">
-                        <button wire:click="setCategory('{{ $activeSlide['category'] }}')" class="px-5 py-2.5 font-bold text-xs sm:text-sm rounded-full shadow-lg transition-all transform hover:-translate-y-0.5 active:scale-95 flex items-center gap-2.5 {{ $activeSlide['buttonClass'] }}">
-                            <span>{{ $activeSlide['buttonText'] }}</span>
-                            <i class="ri-arrow-right-line text-lg"></i>
-                        </button>
+                        <div class="pt-2">
+                            <button wire:click="setCategory('{{ $slide['category'] }}')" class="px-5 py-2.5 font-bold text-xs sm:text-sm rounded-full shadow-lg transition-all transform hover:-translate-y-0.5 active:scale-95 flex items-center gap-2.5 {{ $slide['buttonClass'] }}">
+                                <span>{{ $slide['buttonText'] }}</span>
+                                <i class="ri-arrow-right-line text-lg"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
+            @endforeach
+
             <!-- Simple Small Dot Pagination (No Background, Pink Active, Equal Width) -->
             <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2.5 z-20">
                 @foreach($slides as $index => $slide)
-                <button wire:click="setSlide({{ $index }})" class="w-2.5 h-2.5 rounded-full transition-all duration-300 {{ $currentSlide === $index ? 'bg-vibrant-rose shadow-sm scale-110' : 'bg-gray-400/60 hover:bg-gray-600' }}" title="Go to slide {{ $index + 1 }}"></button>
+                <button
+                    @click="goTo({{ $index }})"
+                    :class="currentSlide === {{ $index }} ? 'bg-vibrant-rose shadow-sm scale-110' : 'bg-gray-400/60 hover:bg-gray-600'"
+                    class="w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer"
+                    title="Go to slide {{ $index + 1 }}"
+                ></button>
                 @endforeach
             </div>
         </div>
-        <!-- Trust & Safety Highlights Bar (Responsive, Symmetrical & High Trust) -->
-        <section class="bg-white py-6 sm:py-8 border-b border-purple-100/70 shadow-2xs relative z-10">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 items-center">
-                    <!-- Item 1: Safe & Gentle -->
-                    <div class="flex items-center gap-3 p-3 rounded-2xl hover:bg-soft-green/30 transition-colors reveal-on-scroll reveal-delay-1">
-                        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-soft-green flex items-center justify-center text-pastel-green shrink-0">
-                            <i class="ri-plant-line text-xl sm:text-2xl"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-[#1B2541] text-xs sm:text-sm leading-tight">Safe & Gentle</h4>
-                            <p class="text-[11px] text-gray-500 mt-0.5">0% Harsh Chemicals</p>
-                        </div>
-                    </div>
+    </section>
 
-                    <!-- Item 2: Dermatologically Tested -->
-                    <div class="flex items-center gap-3 p-3 rounded-2xl hover:bg-soft-blue/40 transition-colors reveal-on-scroll reveal-delay-2">
-                        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-soft-blue flex items-center justify-center text-sky-blue shrink-0">
-                            <i class="ri-drop-line text-xl sm:text-2xl"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-[#1B2541] text-xs sm:text-sm leading-tight">Dermatologist Tested</h4>
-                            <p class="text-[11px] text-gray-500 mt-0.5">5-Star Sensitive Rating</p>
-                        </div>
+    <!-- Trust & Safety Highlights Bar (Responsive, Symmetrical & High Trust) -->
+    <section class="bg-white py-6 sm:py-8 border-b border-purple-100/70 shadow-2xs relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 items-center">
+                <!-- Item 1: Safe & Gentle -->
+                <div class="flex items-center gap-3 p-3 rounded-2xl hover:bg-soft-green/30 transition-colors">
+                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-soft-green flex items-center justify-center text-pastel-green shrink-0">
+                        <i class="ri-plant-line text-xl sm:text-2xl"></i>
                     </div>
-
-                    <!-- Item 3: Pediatrician Recommended -->
-                    <div class="flex items-center gap-3 p-3 rounded-2xl hover:bg-purple-50 transition-colors reveal-on-scroll reveal-delay-3">
-                        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#6B57B2]/10 flex items-center justify-center text-[#6B57B2] shrink-0">
-                            <i class="ri-user-smile-line text-xl sm:text-2xl"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-[#1B2541] text-xs sm:text-sm leading-tight">Pediatrician Approved</h4>
-                            <p class="text-[11px] text-gray-500 mt-0.5">Trusted by Doctors</p>
-                        </div>
+                    <div>
+                        <h4 class="font-bold text-[#1B2541] text-xs sm:text-sm leading-tight">Safe & Gentle</h4>
+                        <p class="text-[11px] text-gray-500 mt-0.5">0% Harsh Chemicals</p>
                     </div>
+                </div>
 
-                    <!-- Item 4: Dubai Lab Certified -->
-                    <div class="flex items-center gap-3 p-3 rounded-2xl hover:bg-soft-pink/40 transition-colors reveal-on-scroll reveal-delay-4">
-                        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-soft-pink flex items-center justify-center text-vibrant-rose shrink-0">
-                            <i class="ri-shield-check-line text-xl sm:text-2xl"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-[#1B2541] text-xs sm:text-sm leading-tight">Dubai Lab Tested</h4>
-                            <p class="text-[11px] text-gray-500 mt-0.5">Dubai Municipality Approved</p>
-                        </div>
+                <!-- Item 2: Dermatologically Tested -->
+                <div class="flex items-center gap-3 p-3 rounded-2xl hover:bg-soft-blue/40 transition-colors">
+                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-soft-blue flex items-center justify-center text-sky-blue shrink-0">
+                        <i class="ri-drop-line text-xl sm:text-2xl"></i>
                     </div>
+                    <div>
+                        <h4 class="font-bold text-[#1B2541] text-xs sm:text-sm leading-tight">Dermatologist Tested</h4>
+                        <p class="text-[11px] text-gray-500 mt-0.5">5-Star Sensitive Rating</p>
+                    </div>
+                </div>
 
-                    <!-- Item 5: pH 5.5 Balanced -->
-                    <div class="col-span-2 md:col-span-1 flex items-center justify-center sm:justify-start gap-3 p-3 rounded-2xl hover:bg-soft-orange/40 transition-colors reveal-on-scroll reveal-delay-5">
-                        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-soft-orange flex items-center justify-center text-warm-peach shrink-0">
-                            <i class="ri-heart-3-line text-xl sm:text-2xl"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-[#1B2541] text-xs sm:text-sm leading-tight">pH 5.5 Balanced</h4>
-                            <p class="text-[11px] text-gray-500 mt-0.5">Protects Acid Mantle</p>
-                        </div>
+                <!-- Item 3: Pediatrician Recommended -->
+                <div class="flex items-center gap-3 p-3 rounded-2xl hover:bg-purple-50 transition-colors">
+                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#6B57B2]/10 flex items-center justify-center text-[#6B57B2] shrink-0">
+                        <i class="ri-user-smile-line text-xl sm:text-2xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-[#1B2541] text-xs sm:text-sm leading-tight">Pediatrician Approved</h4>
+                        <p class="text-[11px] text-gray-500 mt-0.5">Trusted by Doctors</p>
+                    </div>
+                </div>
+
+                <!-- Item 4: Dubai Lab Certified -->
+                <div class="flex items-center gap-3 p-3 rounded-2xl hover:bg-soft-pink/40 transition-colors">
+                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-soft-pink flex items-center justify-center text-vibrant-rose shrink-0">
+                        <i class="ri-shield-check-line text-xl sm:text-2xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-[#1B2541] text-xs sm:text-sm leading-tight">Dubai Lab Tested</h4>
+                        <p class="text-[11px] text-gray-500 mt-0.5">Dubai Municipality Approved</p>
+                    </div>
+                </div>
+
+                <!-- Item 5: pH 5.5 Balanced -->
+                <div class="col-span-2 md:col-span-1 flex items-center justify-center sm:justify-start gap-3 p-3 rounded-2xl hover:bg-soft-orange/40 transition-colors">
+                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-soft-orange flex items-center justify-center text-warm-peach shrink-0">
+                        <i class="ri-heart-3-line text-xl sm:text-2xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-[#1B2541] text-xs sm:text-sm leading-tight">pH 5.5 Balanced</h4>
+                        <p class="text-[11px] text-gray-500 mt-0.5">Protects Acid Mantle</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
            <section class="bg-gradient-to-b from-[#F8F6FD] via-white to-[#F8F6FD] py-16 sm:py-20 text-center relative overflow-hidden border-b border-purple-100/70">
             <!-- Subtle Ambient Brand Tint -->

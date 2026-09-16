@@ -52,6 +52,14 @@
         transform: translateY(-4px);
         box-shadow: 0 20px 35px -10px rgba(107, 87, 178, 0.15), 0 8px 16px -6px rgba(0, 0, 0, 0.04);
     }
+
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
 }
 
 @keyframes pulse-ring {

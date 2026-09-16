@@ -86,64 +86,98 @@
         </div>
     </section>
 
-    <!-- Trust & Safety Highlights Bar (Responsive, Symmetrical & High Trust) -->
-    <section class="bg-white py-6 sm:py-8 border-b border-purple-100/70 shadow-2xs relative z-10">
+    <!-- Trust & Safety Highlights Section (Symmetrical 2x2 + Full-Width Featured Seal on Mobile, 5-Column Grid on Desktop) -->
+    <section class="bg-gradient-to-b from-white via-[#F8F6FD]/60 to-white py-6 sm:py-8 lg:py-10 border-b border-purple-100/70 shadow-2xs relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 items-center">
-                <!-- Item 1: Safe & Gentle -->
-                <div class="flex items-center gap-3 p-3 rounded-2xl hover:bg-soft-green/30 transition-colors">
-                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-soft-green flex items-center justify-center text-pastel-green shrink-0">
-                        <i class="ri-plant-line text-xl sm:text-2xl"></i>
+            <div class="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-5">
+                
+                <!-- Card 1: Safe & Gentle -->
+                <div class="bg-white rounded-2xl p-3.5 sm:p-4 border border-purple-100/70 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between group">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="w-10 h-10 rounded-xl bg-soft-green flex items-center justify-center text-pastel-green group-hover:scale-105 transition-transform">
+                            <i class="ri-plant-line text-xl"></i>
+                        </div>
+                        <span class="text-[10px] font-bold text-pastel-green bg-[#EFF8E3] px-2 py-0.5 rounded-full">
+                            0% Toxins
+                        </span>
                     </div>
                     <div>
-                        <h4 class="font-bold text-[#1B2541] text-xs sm:text-sm leading-tight">Safe & Gentle</h4>
+                        <h4 class="font-bold text-[#1B2541] text-xs sm:text-sm leading-snug group-hover:text-vibrant-rose transition-colors">Safe & Gentle</h4>
                         <p class="text-[11px] text-gray-500 mt-0.5">0% Harsh Chemicals</p>
                     </div>
                 </div>
 
-                <!-- Item 2: Dermatologically Tested -->
-                <div class="flex items-center gap-3 p-3 rounded-2xl hover:bg-soft-blue/40 transition-colors">
-                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-soft-blue flex items-center justify-center text-sky-blue shrink-0">
-                        <i class="ri-drop-line text-xl sm:text-2xl"></i>
+                <!-- Card 2: Dermatologist Tested -->
+                <div class="bg-white rounded-2xl p-3.5 sm:p-4 border border-purple-100/70 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between group">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="w-10 h-10 rounded-xl bg-soft-blue flex items-center justify-center text-sky-blue group-hover:scale-105 transition-transform">
+                            <i class="ri-drop-line text-xl"></i>
+                        </div>
+                        <span class="text-[10px] font-bold text-sky-600 bg-sky-50 px-2 py-0.5 rounded-full">
+                            5-Star Rated
+                        </span>
                     </div>
                     <div>
-                        <h4 class="font-bold text-[#1B2541] text-xs sm:text-sm leading-tight">Dermatologist Tested</h4>
-                        <p class="text-[11px] text-gray-500 mt-0.5">5-Star Sensitive Rating</p>
+                        <h4 class="font-bold text-[#1B2541] text-xs sm:text-sm leading-snug group-hover:text-vibrant-rose transition-colors">Dermatologist Tested</h4>
+                        <p class="text-[11px] text-gray-500 mt-0.5">Sensitive Skin Proven</p>
                     </div>
                 </div>
 
-                <!-- Item 3: Pediatrician Recommended -->
-                <div class="flex items-center gap-3 p-3 rounded-2xl hover:bg-purple-50 transition-colors">
-                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#6B57B2]/10 flex items-center justify-center text-[#6B57B2] shrink-0">
-                        <i class="ri-user-smile-line text-xl sm:text-2xl"></i>
+                <!-- Card 3: Pediatrician Approved -->
+                <div class="bg-white rounded-2xl p-3.5 sm:p-4 border border-purple-100/70 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between group">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="w-10 h-10 rounded-xl bg-[#6B57B2]/10 flex items-center justify-center text-[#6B57B2] group-hover:scale-105 transition-transform">
+                            <i class="ri-user-smile-line text-xl"></i>
+                        </div>
+                        <span class="text-[10px] font-bold text-[#6B57B2] bg-purple-50 px-2 py-0.5 rounded-full">
+                            Doctor Trusted
+                        </span>
                     </div>
                     <div>
-                        <h4 class="font-bold text-[#1B2541] text-xs sm:text-sm leading-tight">Pediatrician Approved</h4>
-                        <p class="text-[11px] text-gray-500 mt-0.5">Trusted by Doctors</p>
+                        <h4 class="font-bold text-[#1B2541] text-xs sm:text-sm leading-snug group-hover:text-vibrant-rose transition-colors">Pediatrician Approved</h4>
+                        <p class="text-[11px] text-gray-500 mt-0.5">Daily Newborn Care</p>
                     </div>
                 </div>
 
-                <!-- Item 4: Dubai Lab Certified -->
-                <div class="flex items-center gap-3 p-3 rounded-2xl hover:bg-soft-pink/40 transition-colors">
-                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-soft-pink flex items-center justify-center text-vibrant-rose shrink-0">
-                        <i class="ri-shield-check-line text-xl sm:text-2xl"></i>
+                <!-- Card 4: pH 5.5 Balanced -->
+                <div class="bg-white rounded-2xl p-3.5 sm:p-4 border border-purple-100/70 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between group">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="w-10 h-10 rounded-xl bg-soft-orange flex items-center justify-center text-warm-peach group-hover:scale-105 transition-transform">
+                            <i class="ri-heart-3-line text-xl"></i>
+                        </div>
+                        <span class="text-[10px] font-bold text-warm-peach bg-orange-50 px-2 py-0.5 rounded-full">
+                            pH 5.5
+                        </span>
                     </div>
                     <div>
-                        <h4 class="font-bold text-[#1B2541] text-xs sm:text-sm leading-tight">Dubai Lab Tested</h4>
-                        <p class="text-[11px] text-gray-500 mt-0.5">Dubai Municipality Approved</p>
-                    </div>
-                </div>
-
-                <!-- Item 5: pH 5.5 Balanced -->
-                <div class="col-span-2 md:col-span-1 flex items-center justify-center sm:justify-start gap-3 p-3 rounded-2xl hover:bg-soft-orange/40 transition-colors">
-                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-soft-orange flex items-center justify-center text-warm-peach shrink-0">
-                        <i class="ri-heart-3-line text-xl sm:text-2xl"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-[#1B2541] text-xs sm:text-sm leading-tight">pH 5.5 Balanced</h4>
+                        <h4 class="font-bold text-[#1B2541] text-xs sm:text-sm leading-snug group-hover:text-vibrant-rose transition-colors">pH 5.5 Balanced</h4>
                         <p class="text-[11px] text-gray-500 mt-0.5">Protects Acid Mantle</p>
                     </div>
                 </div>
+
+                <!-- Card 5: Dubai Lab Tested (Featured Full-Width Trust Seal Banner on Mobile, 5th Column on Desktop) -->
+                <div class="col-span-2 lg:col-span-1 bg-gradient-to-r from-soft-pink/60 via-white to-purple-50/70 lg:bg-white rounded-2xl p-3.5 sm:p-4 border border-pink-200/80 lg:border-purple-100/70 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-row lg:flex-col items-center lg:items-start justify-between gap-3 group">
+                    <div class="flex items-center gap-3 lg:gap-0 lg:flex-col lg:items-start lg:w-full">
+                        <div class="flex items-center justify-between lg:w-full lg:mb-2">
+                            <div class="w-10 h-10 rounded-xl bg-soft-pink flex items-center justify-center text-vibrant-rose shrink-0 group-hover:scale-105 transition-transform">
+                                <i class="ri-shield-check-fill text-xl"></i>
+                            </div>
+                            <span class="hidden lg:inline-flex text-[10px] font-bold text-vibrant-rose bg-soft-pink px-2 py-0.5 rounded-full">
+                                Official Lab
+                            </span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-[#1B2541] text-xs sm:text-sm leading-snug group-hover:text-vibrant-rose transition-colors">Dubai Lab Tested</h4>
+                            <p class="text-[11px] text-gray-500 mt-0.5">Dubai Municipality Approved</p>
+                        </div>
+                    </div>
+                    <div class="lg:hidden shrink-0">
+                        <span class="inline-flex items-center gap-1 text-[11px] font-bold text-vibrant-rose bg-white px-3 py-1.5 rounded-full border border-pink-200 shadow-2xs">
+                            <i class="ri-checkbox-circle-fill text-pastel-green"></i> Certified Safe
+                        </span>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>

@@ -303,8 +303,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
                 <div class="max-w-xl">
-                    <div class="flex items-center gap-2 text-xs font-bold tracking-widest text-vibrant-rose uppercase mb-2">
-                        <i class="ri-apps-2-line"></i>
+                    <div class="text-xs font-bold tracking-widest text-vibrant-rose uppercase mb-2">
                         <span>CARE COLLECTIONS</span>
                     </div>
                     <h2 class="text-3xl sm:text-4xl font-bold font-heading text-[#1B2541] tracking-tight">
@@ -331,11 +330,6 @@
                     wire:click="setCategory('Diapers')"
                     class="group relative flex flex-col justify-between rounded-[28px] p-6 sm:p-7 bg-gradient-to-b from-[#F2F8ED] via-[#ECF5E6] to-[#E3F2DA] border border-[#74B528]/25 hover:border-[#74B528]/50 hover:shadow-xl hover:-translate-y-2 transition-all duration-500 ease-out cursor-pointer overflow-hidden select-none"
                 >
-                    <!-- Faint Botanical Watermark Background Accent -->
-                    <div class="absolute -top-3 -right-3 text-[#74B528]/10 text-7xl pointer-events-none group-hover:scale-110 group-hover:rotate-6 transition-transform duration-700">
-                        <i class="ri-leaf-line"></i>
-                    </div>
-
                     <div class="relative z-10">
                         <h3 class="text-2xl sm:text-[26px] font-extrabold font-heading text-[#2F7523] leading-tight mb-2 group-hover:text-[#24611B] transition-colors">
                             Baby<br/>Essentials
@@ -368,11 +362,6 @@
                     wire:click="setCategory('Wipes')"
                     class="group relative flex flex-col justify-between rounded-[28px] p-6 sm:p-7 bg-gradient-to-b from-[#EEF7FC] via-[#E4F2FA] to-[#D9EEF8] border border-[#2CB3DB]/30 hover:border-[#2CB3DB]/60 hover:shadow-xl hover:-translate-y-2 transition-all duration-500 ease-out cursor-pointer overflow-hidden select-none"
                 >
-                    <!-- Faint Water/Drop Watermark Background Accent -->
-                    <div class="absolute -top-3 -right-3 text-[#2CB3DB]/12 text-7xl pointer-events-none group-hover:scale-110 group-hover:rotate-6 transition-transform duration-700">
-                        <i class="ri-drop-line"></i>
-                    </div>
-
                     <div class="relative z-10">
                         <h3 class="text-2xl sm:text-[26px] font-extrabold font-heading text-[#0D6AB7] leading-tight mb-2 group-hover:text-[#095594] transition-colors">
                             Baby<br/>Health
@@ -405,11 +394,6 @@
                     wire:click="setCategory('Skincare')"
                     class="group relative flex flex-col justify-between rounded-[28px] p-6 sm:p-7 bg-gradient-to-b from-[#FDF2F6] via-[#FCE7F1] to-[#FBDCE9] border border-[#E63980]/25 hover:border-[#E63980]/50 hover:shadow-xl hover:-translate-y-2 transition-all duration-500 ease-out cursor-pointer overflow-hidden select-none"
                 >
-                    <!-- Faint Heart/Petal Watermark Background Accent -->
-                    <div class="absolute -top-3 -right-3 text-[#E63980]/10 text-7xl pointer-events-none group-hover:scale-110 group-hover:rotate-6 transition-transform duration-700">
-                        <i class="ri-heart-3-line"></i>
-                    </div>
-
                     <div class="relative z-10">
                         <h3 class="text-2xl sm:text-[26px] font-extrabold font-heading text-[#E63980] leading-tight mb-2 group-hover:text-[#D0236B] transition-colors">
                             My<br/>Mamma
@@ -442,11 +426,6 @@
                     wire:click="setCategory('Bath')"
                     class="group relative flex flex-col justify-between rounded-[28px] p-6 sm:p-7 bg-gradient-to-b from-[#F5F1FA] via-[#EEE6F7] to-[#E5DAF3] border border-[#6B57B2]/25 hover:border-[#6B57B2]/50 hover:shadow-xl hover:-translate-y-2 transition-all duration-500 ease-out cursor-pointer overflow-hidden select-none"
                 >
-                    <!-- Faint Sparkle/Gift Watermark Background Accent -->
-                    <div class="absolute -top-3 -right-3 text-[#6B57B2]/10 text-7xl pointer-events-none group-hover:scale-110 group-hover:rotate-6 transition-transform duration-700">
-                        <i class="ri-gift-line"></i>
-                    </div>
-
                     <div class="relative z-10">
                         <h3 class="text-2xl sm:text-[26px] font-extrabold font-heading text-[#5E35B1] leading-tight mb-2 group-hover:text-[#4A2699] transition-colors">
                             Gifts &amp;<br/>Kits
@@ -502,17 +481,7 @@
                     </p>
                 </div>
 
-                <!-- Category Filter Tabs -->
-                <div class="flex flex-wrap items-center gap-1.5 border border-purple-100 p-1 rounded-full bg-[#FAF9FC] self-start sm:self-auto">
-                    @foreach(['All', 'Diapers', 'Wipes', 'Skincare', 'Bath'] as $cat)
-                    <button 
-                        wire:click="setCategory('{{ $cat }}')"
-                        class="px-4 py-1.5 text-xs font-bold rounded-full transition-all cursor-pointer {{ $activeCategory === $cat ? 'bg-[#6B57B2] text-white shadow-xs' : 'text-gray-600 hover:text-[#1B2541]' }}"
-                    >
-                        {{ $cat === 'All' ? 'All Care' : $cat }}
-                    </button>
-                    @endforeach
-                </div>
+         
             </div>
 
             <!-- Modern Auto-Slider (Zero Arrow Buttons, Smooth Interval, Pause on Hover) -->
@@ -605,12 +574,12 @@
                                     <!-- Soft Luminous Product Stage Container (Enlarged Image Stage) -->
                                     <div 
                                         wire:click="openQuickView({{ $product['id'] }})"
-                                        class="w-full h-64 sm:h-72 lg:h-80 rounded-2xl bg-gradient-to-b from-[#FAF9FE] to-[#F4F2F9] border border-purple-50/80 flex items-center justify-center p-3 sm:p-4 mb-5 cursor-pointer overflow-hidden group/img relative"
+                                        class="w-full h-64 sm:h-72 lg:h-80 rounded-2xl bg-gradient-to-b from-[#FAF9FE] to-[#F4F2F9] border border-purple-50/80 flex items-center justify-center  mb-5 cursor-pointer overflow-hidden group/img relative"
                                     >
                                         <img 
                                             src="{{ $product['image'] }}" 
                                             alt="{{ $product['name'] }}" 
-                                            class="w-full h-full object-contain group-hover/img:scale-106 transition-transform duration-500 ease-out drop-shadow-sm" 
+                                            class="w-full h-full object-cover group-hover/img:scale-106 transition-transform duration-500 ease-out drop-shadow-sm" 
                                         />
                                     </div>
 
@@ -671,74 +640,88 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- 6. A BABY'S VOICE (Clean Editorial Story, Mascot & Monologue)             -->
+    <!-- 6. A BABY'S VOICE (Clean Editorial Story, Framed Mascot Showcase)         -->
     <!-- ========================================================================= -->
-    <section class="py-18 sm:py-24 bg-[#FAF9FC] border-b border-purple-100/70">
+    <section class="py-20 sm:py-28 bg-white border-b border-purple-100/70 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
 
-                <!-- Left: Mascot Illustration -->
+                <!-- Left: Framed Mascot Card Container (Clean & Luminous) -->
                 <div class="lg:col-span-5 flex items-center justify-center">
-                    <img
-                        src="/images/fabie_baby_character.png"
-                        alt="I am a Fabie Baby"
-                        class="w-full max-w-[300px] sm:max-w-[360px] lg:max-w-[420px] h-auto object-contain drop-shadow-xs hover:scale-102 transition-transform duration-500" 
-                    />
+                    <div class="relative w-full max-w-md aspect-[4/5] rounded-3xl bg-gradient-to-b from-[#FAF9FE] via-[#F6F3FC] to-[#FDF2F7] p-8 sm:p-10 border border-purple-100/80 shadow-md flex flex-col items-center justify-between overflow-hidden group">
+                        <!-- Soft Ambient Glow -->
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-white/80 blur-2xl pointer-events-none"></div>
+
+                        <!-- Top Minimalist Tag -->
+                        <div class="relative z-10 self-start">
+                            <span class="text-[11px] font-bold tracking-widest text-[#6B57B2] uppercase bg-white/90 backdrop-blur-xs px-3.5 py-1.5 rounded-full border border-purple-100/80 shadow-2xs">
+                                Pediatric Story
+                            </span>
+                        </div>
+
+                        <!-- Mascot Character -->
+                        <div class=" z-10 my-auto py-2">
+                            <img
+                                src="/images/fabie_baby_character.png"
+                                alt="I am a Fabie Baby"
+                                class="w-full max-w-[220px] sm:max-w-[260px] h-auto group-hover:scale-105 transition-transform duration-500 ease-out" 
+                            />
+                        </div>
+
+                        <!-- Bottom Micro-Caption -->
+                        <div class="relative z-10 text-center w-full pt-2">
+                            <span class="text-xs font-semibold text-gray-500 tracking-wide">
+                                "Gentle Care for Brighter Tomorrows"
+                            </span>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Right: Monologue Text -->
-                <div class="lg:col-span-7 space-y-6 text-left">
-                    <div class="flex items-center gap-2 text-xs font-bold tracking-widest text-vibrant-rose uppercase">
-                        <i class="ri-heart-3-fill"></i>
+                <!-- Right: Editorial Monologue Story & Clean Hallmarks -->
+                <div class="lg:col-span-7 space-y-7 text-left">
+                    <!-- Clean Kicker (Zero Badges) -->
+                    <div class="text-xs sm:text-sm font-bold tracking-widest text-[#E63980] uppercase">
                         <span>A BABY'S VOICE</span>
                     </div>
 
-                    <h2 class="text-3xl sm:text-4xl font-extrabold font-heading text-[#1B2541] tracking-tight leading-snug">
-                        Pure Care for Delicate Skin
+                    <!-- Two-Tone Impactful Headline -->
+                    <h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold font-heading text-[#1B2541] tracking-tight leading-[1.15]">
+                        <span>Pure Care for</span><br/>
+                        <span class="text-[#6B57B2]">Delicate Newborn Skin</span>
                     </h2>
 
-                    <div class="space-y-3.5 text-sm sm:text-base text-gray-600 leading-relaxed font-normal">
-                        <p class="text-gray-800 text-base sm:text-lg font-medium leading-relaxed italic">
-                            “I still can’t tell you how I feel, but I can laugh, coo and cuddle when I am happy and cry when something is not right.”
-                        </p>
-                        <p>
-                            My skin is delicate, <strong class="text-[#1B2541]">five times thinner than yours</strong>, and I need gentle care to feel safe, comfortable, and warm.
-                        </p>
-                        <p class="text-[#6B57B2] font-semibold">
-                            This is why I want to feel Fabie — happy and comforted when I am bathed, cleaned, and scented, with skin that is nourished and free from rash.
-                        </p>
-                    </div>
+                 
 
-                    <!-- Clean Metric Hallmarks (No Cheap Badges) -->
-                    <div class="pt-2 flex flex-wrap items-center gap-3 text-xs text-[#1B2541] font-semibold">
-                        <div class="px-4 py-2.5 bg-white rounded-xl border border-purple-100 shadow-2xs flex items-center gap-2">
-                            <i class="ri-shield-check-fill text-vibrant-rose text-sm"></i>
-                            <span>5x Thinner Skin Care</span>
+                    <!-- Clean Narrative Description -->
+                    <p class="text-gray-600 text-sm sm:text-base leading-relaxed font-normal">
+                         “I still can't tell you how I feel, but I can laugh, coo, and cuddle when I am happy and cry when something is not right.”
+                        A newborn's skin is exceptionally fragile. <strong class="text-[#1B2541] font-semibold">five times thinner than an adult's</strong>. Without fully formed acid-mantle defenses, infants lose hydration rapidly and are prone to sensitivity. Every Fabie Baby wash, lotion, and diaper is thoughtfully engineered to restore natural pH balance and ensure peaceful, rash-free days.
+                    </p>
+
+                    <!-- Clean Typographic Hallmarks (Replaces Tacky Badge Pills) -->
+                    <div class="grid grid-cols-3 gap-4 border-y border-purple-100/80 py-5">
+                        <div class="space-y-1">
+                            <div class="text-2xl sm:text-3xl font-extrabold font-heading text-[#E63980]">5x</div>
+                            <div class="text-xs text-gray-500 font-medium">Thinner Skin Care</div>
                         </div>
-                        <div class="px-4 py-2.5 bg-white rounded-xl border border-purple-100 shadow-2xs flex items-center gap-2">
-                            <i class="ri-drop-fill text-[#6B57B2] text-sm"></i>
-                            <span>pH 5.5 Skin Balanced</span>
+                        <div class="space-y-1 border-l border-purple-100/80 pl-4 sm:pl-6">
+                            <div class="text-2xl sm:text-3xl font-extrabold font-heading text-[#6B57B2]">pH 5.5</div>
+                            <div class="text-xs text-gray-500 font-medium">Acid Mantle Shield</div>
                         </div>
-                        <div class="px-4 py-2.5 bg-white rounded-xl border border-purple-100 shadow-2xs flex items-center gap-2">
-                            <i class="ri-leaf-fill text-pastel-green text-sm"></i>
-                            <span>0% Harsh Chemicals</span>
+                        <div class="space-y-1 border-l border-purple-100/80 pl-4 sm:pl-6">
+                            <div class="text-2xl sm:text-3xl font-extrabold font-heading text-[#74B528]">0%</div>
+                            <div class="text-xs text-gray-500 font-medium">Parabens &amp; Toxins</div>
                         </div>
                     </div>
 
-                    <!-- Action Buttons -->
-                    <div class="pt-3 flex flex-wrap items-center gap-3.5">
+                    <!-- Clean Action Button -->
+                    <div class="pt-1 flex items-center gap-4">
                         <a
                             href="#products"
-                            class="inline-flex items-center gap-2 px-7 py-3 bg-[#6B57B2] hover:bg-vibrant-rose text-white text-xs sm:text-sm font-bold rounded-full shadow-sm hover:shadow-md transition-all active:scale-95"
+                            class="inline-flex items-center gap-2 px-7 py-3.5 bg-[#6B57B2] hover:bg-[#E63980] text-white text-xs sm:text-sm font-bold rounded-full shadow-sm hover:shadow-md transition-all active:scale-95"
                         >
-                            <span>Explore Gentle Essentials</span>
+                            <span>Explore Gentle Care</span>
                             <i class="ri-arrow-right-line text-xs"></i>
-                        </a>
-                        <a
-                            href="#b2b-products"
-                            class="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-purple-50 text-[#1B2541] border border-purple-200/80 text-xs sm:text-sm font-bold rounded-full shadow-2xs transition-all active:scale-95"
-                        >
-                            <span>Wholesale Inquiries</span>
                         </a>
                     </div>
                 </div>
@@ -748,115 +731,123 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- 7. BRAND PROMISES & QUALITY COMMITMENT (6 Feature Grid)                   -->
+    <!-- 7. QUALITY & PEDIATRIC INNOVATION (Babina-Inspired Centerpiece Showcase)  -->
     <!-- ========================================================================= -->
-    <section class="py-18 sm:py-24 bg-white border-b border-purple-100/70">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-14 sm:mb-18">
-                <div class="flex items-center justify-center gap-2 text-xs font-bold tracking-widest text-[#6B57B2] uppercase mb-2">
-                    <i class="ri-shield-star-line"></i>
-                    <span>QUALITY COMMITMENT</span>
-                </div>
-                <h2 class="text-3xl sm:text-4xl font-bold font-heading text-[#1B2541] tracking-tight">
-                    The 6 Fabie Baby Quality Promises
+    <section class="py-20 sm:py-28 bg-gradient-to-b from-[#6B57B2] via-[#5221b0] to-[#431a96] text-white relative overflow-hidden">
+        
+        <!-- Subtle Glowing Backdrop Accent Light -->
+        <div class="absolute inset-0 pointer-events-none flex items-center justify-center">
+            <div class="w-[600px] h-[600px] rounded-full bg-white/5 blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <!-- Centered Header -->
+            <div class="text-center max-w-3xl mx-auto mb-14 sm:mb-20 space-y-3">
+                <span class="text-xs sm:text-sm font-bold tracking-widest text-pink-300 uppercase">
+                    Quality
+                </span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading tracking-tight leading-tight">
+                    Crafting Premium Protection for Your Baby
                 </h2>
-                <p class="text-sm sm:text-base text-gray-500 mt-2">
-                    Formulated with pure ingredients to soothe, nurture, and protect your baby's skin at every stage.
+                <p class="text-sm sm:text-base text-purple-100/90 leading-relaxed font-normal max-w-2xl mx-auto">
+                    At Fabie Baby, we prioritize quality and gentle skin defense at every step. Our products are crafted with the finest certified natural materials to ensure optimal comfort and pure care.
                 </p>
             </div>
 
-            <!-- 6 Balanced Feature Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                <!-- 1. Safe Ingredients -->
-                <div class="p-7 sm:p-8 rounded-3xl bg-[#FAF9FC] border border-purple-100/70 hover:border-[#6B57B2]/40 transition-all duration-300 flex flex-col justify-between group">
-                    <div>
-                        <div class="w-14 h-14 rounded-2xl bg-white border border-purple-100 p-2 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform shadow-2xs">
-                            <img src="{{ asset('brand_promises/Safe Ingredients.jpg') }}" alt="Safe Ingredients" class="w-full h-full object-contain rounded-xl" />
+            <!-- Main Layout: 2 Pillars Left + Centerpiece Diaper Showcase + 2 Pillars Right -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center mb-14 sm:mb-20">
+                
+                <!-- Left 2 Pillars -->
+                <div class="lg:col-span-4 space-y-10 sm:space-y-14 text-center lg:text-right">
+                    <!-- Pillar 1: Sourcing the Best -->
+                    <div class="space-y-3 group">
+                        <div class="flex justify-center lg:justify-end text-3xl text-pink-300 group-hover:scale-110 transition-transform">
+                            <i class="ri-heart-3-line"></i>
                         </div>
-                        <h3 class="text-base sm:text-lg font-bold font-heading text-[#1B2541] mb-2 group-hover:text-vibrant-rose transition-colors">
-                            Safe Ingredients
+                        <h3 class="text-lg sm:text-xl font-bold font-heading text-white">
+                            Sourcing the Best
                         </h3>
-                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                            Time-tested organic botanical ingredients. Free from over 200 synthetic toxins, harsh parabens, and endocrine disruptors.
+                        <p class="text-xs sm:text-sm text-purple-100/80 leading-relaxed max-w-sm mx-auto lg:ml-auto lg:mr-0">
+                            We source organic bamboo and ultra-soft cotton fibers from certified ethical vendors, ensuring cloud-like tenderness in every touch.
+                        </p>
+                    </div>
+
+                    <!-- Pillar 2: Quality Assurance -->
+                    <div class="space-y-3 group">
+                        <div class="flex justify-center lg:justify-end text-3xl text-pink-300 group-hover:scale-110 transition-transform">
+                            <i class="ri-medal-line"></i>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold font-heading text-white">
+                            Quality Assurance
+                        </h3>
+                        <p class="text-xs sm:text-sm text-purple-100/80 leading-relaxed max-w-sm mx-auto lg:ml-auto lg:mr-0">
+                            Our rigorous pediatric checks ensure that every diaper meets the highest dermatological safety, 0% chlorine, and hypoallergenic standards.
                         </p>
                     </div>
                 </div>
 
-                <!-- 2. Product Testing -->
-                <div class="p-7 sm:p-8 rounded-3xl bg-[#FAF9FC] border border-purple-100/70 hover:border-[#6B57B2]/40 transition-all duration-300 flex flex-col justify-between group">
-                    <div>
-                        <div class="w-14 h-14 rounded-2xl bg-white border border-purple-100 p-2 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform shadow-2xs">
-                            <img src="{{ asset('brand_promises/Product Testing.png') }}" alt="Product Testing" class="w-full h-full object-contain rounded-xl" />
+                <!-- Centerpiece: Circular Diaper Spotlight Container -->
+                <div class="lg:col-span-4 flex items-center justify-center my-6 lg:my-0">
+                    <div class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full bg-white/95 backdrop-blur-md shadow-2xl p-6 sm:p-8 flex items-center justify-center border-4 border-white/25 group hover:scale-104 transition-all duration-700">
+                        <!-- Soft Ambient Glow Ring -->
+                        <div class="absolute -inset-2 rounded-full border border-white/20 pointer-events-none animate-pulse"></div>
+                        <img 
+                            src="/images/diaper.png" 
+                            alt="Fabie Baby Diaper Premium Quality" 
+                            class="w-full h-full object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-500" 
+                        />
+                    </div>
+                </div>
+
+                <!-- Right 2 Pillars -->
+                <div class="lg:col-span-4 space-y-10 sm:space-y-14 text-center lg:text-left">
+                    <!-- Pillar 3: Expert Formulation -->
+                    <div class="space-y-3 group">
+                        <div class="flex justify-center lg:justify-start text-3xl text-pink-300 group-hover:scale-110 transition-transform">
+                            <i class="ri-drop-line"></i>
                         </div>
-                        <h3 class="text-base sm:text-lg font-bold font-heading text-[#1B2541] mb-2 group-hover:text-vibrant-rose transition-colors">
-                            Dubai Central Lab Tested
+                        <h3 class="text-lg sm:text-xl font-bold font-heading text-white">
+                            Expert Formulation
                         </h3>
-                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                            Every batch is rigorously tested at the Dubai Central Laboratory and approved by the Dubai Municipality for certified safety.
+                        <p class="text-xs sm:text-sm text-purple-100/80 leading-relaxed max-w-sm mx-auto lg:mr-auto lg:ml-0">
+                            Our team of pediatric experts formulates products tailored to the delicate skin barrier needs of newborns and active rolling babies.
+                        </p>
+                    </div>
+
+                    <!-- Pillar 4: Nurturing Your Baby -->
+                    <div class="space-y-3 group">
+                        <div class="flex justify-center lg:justify-start text-3xl text-pink-300 group-hover:scale-110 transition-transform">
+                            <i class="ri-user-smile-line"></i>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold font-heading text-white">
+                            Nurturing Your Baby
+                        </h3>
+                        <p class="text-xs sm:text-sm text-purple-100/80 leading-relaxed max-w-sm mx-auto lg:mr-auto lg:ml-0">
+                            We believe in nurturing your baby's growth with breathable 12-hour leak-proof dryness that supports restful sleep and happy exploration.
                         </p>
                     </div>
                 </div>
 
-                <!-- 3. pH 5.5 Neutral Balance -->
-                <div class="p-7 sm:p-8 rounded-3xl bg-[#FAF9FC] border border-purple-100/70 hover:border-[#6B57B2]/40 transition-all duration-300 flex flex-col justify-between group">
-                    <div>
-                        <div class="w-14 h-14 rounded-2xl bg-white border border-purple-100 p-2 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform shadow-2xs">
-                            <img src="{{ asset('brand_promises/pH 5.5.jpg') }}" alt="pH 5.5" class="w-full h-full object-contain rounded-xl" />
-                        </div>
-                        <h3 class="text-base sm:text-lg font-bold font-heading text-[#1B2541] mb-2 group-hover:text-vibrant-rose transition-colors">
-                            pH 5.5 Skin Balance
-                        </h3>
-                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                            Engineered precisely to pH 5.5 to shield baby's micro-acid mantle, preventing moisture loss and protecting against redness.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- 4. Hypoallergenic Care -->
-                <div class="p-7 sm:p-8 rounded-3xl bg-[#FAF9FC] border border-purple-100/70 hover:border-[#6B57B2]/40 transition-all duration-300 flex flex-col justify-between group">
-                    <div>
-                        <div class="w-14 h-14 rounded-2xl bg-white border border-purple-100 p-2 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform shadow-2xs">
-                            <img src="{{ asset('brand_promises/Hypoallergenic.jpg') }}" alt="Hypoallergenic" class="w-full h-full object-contain rounded-xl" />
-                        </div>
-                        <h3 class="text-base sm:text-lg font-bold font-heading text-[#1B2541] mb-2 group-hover:text-vibrant-rose transition-colors">
-                            Hypoallergenic Care
-                        </h3>
-                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                            Skin-compatible raw materials that gently soothe tender skin. Strict adherence to international pediatric standards.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- 5. Eco-Friendly Packaging -->
-                <div class="p-7 sm:p-8 rounded-3xl bg-[#FAF9FC] border border-purple-100/70 hover:border-[#6B57B2]/40 transition-all duration-300 flex flex-col justify-between group">
-                    <div>
-                        <div class="w-14 h-14 rounded-2xl bg-white border border-purple-100 p-2 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform shadow-2xs">
-                            <img src="{{ asset('brand_promises/Eco-Friendly.png') }}" alt="Eco-Friendly" class="w-full h-full object-contain rounded-xl" />
-                        </div>
-                        <h3 class="text-base sm:text-lg font-bold font-heading text-[#1B2541] mb-2 group-hover:text-vibrant-rose transition-colors">
-                            Eco-Friendly &amp; Gentle
-                        </h3>
-                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                            Committed to sustainable biodegradable materials and recyclable packaging. Cruelty-free with zero animal testing.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- 6. Dedicated Parent Service -->
-                <div class="p-7 sm:p-8 rounded-3xl bg-[#FAF9FC] border border-purple-100/70 hover:border-[#6B57B2]/40 transition-all duration-300 flex flex-col justify-between group">
-                    <div>
-                        <div class="w-14 h-14 rounded-2xl bg-white border border-purple-100 p-2 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform shadow-2xs">
-                            <img src="{{ asset('brand_promises/Service.png') }}" alt="Service" class="w-full h-full object-contain rounded-xl" />
-                        </div>
-                        <h3 class="text-base sm:text-lg font-bold font-heading text-[#1B2541] mb-2 group-hover:text-vibrant-rose transition-colors">
-                            Dedicated Parent Care
-                        </h3>
-                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                            Always here for parents. From sizing advice to replacement support, we provide attentive guidance so you feel supported.
-                        </p>
-                    </div>
-                </div>
             </div>
+
+            <!-- Bottom Dual Pill Actions Matching Babina -->
+            <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+                <a 
+                    href="#products" 
+                    class="px-8 py-3 bg-white hover:bg-gray-100 text-[#5725bb] text-xs sm:text-sm font-bold rounded-full shadow-md hover:shadow-lg transition-all active:scale-95"
+                >
+                    Our Products
+                </a>
+                <a 
+                    href="#about-us" 
+                    class="px-8 py-3 bg-transparent hover:bg-white/10 text-white border border-white/70 hover:border-white text-xs sm:text-sm font-bold rounded-full transition-all active:scale-95 inline-flex items-center gap-2 group"
+                >
+                    <span>Quality</span>
+                    <i class="ri-arrow-right-s-line text-sm group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+
         </div>
     </section>
 

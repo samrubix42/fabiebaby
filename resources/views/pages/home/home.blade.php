@@ -1,4 +1,32 @@
-<div class="relative bg-[#FAF9FC] text-[#1B2541]">
+<div 
+    x-data="{
+        observer: null,
+        init() {
+            this.observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-revealed');
+                    }
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+            
+            this.observeElements();
+
+            // Re-observe if elements are dynamically added or updated via Livewire
+            const mutationObserver = new MutationObserver(() => {
+                this.observeElements();
+            });
+            mutationObserver.observe(this.$el, { childList: true, subtree: true });
+        },
+        observeElements() {
+            if (!this.observer) return;
+            this.$el.querySelectorAll('.reveal-on-scroll:not(.is-revealed), .reveal-on-scroll-left:not(.is-revealed), .reveal-on-scroll-right:not(.is-revealed), .reveal-on-scroll-scale:not(.is-revealed)').forEach(el => {
+                this.observer.observe(el);
+            });
+        }
+    }"
+    class="relative bg-[#FAF9FC] text-[#1B2541] overflow-x-hidden"
+>
 
     <!-- ========================================================================= -->
     <!-- 1. FULL-SCREEN EDGE-TO-EDGE HERO SLIDER (Previous Butter-Smooth Slider)   -->
@@ -8,6 +36,7 @@
             currentSlide: 0,
             totalSlides: {{ count($slides) }},
             timer: null,
+            touchStartX: 0,
             init() {
                 this.startTimer();
             },
@@ -21,6 +50,9 @@
             next() {
                 this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
             },
+            prev() {
+                this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+            },
             goTo(index) {
                 this.currentSlide = index;
                 this.startTimer();
@@ -28,9 +60,11 @@
         }"
         @mouseenter="stopTimer()"
         @mouseleave="startTimer()"
+        @touchstart="touchStartX = $event.changedTouches[0].screenX"
+        @touchend="if ($event.changedTouches[0].screenX < touchStartX - 40) { next(); startTimer(); } else if ($event.changedTouches[0].screenX > touchStartX + 40) { prev(); startTimer(); }"
         class="relative w-full overflow-hidden"
     >
-        <div class="relative w-full h-[55vh] sm:h-[70vh] md:h-[80vh] overflow-hidden bg-gray-100 group">
+        <div class="relative w-full min-h-[460px] sm:min-h-[520px] h-[65vh] sm:h-[75vh] lg:h-[82vh] overflow-hidden bg-gray-100 group">
             @foreach($slides as $index => $slide)
             <div
                 x-show="currentSlide === {{ $index }}"
@@ -91,32 +125,32 @@
     <!-- ========================================================================= -->
     <!-- 2. BRAND CREDIBILITY & TRUST STRIP (Dashed Dividers, Exact User Design)  -->
     <!-- ========================================================================= -->
-    <section class="bg-white py-8 sm:py-10 border-b border-purple-100/70 shadow-2xs">
+    <section class="bg-white py-8 sm:py-10 border-b border-purple-100/70">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-8 gap-x-4 lg:gap-0 items-center">
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-y-8 gap-x-2 sm:gap-x-4 lg:gap-0 items-center justify-center">
                 
                 <!-- 1. Pin Codes Reached (Pink Theme) -->
-                <div class="flex flex-col items-center text-center px-3 sm:px-5 lg:border-r lg:border-dashed lg:border-gray-200/90 group">
-                    <div class="w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-[#FDF0F5] border border-[#FADCE8] flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-108 transition-transform duration-300">
-                        <svg class="w-8 h-8 sm:w-9 sm:h-9 text-[#E63980]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <div class="flex flex-col items-center text-center px-2 sm:px-5 lg:border-r lg:border-dashed lg:border-gray-200/90 group reveal-on-scroll" style="transition-delay: 50ms;">
+                    <div class="w-14 h-14 sm:w-18 sm:h-18 rounded-full bg-[#FDF0F5] border border-[#FADCE8] flex items-center justify-center mb-2.5 sm:mb-4 group-hover:scale-108 transition-transform duration-300">
+                        <svg class="w-7 h-7 sm:w-9 sm:h-9 text-[#E63980]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                             <circle cx="9" cy="7" r="4"></circle>
                             <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
                             <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                         </svg>
                     </div>
-                    <div class="text-2xl sm:text-3xl font-extrabold font-heading text-[#E63980] tracking-tight">
+                    <div class="text-xl sm:text-2xl lg:text-3xl font-extrabold font-heading text-[#E63980] tracking-tight">
                         12,000+
                     </div>
-                    <p class="text-xs sm:text-[13px] font-bold text-[#1B2541] mt-1 tracking-tight">
+                    <p class="text-[11px] sm:text-[13px] font-bold text-[#1B2541] mt-1 tracking-tight">
                         Pin codes reached
                     </p>
                 </div>
 
                 <!-- 2. Happy Customers (Green Theme) -->
-                <div class="flex flex-col items-center text-center px-3 sm:px-5 lg:border-r lg:border-dashed lg:border-gray-200/90 group">
-                    <div class="w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-[#F0F8EC] border border-[#DCF1D2] flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-108 transition-transform duration-300">
-                        <svg class="w-8 h-8 sm:w-9 sm:h-9 text-[#74B528]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <div class="flex flex-col items-center text-center px-2 sm:px-5 lg:border-r lg:border-dashed lg:border-gray-200/90 group reveal-on-scroll" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 sm:w-18 sm:h-18 rounded-full bg-[#F0F8EC] border border-[#DCF1D2] flex items-center justify-center mb-2.5 sm:mb-4 group-hover:scale-108 transition-transform duration-300">
+                        <svg class="w-7 h-7 sm:w-9 sm:h-9 text-[#74B528]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="13" r="8"></circle>
                             <path d="M9 13.5h.01"></path>
                             <path d="M15 13.5h.01"></path>
@@ -125,59 +159,59 @@
                             <path d="M12 5c.5-1.5 1.8-2.5 3-2.5"></path>
                         </svg>
                     </div>
-                    <div class="text-2xl sm:text-3xl font-extrabold font-heading text-[#74B528] tracking-tight">
+                    <div class="text-xl sm:text-2xl lg:text-3xl font-extrabold font-heading text-[#74B528] tracking-tight">
                         120,000+
                     </div>
-                    <p class="text-xs sm:text-[13px] font-bold text-[#1B2541] mt-1 tracking-tight">
+                    <p class="text-[11px] sm:text-[13px] font-bold text-[#1B2541] mt-1 tracking-tight">
                         Happy Customers
                     </p>
                 </div>
 
                 <!-- 3. 5 Star Reviews (Amber Theme) -->
-                <div class="flex flex-col items-center text-center px-3 sm:px-5 lg:border-r lg:border-dashed lg:border-gray-200/90 group">
-                    <div class="w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-[#FEF5E7] border border-[#FDE8CA] flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-108 transition-transform duration-300">
-                        <svg class="w-8 h-8 sm:w-9 sm:h-9 text-[#F59E0B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <div class="flex flex-col items-center text-center px-2 sm:px-5 lg:border-r lg:border-dashed lg:border-gray-200/90 group reveal-on-scroll" style="transition-delay: 150ms;">
+                    <div class="w-14 h-14 sm:w-18 sm:h-18 rounded-full bg-[#FEF5E7] border border-[#FDE8CA] flex items-center justify-center mb-2.5 sm:mb-4 group-hover:scale-108 transition-transform duration-300">
+                        <svg class="w-7 h-7 sm:w-9 sm:h-9 text-[#F59E0B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                         </svg>
                     </div>
-                    <div class="text-2xl sm:text-3xl font-extrabold font-heading text-[#F59E0B] tracking-tight">
+                    <div class="text-xl sm:text-2xl lg:text-3xl font-extrabold font-heading text-[#F59E0B] tracking-tight">
                         50,000+
                     </div>
-                    <p class="text-xs sm:text-[13px] font-bold text-[#1B2541] mt-1 tracking-tight">
+                    <p class="text-[11px] sm:text-[13px] font-bold text-[#1B2541] mt-1 tracking-tight">
                         5 Star Reviews
                     </p>
                 </div>
 
                 <!-- 4. Verified Safe. Tested. Trusted. (Blue Theme) -->
-                <div class="flex flex-col items-center text-center px-3 sm:px-5 lg:border-r lg:border-dashed lg:border-gray-200/90 group">
-                    <div class="w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-[#EBF7FC] border border-[#D0EEF9] flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-108 transition-transform duration-300">
-                        <svg class="w-8 h-8 sm:w-9 sm:h-9 text-[#2CB3DB]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <div class="flex flex-col items-center text-center px-2 sm:px-5 lg:border-r lg:border-dashed lg:border-gray-200/90 group reveal-on-scroll" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 sm:w-18 sm:h-18 rounded-full bg-[#EBF7FC] border border-[#D0EEF9] flex items-center justify-center mb-2.5 sm:mb-4 group-hover:scale-108 transition-transform duration-300">
+                        <svg class="w-7 h-7 sm:w-9 sm:h-9 text-[#2CB3DB]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                             <polyline points="9 12 11 14 15 10"></polyline>
                         </svg>
                     </div>
-                    <div class="text-2xl sm:text-3xl font-extrabold font-heading text-[#2CB3DB] tracking-tight">
+                    <div class="text-xl sm:text-2xl lg:text-3xl font-extrabold font-heading text-[#2CB3DB] tracking-tight">
                         Verified
                     </div>
-                    <p class="text-xs sm:text-[13px] font-bold text-[#1B2541] mt-1 tracking-tight">
+                    <p class="text-[11px] sm:text-[13px] font-bold text-[#1B2541] mt-1 tracking-tight">
                         Safe. Tested. Trusted.
                     </p>
                 </div>
 
                 <!-- 5. Ayurveda Inspired Natural Goodness (Purple Theme) -->
-                <div class="flex flex-col items-center text-center px-3 sm:px-5 group col-span-2 md:col-span-1">
-                    <div class="w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-[#F4F1FA] border border-[#E4DCF5] flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-108 transition-transform duration-300">
-                        <svg class="w-8 h-8 sm:w-9 sm:h-9 text-[#6B57B2]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <div class="flex flex-col items-center text-center px-2 sm:px-5 group col-span-2 sm:col-span-1 reveal-on-scroll" style="transition-delay: 250ms;">
+                    <div class="w-14 h-14 sm:w-18 sm:h-18 rounded-full bg-[#F4F1FA] border border-[#E4DCF5] flex items-center justify-center mb-2.5 sm:mb-4 group-hover:scale-108 transition-transform duration-300">
+                        <svg class="w-7 h-7 sm:w-9 sm:h-9 text-[#6B57B2]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 22V12"></path>
                             <path d="M12 12C9.5 12 7 10 7 7c0-2.5 3-5 5-5s5 2.5 5 5c0 3-2.5 5-5 5z"></path>
                             <path d="M12 16c2.5 0 5-1.5 5-4"></path>
                             <path d="M12 18c-2.5 0-5-1.5-5-4"></path>
                         </svg>
                     </div>
-                    <div class="text-xl sm:text-2xl font-extrabold font-heading text-[#6B57B2] tracking-tight leading-tight">
+                    <div class="text-lg sm:text-xl lg:text-2xl font-extrabold font-heading text-[#6B57B2] tracking-tight leading-tight">
                         Ayurveda Inspired
                     </div>
-                    <p class="text-xs sm:text-[13px] font-bold text-[#1B2541] mt-1 tracking-tight">
+                    <p class="text-[11px] sm:text-[13px] font-bold text-[#1B2541] mt-1 tracking-tight">
                         Natural goodness
                     </p>
                 </div>
@@ -191,11 +225,11 @@
     <!-- ========================================================================= -->
     <section id="about-us" class="py-16 sm:py-24 bg-white border-b border-purple-100/70">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-stretch">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-stretch">
                 
                 <!-- Left Column: Pure Editorial Image Showcase (Full Height Matching Content, Zero Badges) -->
-                <div class="lg:col-span-6 flex flex-col">
-                    <div class="relative w-full h-full min-h-[420px] sm:min-h-[480px] lg:min-h-full rounded-3xl overflow-hidden shadow-lg border border-purple-100/70 bg-gradient-to-tr from-purple-50 via-white to-pink-50/40 group">
+                <div class="lg:col-span-6 flex flex-col reveal-on-scroll-left">
+                    <div class="relative w-full h-72 sm:h-96 lg:h-full min-h-[280px] sm:min-h-[380px] lg:min-h-full rounded-3xl overflow-hidden shadow-lg border border-purple-100/70 bg-gradient-to-tr from-purple-50 via-white to-pink-50/40 group">
                         <!-- High Resolution Brand Visual (Mother's Love) -->
                         <img 
                             src="/images/mother_baby_care.jpg" 
@@ -206,7 +240,7 @@
                 </div>
 
                 <!-- Right Column: Clean Editorial Content (Strictly Matching Screenshot Hierarchy) -->
-                <div class="lg:col-span-6 space-y-5 text-left flex flex-col justify-center">
+                <div class="lg:col-span-6 space-y-5 text-left flex flex-col justify-center reveal-on-scroll-right">
                     <!-- Clean Kicker (Icon + Letterspaced Text, Zero Badges) -->
                     <div class="flex items-center gap-2 text-xs sm:text-sm font-bold tracking-widest text-[#6B57B2] uppercase">
                         <i class="ri-home-5-line text-base"></i>
@@ -231,17 +265,17 @@
                     </div>
 
                     <!-- Minimal Understated Action Links -->
-                    <div class="pt-2 flex flex-wrap items-center gap-4">
+                    <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
                         <a 
                             href="#products" 
-                            class="inline-flex items-center gap-2 px-6 py-3 bg-[#6B57B2] hover:bg-vibrant-rose text-white text-xs sm:text-sm font-bold rounded-full shadow-sm hover:shadow-md transition-all active:scale-95"
+                            class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#6B57B2] hover:bg-vibrant-rose text-white text-xs sm:text-sm font-bold rounded-full shadow-sm hover:shadow-md transition-all active:scale-95 text-center"
                         >
                             <span>Explore Products</span>
                             <i class="ri-arrow-right-line text-xs"></i>
                         </a>
                         <a 
                             href="#b2b-products" 
-                            class="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[#6B57B2] hover:text-vibrant-rose transition-colors py-2 px-3 group"
+                            class="inline-flex items-center justify-center gap-2 text-xs sm:text-sm font-bold text-[#6B57B2] hover:text-vibrant-rose transition-colors py-2 px-3 group text-center"
                         >
                             <span>Wholesale &amp; Institutional Inquiry</span>
                             <i class="ri-arrow-right-line text-xs group-hover:translate-x-1 transition-transform"></i>
@@ -279,134 +313,126 @@
                 </button>
             </div>
 
-            <!-- 4 Aesthetic Color-Themed Category Cards (Inspired by Reference Design) -->
+            <!-- 4 Aesthetic Color-Themed Category Cards (Square Format Design) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
                 
                 <!-- Category 1: Baby Essentials (Green Theme) -->
                 <div 
                     wire:click="setCategory('Diapers')"
-                    class="group relative flex flex-col justify-between rounded-[28px] p-6 sm:p-7 bg-gradient-to-b from-[#F2F8ED] via-[#ECF5E6] to-[#E3F2DA] border border-[#74B528]/25 hover:border-[#74B528]/50 hover:shadow-xl hover:-translate-y-2 transition-all duration-500 ease-out cursor-pointer overflow-hidden select-none"
+                    class="group relative aspect-square rounded-[28px] p-5 sm:p-6 bg-gradient-to-b from-[#F2F8ED] via-[#ECF5E6] to-[#E3F2DA] border border-[#74B528]/25 hover:border-[#74B528]/50 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-out cursor-pointer overflow-hidden select-none flex flex-col justify-between"
                 >
                     <div class="relative z-10">
-                        <h3 class="text-2xl sm:text-[26px] font-extrabold font-heading text-[#2F7523] leading-tight mb-2 group-hover:text-[#24611B] transition-colors">
-                            Baby<br/>Essentials
-                        </h3>
-                        <p class="text-xs sm:text-[13px] text-gray-600 font-medium leading-relaxed max-w-[210px] mb-4">
+                        <div class="flex items-center justify-between gap-2">
+                            <h3 class="text-lg sm:text-xl font-extrabold font-heading text-[#2F7523] leading-tight group-hover:text-[#24611B] transition-colors">
+                                Baby Essentials
+                            </h3>
+                            <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#53972A] group-hover:bg-[#437C20] text-white text-[11px] font-bold shadow-2xs group-hover:shadow-xs shrink-0 transition-all">
+                                <span>Explore</span>
+                                <i class="ri-arrow-right-line text-[10px] group-hover:translate-x-0.5 transition-transform"></i>
+                            </span>
+                        </div>
+                        <p class="text-[11px] sm:text-xs text-gray-600 font-medium leading-normal mt-1 line-clamp-1">
                             Everyday care for happy, healthy babies.
                         </p>
                     </div>
 
-                    <!-- Visual Hero Image Container -->
-                    <div class="relative z-10 w-full aspect-square rounded-2xl overflow-hidden mb-6 group/img bg-white/40 shadow-xs border border-white/60">
+                    <!-- Visual Hero Image Container (Expands in Square Card) -->
+                    <div class="relative z-10 w-full flex-1 mt-3 rounded-2xl overflow-hidden bg-white/50 shadow-xs border border-white/70 group/img">
                         <img 
                             src="/images/cat_baby_essentials.jpg" 
                             alt="Baby Essentials" 
                             class="w-full h-full object-cover group-hover/img:scale-106 transition-transform duration-700 ease-out" 
                         />
                     </div>
-
-                    <!-- Bottom Action Pill Button -->
-                    <div class="relative z-10 pt-1">
-                        <span class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#53972A] group-hover:bg-[#437C20] text-white text-xs sm:text-sm font-bold shadow-xs group-hover:shadow-md transition-all duration-300">
-                            <span>Explore</span>
-                            <i class="ri-arrow-right-line text-xs group-hover:translate-x-1 transition-transform"></i>
-                        </span>
-                    </div>
                 </div>
 
                 <!-- Category 2: Baby Health (Sky Blue Theme) -->
                 <div 
                     wire:click="setCategory('Wipes')"
-                    class="group relative flex flex-col justify-between rounded-[28px] p-6 sm:p-7 bg-gradient-to-b from-[#EEF7FC] via-[#E4F2FA] to-[#D9EEF8] border border-[#2CB3DB]/30 hover:border-[#2CB3DB]/60 hover:shadow-xl hover:-translate-y-2 transition-all duration-500 ease-out cursor-pointer overflow-hidden select-none"
+                    class="group relative aspect-square rounded-[28px] p-5 sm:p-6 bg-gradient-to-b from-[#EEF7FC] via-[#E4F2FA] to-[#D9EEF8] border border-[#2CB3DB]/30 hover:border-[#2CB3DB]/60 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-out cursor-pointer overflow-hidden select-none flex flex-col justify-between"
                 >
                     <div class="relative z-10">
-                        <h3 class="text-2xl sm:text-[26px] font-extrabold font-heading text-[#0D6AB7] leading-tight mb-2 group-hover:text-[#095594] transition-colors">
-                            Baby<br/>Health
-                        </h3>
-                        <p class="text-xs sm:text-[13px] text-gray-600 font-medium leading-relaxed max-w-[210px] mb-4">
-                            Targeted care for common concerns and comfort.
+                        <div class="flex items-center justify-between gap-2">
+                            <h3 class="text-lg sm:text-xl font-extrabold font-heading text-[#0D6AB7] leading-tight group-hover:text-[#095594] transition-colors">
+                                Baby Health
+                            </h3>
+                            <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#0D6AB7] group-hover:bg-[#095594] text-white text-[11px] font-bold shadow-2xs group-hover:shadow-xs shrink-0 transition-all">
+                                <span>Explore</span>
+                                <i class="ri-arrow-right-line text-[10px] group-hover:translate-x-0.5 transition-transform"></i>
+                            </span>
+                        </div>
+                        <p class="text-[11px] sm:text-xs text-gray-600 font-medium leading-normal mt-1 line-clamp-1">
+                            Targeted care for common concerns &amp; comfort.
                         </p>
                     </div>
 
-                    <!-- Visual Hero Image Container -->
-                    <div class="relative z-10 w-full aspect-square rounded-2xl overflow-hidden mb-6 group/img bg-white/40 shadow-xs border border-white/60">
+                    <!-- Visual Hero Image Container (Expands in Square Card) -->
+                    <div class="relative z-10 w-full flex-1 mt-3 rounded-2xl overflow-hidden bg-white/50 shadow-xs border border-white/70 group/img">
                         <img 
                             src="/images/cat_baby_health.jpg" 
                             alt="Baby Health" 
                             class="w-full h-full object-cover group-hover/img:scale-106 transition-transform duration-700 ease-out" 
                         />
                     </div>
-
-                    <!-- Bottom Action Pill Button -->
-                    <div class="relative z-10 pt-1">
-                        <span class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#0D6AB7] group-hover:bg-[#095594] text-white text-xs sm:text-sm font-bold shadow-xs group-hover:shadow-md transition-all duration-300">
-                            <span>Explore</span>
-                            <i class="ri-arrow-right-line text-xs group-hover:translate-x-1 transition-transform"></i>
-                        </span>
-                    </div>
                 </div>
 
                 <!-- Category 3: My Mamma (Pink / Vibrant Rose Theme) -->
                 <div 
                     wire:click="setCategory('Skincare')"
-                    class="group relative flex flex-col justify-between rounded-[28px] p-6 sm:p-7 bg-gradient-to-b from-[#FDF2F6] via-[#FCE7F1] to-[#FBDCE9] border border-[#E63980]/25 hover:border-[#E63980]/50 hover:shadow-xl hover:-translate-y-2 transition-all duration-500 ease-out cursor-pointer overflow-hidden select-none"
+                    class="group relative aspect-square rounded-[28px] p-5 sm:p-6 bg-gradient-to-b from-[#FDF2F6] via-[#FCE7F1] to-[#FBDCE9] border border-[#E63980]/25 hover:border-[#E63980]/50 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-out cursor-pointer overflow-hidden select-none flex flex-col justify-between"
                 >
                     <div class="relative z-10">
-                        <h3 class="text-2xl sm:text-[26px] font-extrabold font-heading text-[#E63980] leading-tight mb-2 group-hover:text-[#D0236B] transition-colors">
-                            My<br/>Mamma
-                        </h3>
-                        <p class="text-xs sm:text-[13px] text-gray-600 font-medium leading-relaxed max-w-[210px] mb-4">
+                        <div class="flex items-center justify-between gap-2">
+                            <h3 class="text-lg sm:text-xl font-extrabold font-heading text-[#E63980] leading-tight group-hover:text-[#D0236B] transition-colors">
+                                My Mamma
+                            </h3>
+                            <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#E63980] group-hover:bg-[#D0236B] text-white text-[11px] font-bold shadow-2xs group-hover:shadow-xs shrink-0 transition-all">
+                                <span>Explore</span>
+                                <i class="ri-arrow-right-line text-[10px] group-hover:translate-x-0.5 transition-transform"></i>
+                            </span>
+                        </div>
+                        <p class="text-[11px] sm:text-xs text-gray-600 font-medium leading-normal mt-1 line-clamp-1">
                             Care that understands moms best.
                         </p>
                     </div>
 
-                    <!-- Visual Hero Image Container -->
-                    <div class="relative z-10 w-full aspect-square rounded-2xl overflow-hidden mb-6 group/img bg-white/40 shadow-xs border border-white/60">
+                    <!-- Visual Hero Image Container (Expands in Square Card) -->
+                    <div class="relative z-10 w-full flex-1 mt-3 rounded-2xl overflow-hidden bg-white/50 shadow-xs border border-white/70 group/img">
                         <img 
                             src="/images/cat_my_mamma.jpg" 
                             alt="My Mamma Care" 
                             class="w-full h-full object-cover group-hover/img:scale-106 transition-transform duration-700 ease-out" 
                         />
                     </div>
-
-                    <!-- Bottom Action Pill Button -->
-                    <div class="relative z-10 pt-1">
-                        <span class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#E63980] group-hover:bg-[#D0236B] text-white text-xs sm:text-sm font-bold shadow-xs group-hover:shadow-md transition-all duration-300">
-                            <span>Explore</span>
-                            <i class="ri-arrow-right-line text-xs group-hover:translate-x-1 transition-transform"></i>
-                        </span>
-                    </div>
                 </div>
 
                 <!-- Category 4: Gifts & Kits (Brand Purple Theme) -->
                 <div 
                     wire:click="setCategory('Bath')"
-                    class="group relative flex flex-col justify-between rounded-[28px] p-6 sm:p-7 bg-gradient-to-b from-[#F5F1FA] via-[#EEE6F7] to-[#E5DAF3] border border-[#6B57B2]/25 hover:border-[#6B57B2]/50 hover:shadow-xl hover:-translate-y-2 transition-all duration-500 ease-out cursor-pointer overflow-hidden select-none"
+                    class="group relative aspect-square rounded-[28px] p-5 sm:p-6 bg-gradient-to-b from-[#F5F1FA] via-[#EEE6F7] to-[#E5DAF3] border border-[#6B57B2]/25 hover:border-[#6B57B2]/50 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-out cursor-pointer overflow-hidden select-none flex flex-col justify-between"
                 >
                     <div class="relative z-10">
-                        <h3 class="text-2xl sm:text-[26px] font-extrabold font-heading text-[#5E35B1] leading-tight mb-2 group-hover:text-[#4A2699] transition-colors">
-                            Gifts &amp;<br/>Kits
-                        </h3>
-                        <p class="text-xs sm:text-[13px] text-gray-600 font-medium leading-relaxed max-w-[210px] mb-4">
+                        <div class="flex items-center justify-between gap-2">
+                            <h3 class="text-lg sm:text-xl font-extrabold font-heading text-[#5E35B1] leading-tight group-hover:text-[#4A2699] transition-colors">
+                                Gifts &amp; Kits
+                            </h3>
+                            <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#6B57B2] group-hover:bg-[#5725bb] text-white text-[11px] font-bold shadow-2xs group-hover:shadow-xs shrink-0 transition-all">
+                                <span>Explore</span>
+                                <i class="ri-arrow-right-line text-[10px] group-hover:translate-x-0.5 transition-transform"></i>
+                            </span>
+                        </div>
+                        <p class="text-[11px] sm:text-xs text-gray-600 font-medium leading-normal mt-1 line-clamp-1">
                             Thoughtful gifting for every little celebration.
                         </p>
                     </div>
 
-                    <!-- Visual Hero Image Container -->
-                    <div class="relative z-10 w-full aspect-square rounded-2xl overflow-hidden mb-6 group/img bg-white/40 shadow-xs border border-white/60">
+                    <!-- Visual Hero Image Container (Expands in Square Card) -->
+                    <div class="relative z-10 w-full flex-1 mt-3 rounded-2xl overflow-hidden bg-white/50 shadow-xs border border-white/70 group/img">
                         <img 
                             src="/images/cat_gifts_kits.jpg" 
                             alt="Gifts & Kits" 
                             class="w-full h-full object-cover group-hover/img:scale-106 transition-transform duration-700 ease-out" 
                         />
-                    </div>
-
-                    <!-- Bottom Action Pill Button -->
-                    <div class="relative z-10 pt-1">
-                        <span class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#6B57B2] group-hover:bg-[#5725bb] text-white text-xs sm:text-sm font-bold shadow-xs group-hover:shadow-md transition-all duration-300">
-                            <span>Explore</span>
-                            <i class="ri-arrow-right-line text-xs group-hover:translate-x-1 transition-transform"></i>
-                        </span>
                     </div>
                 </div>
 
@@ -596,46 +622,159 @@
         </div>
     </section>
 
+   
+
     <!-- ========================================================================= -->
+    <!-- 7. QUALITY & PEDIATRIC INNOVATION (Clean Showcase in Logo Blue #3BB8DE & Orange #F5A214) -->
+    <!-- ========================================================================= -->
+    <section class="py-20 sm:py-28 bg-gradient-to-b from-[#F2FAFD] via-[#E8F6FB] to-[#F6FBFE] border-y border-[#D0ECF6] relative overflow-hidden">
+        
+        <!-- Subtle Gentle Ambient Ring -->
+        <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-40">
+            <div class="w-[640px] h-[640px] rounded-full bg-gradient-to-tr from-[#3BB8DE]/10 via-[#F5A214]/10 to-transparent blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <!-- Centered Header -->
+            <div class="text-center max-w-3xl mx-auto mb-14 sm:mb-20 space-y-3.5">
+                <div class="text-xs sm:text-sm font-bold tracking-widest text-[#F5A214] uppercase reveal-on-scroll">
+                    <span>QUALITY &amp; PROTECTION</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-[#1B2541] tracking-tight leading-tight reveal-on-scroll delay-100">
+                    Crafting Premium Protection <span class="text-[#3BB8DE]">for Your Baby</span>
+                </h2>
+                <p class="text-sm sm:text-base text-gray-600 leading-relaxed font-normal max-w-2xl mx-auto reveal-on-scroll delay-150">
+                    At Fabie Baby, we prioritize quality and gentle skin defense at every step. Our products are crafted with the finest certified natural materials to ensure optimal comfort and pure care.
+                </p>
+            </div>
+
+            <!-- Main Layout: 2 Pillars Left + Centerpiece Diaper Showcase + 2 Pillars Right -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center mb-14 sm:mb-20">
+                
+                <!-- Left 2 Pillars -->
+                <div class="lg:col-span-4 space-y-10 sm:space-y-14 text-center lg:text-right reveal-on-scroll-left">
+                    <!-- Pillar 1: Sourcing the Best -->
+                    <div class="space-y-3 group">
+                        <div class="flex justify-center lg:justify-end">
+                            <div class="w-12 h-12 rounded-2xl bg-[#F5A214]/15 border border-[#F5A214]/30 text-[#D97706] flex items-center justify-center text-2xl group-hover:bg-[#F5A214] group-hover:text-white transition-all shadow-xs">
+                                <i class="ri-heart-3-line"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold font-heading text-[#1B2541]">
+                            Sourcing the Best
+                        </h3>
+                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed max-w-sm mx-auto lg:ml-auto lg:mr-0">
+                            We source organic bamboo and ultra-soft cotton fibers from certified ethical vendors, ensuring cloud-like tenderness in every touch.
+                        </p>
+                    </div>
+
+                    <!-- Pillar 2: Quality Assurance -->
+                    <div class="space-y-3 group">
+                        <div class="flex justify-center lg:justify-end">
+                            <div class="w-12 h-12 rounded-2xl bg-[#3BB8DE]/15 border border-[#3BB8DE]/30 text-[#0284C7] flex items-center justify-center text-2xl group-hover:bg-[#3BB8DE] group-hover:text-white transition-all shadow-xs">
+                                <i class="ri-medal-line"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold font-heading text-[#1B2541]">
+                            Quality Assurance
+                        </h3>
+                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed max-w-sm mx-auto lg:ml-auto lg:mr-0">
+                            Our rigorous pediatric checks ensure that every diaper meets the highest dermatological safety, 0% chlorine, and hypoallergenic standards.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Centerpiece: Circular Diaper Spotlight Container -->
+                <div class="lg:col-span-4 flex items-center justify-center my-6 lg:my-0 reveal-on-scroll-scale delay-150">
+                    <div class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-92 lg:h-92 rounded-full bg-white shadow-xl p-6 sm:p-8 flex items-center justify-center border-4 border-white ring-8 ring-[#3BB8DE]/15 group hover:scale-104 transition-all duration-700">
+                        <!-- Soft Ambient Glow Ring -->
+                        <div class="absolute -inset-2 rounded-full border border-[#3BB8DE]/30 pointer-events-none animate-pulse"></div>
+                        <img 
+                            src="/images/diaper.png" 
+                            alt="Fabie Baby Diaper Premium Quality" 
+                            class="w-full h-full object-contain drop-shadow-lg group-hover:scale-105 transition-transform duration-500" 
+                        />
+                    </div>
+                </div>
+
+                <!-- Right 2 Pillars -->
+                <div class="lg:col-span-4 space-y-10 sm:space-y-14 text-center lg:text-left reveal-on-scroll-right">
+                    <!-- Pillar 3: Expert Formulation -->
+                    <div class="space-y-3 group">
+                        <div class="flex justify-center lg:justify-start">
+                            <div class="w-12 h-12 rounded-2xl bg-[#3BB8DE]/15 border border-[#3BB8DE]/30 text-[#0284C7] flex items-center justify-center text-2xl group-hover:bg-[#3BB8DE] group-hover:text-white transition-all shadow-xs">
+                                <i class="ri-drop-line"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold font-heading text-[#1B2541]">
+                            Expert Formulation
+                        </h3>
+                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed max-w-sm mx-auto lg:mr-auto lg:ml-0">
+                            Our team of pediatric experts formulates products tailored to the delicate skin barrier needs of newborns and active rolling babies.
+                        </p>
+                    </div>
+
+                    <!-- Pillar 4: Nurturing Your Baby -->
+                    <div class="space-y-3 group">
+                        <div class="flex justify-center lg:justify-start">
+                            <div class="w-12 h-12 rounded-2xl bg-[#F5A214]/15 border border-[#F5A214]/30 text-[#D97706] flex items-center justify-center text-2xl group-hover:bg-[#F5A214] group-hover:text-white transition-all shadow-xs">
+                                <i class="ri-user-smile-line"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold font-heading text-[#1B2541]">
+                            Nurturing Your Baby
+                        </h3>
+                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed max-w-sm mx-auto lg:mr-auto lg:ml-0">
+                            We believe in nurturing your baby's growth with breathable 12-hour leak-proof dryness that supports restful sleep and happy exploration.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Dual Pill Actions Matching Babina -->
+            <div class="flex flex-wrap items-center justify-center gap-4 pt-2 reveal-on-scroll delay-200">
+                <a 
+                    href="#products" 
+                    class="px-8 py-3.5 bg-[#3BB8DE] hover:bg-[#2BA5CB] text-white text-xs sm:text-sm font-bold rounded-full shadow-sm hover:shadow-md transition-all active:scale-95"
+                >
+                    Our Products
+                </a>
+                <a 
+                    href="#about-us" 
+                    class="px-8 py-3.5 bg-white hover:bg-gray-50 text-[#1B2541] border border-[#3BB8DE]/30 hover:border-[#3BB8DE] text-xs sm:text-sm font-bold rounded-full transition-all active:scale-95 inline-flex items-center gap-2 group shadow-xs"
+                >
+                    <span>Quality Standards</span>
+                    <i class="ri-arrow-right-s-line text-sm text-[#F5A214] group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+     <!-- ========================================================================= -->
     <!-- 6. A BABY'S VOICE (Clean Editorial Story, Framed Mascot Showcase)         -->
     <!-- ========================================================================= -->
     <section class="py-20 sm:py-28 bg-white border-b border-purple-100/70 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
 
-                <!-- Left: Framed Mascot Card Container (Clean & Luminous) -->
-                <div class="lg:col-span-5 flex items-center justify-center">
-                    <div class="relative w-full max-w-md aspect-[4/5] rounded-3xl bg-gradient-to-b from-[#FAF9FE] via-[#F6F3FC] to-[#FDF2F7] p-8 sm:p-10 border border-purple-100/80 shadow-md flex flex-col items-center justify-between overflow-hidden group">
-                        <!-- Soft Ambient Glow -->
-                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-white/80 blur-2xl pointer-events-none"></div>
+                <!-- Left: Prominent Mascot Character (Standalone, Enlarged Image, Zero Card Box) -->
+                <div class="lg:col-span-5 flex items-center justify-center relative py-4 reveal-on-scroll-left">
+                    <!-- Soft Ambient Aura -->
+                    <div class="absolute w-72 sm:w-88 h-72 sm:h-88 rounded-full bg-gradient-to-tr from-purple-100/70 via-pink-100/50 to-transparent blur-3xl pointer-events-none -z-0"></div>
 
-                        <!-- Top Minimalist Tag -->
-                        <div class="relative z-10 self-start">
-                            <span class="text-[11px] font-bold tracking-widest text-[#6B57B2] uppercase bg-white/90 backdrop-blur-xs px-3.5 py-1.5 rounded-full border border-purple-100/80 shadow-2xs">
-                                Pediatric Story
-                            </span>
-                        </div>
-
-                        <!-- Mascot Character -->
-                        <div class=" z-10 my-auto py-2">
-                            <img
-                                src="/images/fabie_baby_character.png"
-                                alt="I am a Fabie Baby"
-                                class="w-full max-w-[220px] sm:max-w-[260px] h-auto group-hover:scale-105 transition-transform duration-500 ease-out" 
-                            />
-                        </div>
-
-                        <!-- Bottom Micro-Caption -->
-                        <div class="relative z-10 text-center w-full pt-2">
-                            <span class="text-xs font-semibold text-gray-500 tracking-wide">
-                                "Gentle Care for Brighter Tomorrows"
-                            </span>
-                        </div>
-                    </div>
+                    <!-- Significantly Enlarged Standalone Character Image -->
+                    <img
+                        src="/images/fabie_baby_character.png"
+                        alt="I am a Fabie Baby"
+                        class="relative z-10 w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[440px] h-auto drop-shadow-2xl hover:scale-105 transition-transform duration-500 ease-out select-none" 
+                    />
                 </div>
 
                 <!-- Right: Editorial Monologue Story & Clean Hallmarks -->
-                <div class="lg:col-span-7 space-y-7 text-left">
+                <div class="lg:col-span-7 space-y-7 text-left reveal-on-scroll-right">
                     <!-- Clean Kicker (Zero Badges) -->
                     <div class="text-xs sm:text-sm font-bold tracking-widest text-[#E63980] uppercase">
                         <span>A BABY'S VOICE</span>
@@ -647,12 +786,10 @@
                         <span class="text-[#6B57B2]">Delicate Newborn Skin</span>
                     </h2>
 
-                 
-
                     <!-- Clean Narrative Description -->
                     <p class="text-gray-600 text-sm sm:text-base leading-relaxed font-normal">
                          “I still can't tell you how I feel, but I can laugh, coo, and cuddle when I am happy and cry when something is not right.”
-                        A newborn's skin is exceptionally fragile. <strong class="text-[#1B2541] font-semibold">five times thinner than an adult's</strong>. Without fully formed acid-mantle defenses, infants lose hydration rapidly and are prone to sensitivity. Every Fabie Baby wash, lotion, and diaper is thoughtfully engineered to restore natural pH balance and ensure peaceful, rash-free days.
+                        A newborn's skin is exceptionally fragile — <strong class="text-[#1B2541] font-semibold">five times thinner than an adult's</strong>. Without fully formed acid-mantle defenses, infants lose hydration rapidly and are prone to sensitivity. Every Fabie Baby wash, lotion, and diaper is thoughtfully engineered to restore natural pH balance and ensure peaceful, rash-free days.
                     </p>
 
                     <!-- Clean Typographic Hallmarks (Replaces Tacky Badge Pills) -->
@@ -688,140 +825,19 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- 7. QUALITY & PEDIATRIC INNOVATION (Babina-Inspired Centerpiece Showcase)  -->
-    <!-- ========================================================================= -->
-    <section class="py-20 sm:py-28 bg-gradient-to-b from-[#6B57B2] via-[#5221b0] to-[#431a96] text-white relative overflow-hidden">
-        
-        <!-- Subtle Glowing Backdrop Accent Light -->
-        <div class="absolute inset-0 pointer-events-none flex items-center justify-center">
-            <div class="w-[600px] h-[600px] rounded-full bg-white/5 blur-3xl"></div>
-        </div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            
-            <!-- Centered Header -->
-            <div class="text-center max-w-3xl mx-auto mb-14 sm:mb-20 space-y-3">
-                <span class="text-xs sm:text-sm font-bold tracking-widest text-pink-300 uppercase">
-                    Quality
-                </span>
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading tracking-tight leading-tight">
-                    Crafting Premium Protection for Your Baby
-                </h2>
-                <p class="text-sm sm:text-base text-purple-100/90 leading-relaxed font-normal max-w-2xl mx-auto">
-                    At Fabie Baby, we prioritize quality and gentle skin defense at every step. Our products are crafted with the finest certified natural materials to ensure optimal comfort and pure care.
-                </p>
-            </div>
-
-            <!-- Main Layout: 2 Pillars Left + Centerpiece Diaper Showcase + 2 Pillars Right -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center mb-14 sm:mb-20">
-                
-                <!-- Left 2 Pillars -->
-                <div class="lg:col-span-4 space-y-10 sm:space-y-14 text-center lg:text-right">
-                    <!-- Pillar 1: Sourcing the Best -->
-                    <div class="space-y-3 group">
-                        <div class="flex justify-center lg:justify-end text-3xl text-pink-300 group-hover:scale-110 transition-transform">
-                            <i class="ri-heart-3-line"></i>
-                        </div>
-                        <h3 class="text-lg sm:text-xl font-bold font-heading text-white">
-                            Sourcing the Best
-                        </h3>
-                        <p class="text-xs sm:text-sm text-purple-100/80 leading-relaxed max-w-sm mx-auto lg:ml-auto lg:mr-0">
-                            We source organic bamboo and ultra-soft cotton fibers from certified ethical vendors, ensuring cloud-like tenderness in every touch.
-                        </p>
-                    </div>
-
-                    <!-- Pillar 2: Quality Assurance -->
-                    <div class="space-y-3 group">
-                        <div class="flex justify-center lg:justify-end text-3xl text-pink-300 group-hover:scale-110 transition-transform">
-                            <i class="ri-medal-line"></i>
-                        </div>
-                        <h3 class="text-lg sm:text-xl font-bold font-heading text-white">
-                            Quality Assurance
-                        </h3>
-                        <p class="text-xs sm:text-sm text-purple-100/80 leading-relaxed max-w-sm mx-auto lg:ml-auto lg:mr-0">
-                            Our rigorous pediatric checks ensure that every diaper meets the highest dermatological safety, 0% chlorine, and hypoallergenic standards.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Centerpiece: Circular Diaper Spotlight Container -->
-                <div class="lg:col-span-4 flex items-center justify-center my-6 lg:my-0">
-                    <div class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full bg-white/95 backdrop-blur-md shadow-2xl p-6 sm:p-8 flex items-center justify-center border-4 border-white/25 group hover:scale-104 transition-all duration-700">
-                        <!-- Soft Ambient Glow Ring -->
-                        <div class="absolute -inset-2 rounded-full border border-white/20 pointer-events-none animate-pulse"></div>
-                        <img 
-                            src="/images/diaper.png" 
-                            alt="Fabie Baby Diaper Premium Quality" 
-                            class="w-full h-full object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-500" 
-                        />
-                    </div>
-                </div>
-
-                <!-- Right 2 Pillars -->
-                <div class="lg:col-span-4 space-y-10 sm:space-y-14 text-center lg:text-left">
-                    <!-- Pillar 3: Expert Formulation -->
-                    <div class="space-y-3 group">
-                        <div class="flex justify-center lg:justify-start text-3xl text-pink-300 group-hover:scale-110 transition-transform">
-                            <i class="ri-drop-line"></i>
-                        </div>
-                        <h3 class="text-lg sm:text-xl font-bold font-heading text-white">
-                            Expert Formulation
-                        </h3>
-                        <p class="text-xs sm:text-sm text-purple-100/80 leading-relaxed max-w-sm mx-auto lg:mr-auto lg:ml-0">
-                            Our team of pediatric experts formulates products tailored to the delicate skin barrier needs of newborns and active rolling babies.
-                        </p>
-                    </div>
-
-                    <!-- Pillar 4: Nurturing Your Baby -->
-                    <div class="space-y-3 group">
-                        <div class="flex justify-center lg:justify-start text-3xl text-pink-300 group-hover:scale-110 transition-transform">
-                            <i class="ri-user-smile-line"></i>
-                        </div>
-                        <h3 class="text-lg sm:text-xl font-bold font-heading text-white">
-                            Nurturing Your Baby
-                        </h3>
-                        <p class="text-xs sm:text-sm text-purple-100/80 leading-relaxed max-w-sm mx-auto lg:mr-auto lg:ml-0">
-                            We believe in nurturing your baby's growth with breathable 12-hour leak-proof dryness that supports restful sleep and happy exploration.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Bottom Dual Pill Actions Matching Babina -->
-            <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
-                <a 
-                    href="#products" 
-                    class="px-8 py-3 bg-white hover:bg-gray-100 text-[#5725bb] text-xs sm:text-sm font-bold rounded-full shadow-md hover:shadow-lg transition-all active:scale-95"
-                >
-                    Our Products
-                </a>
-                <a 
-                    href="#about-us" 
-                    class="px-8 py-3 bg-transparent hover:bg-white/10 text-white border border-white/70 hover:border-white text-xs sm:text-sm font-bold rounded-full transition-all active:scale-95 inline-flex items-center gap-2 group"
-                >
-                    <span>Quality</span>
-                    <i class="ri-arrow-right-s-line text-sm group-hover:translate-x-1 transition-transform"></i>
-                </a>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- ========================================================================= -->
     <!-- 8. B2B & GLOBAL DISTRIBUTION SECTION                                      -->
     <!-- ========================================================================= -->
     <section id="b2b-products" class="py-18 sm:py-24 bg-[#FAF9FC] border-b border-purple-100/70">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-14 sm:mb-18">
-                <div class="flex items-center justify-center gap-2 text-xs font-bold tracking-widest text-[#6B57B2] uppercase mb-2">
+                <div class="flex items-center justify-center gap-2 text-xs font-bold tracking-widest text-[#6B57B2] uppercase mb-2 reveal-on-scroll">
                     <i class="ri-building-4-line"></i>
                     <span>GLOBAL B2B DISTRIBUTION</span>
                 </div>
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold font-heading text-[#1B2541] tracking-tight">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold font-heading text-[#1B2541] tracking-tight reveal-on-scroll delay-100">
                     Wholesale &amp; Institutional Baby Care
                 </h2>
-                <p class="text-gray-600 text-sm sm:text-base mt-3 leading-relaxed">
+                <p class="text-gray-600 text-sm sm:text-base mt-3 leading-relaxed reveal-on-scroll delay-150">
                     Partner with Fabie Baby for regional distribution rights, supermarket shelf retail, hospital maternity kits, and pharmacy networks worldwide.
                 </p>
             </div>
@@ -829,7 +845,7 @@
             <!-- 4 B2B Pillars -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Pillar 1: Retail -->
-                <div class="bg-white rounded-3xl p-7 border border-purple-100/80 hover:border-[#6B57B2]/40 hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
+                <div class="bg-white rounded-3xl p-7 border border-purple-100/80 hover:border-[#6B57B2]/40 hover:shadow-md transition-all duration-300 flex flex-col justify-between group reveal-on-scroll delay-50">
                     <div class="space-y-3.5">
                         <div class="w-12 h-12 rounded-2xl bg-purple-50 flex items-center justify-center text-[#6B57B2] group-hover:bg-[#6B57B2] group-hover:text-white transition-colors">
                             <i class="ri-store-3-line text-2xl"></i>
@@ -847,7 +863,7 @@
                 </div>
 
                 <!-- Pillar 2: Hospitals -->
-                <div class="bg-white rounded-3xl p-7 border border-purple-100/80 hover:border-vibrant-rose/40 hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
+                <div class="bg-white rounded-3xl p-7 border border-purple-100/80 hover:border-vibrant-rose/40 hover:shadow-md transition-all duration-300 flex flex-col justify-between group reveal-on-scroll delay-100">
                     <div class="space-y-3.5">
                         <div class="w-12 h-12 rounded-2xl bg-pink-50 flex items-center justify-center text-vibrant-rose group-hover:bg-vibrant-rose group-hover:text-white transition-colors">
                             <i class="ri-hospital-line text-2xl"></i>
@@ -865,7 +881,7 @@
                 </div>
 
                 <!-- Pillar 3: Export -->
-                <div class="bg-white rounded-3xl p-7 border border-purple-100/80 hover:border-sky-blue/40 hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
+                <div class="bg-white rounded-3xl p-7 border border-purple-100/80 hover:border-sky-blue/40 hover:shadow-md transition-all duration-300 flex flex-col justify-between group reveal-on-scroll delay-150">
                     <div class="space-y-3.5">
                         <div class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-sky-blue group-hover:bg-sky-blue group-hover:text-white transition-colors">
                             <i class="ri-global-line text-2xl"></i>
@@ -883,7 +899,7 @@
                 </div>
 
                 <!-- Pillar 4: Kits -->
-                <div class="bg-white rounded-3xl p-7 border border-purple-100/80 hover:border-warm-peach/40 hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
+                <div class="bg-white rounded-3xl p-7 border border-purple-100/80 hover:border-warm-peach/40 hover:shadow-md transition-all duration-300 flex flex-col justify-between group reveal-on-scroll delay-200">
                     <div class="space-y-3.5">
                         <div class="w-12 h-12 rounded-2xl bg-orange-50 flex items-center justify-center text-warm-peach group-hover:bg-warm-peach group-hover:text-white transition-colors">
                             <i class="ri-gift-2-line text-2xl"></i>
@@ -901,7 +917,7 @@
                 </div>
             </div>
 
-            <div class="mt-12 text-center">
+            <div class="mt-12 text-center reveal-on-scroll delay-250">
                 <a 
                     href="#contact" 
                     class="inline-flex items-center gap-2 px-8 py-3.5 bg-[#6B57B2] hover:bg-vibrant-rose text-white text-xs sm:text-sm font-bold rounded-full shadow-sm hover:shadow-md transition-all"
@@ -922,6 +938,8 @@
             total: 6,
             timer: null, 
             perView: 3,
+            touchStartX: 0,
+            touchEndX: 0,
             updatePerView() {
                 if (window.innerWidth < 768) {
                     this.perView = 1;
@@ -958,24 +976,26 @@
         x-init="init()"
         @mouseenter="stop()"
         @mouseleave="start()"
+        @touchstart="touchStartX = $event.touches[0].clientX"
+        @touchend="touchEndX = $event.changedTouches[0].clientX; if (touchStartX - touchEndX > 45) next(); if (touchEndX - touchStartX > 45) prev();"
         class="py-18 sm:py-24 bg-white border-b border-purple-100/70"
     >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-                <div class="flex items-center justify-center gap-2 text-xs font-bold tracking-widest text-vibrant-rose uppercase mb-2">
+                <div class="flex items-center justify-center gap-2 text-xs font-bold tracking-widest text-[#E63980] uppercase mb-2 reveal-on-scroll">
                     <i class="ri-heart-3-fill"></i>
                     <span>PARENT STORIES</span>
                 </div>
-                <h2 class="text-3xl sm:text-4xl font-bold font-heading text-[#1B2541] tracking-tight">
+                <h2 class="text-3xl sm:text-4xl font-bold font-heading text-[#1B2541] tracking-tight reveal-on-scroll delay-100">
                     Loved by 100,000+ Mothers
                 </h2>
-                <p class="text-sm text-gray-500 mt-2">
+                <p class="text-sm text-gray-500 mt-2 reveal-on-scroll delay-150">
                     Real, verified feedback from parents who trust Fabie Baby for gentle newborn skin care.
                 </p>
             </div>
 
             <!-- Slider Track -->
-            <div class="relative px-2 sm:px-4">
+            <div class="relative px-2 sm:px-4 reveal-on-scroll delay-100">
                 <div class="overflow-hidden py-2">
                     <div
                         class="flex transition-transform duration-500 ease-out"
@@ -1083,14 +1103,14 @@
                 <!-- Navigation Arrows -->
                 <button
                     @click="prev()"
-                    class="hidden sm:flex absolute -left-2 sm:-left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-md border border-purple-100 text-gray-700 hover:text-white hover:bg-vibrant-rose items-center justify-center transition-all z-20 cursor-pointer"
+                    class="hidden sm:flex absolute -left-2 sm:-left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-md border border-purple-100 text-gray-700 hover:text-white hover:bg-[#E63980] items-center justify-center transition-all z-20 cursor-pointer"
                     aria-label="Previous review"
                 >
                     <i class="ri-arrow-left-s-line text-xl"></i>
                 </button>
                 <button
                     @click="next()"
-                    class="hidden sm:flex absolute -right-2 sm:-right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-md border border-purple-100 text-gray-700 hover:text-white hover:bg-vibrant-rose items-center justify-center transition-all z-20 cursor-pointer"
+                    class="hidden sm:flex absolute -right-2 sm:-right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-md border border-purple-100 text-gray-700 hover:text-white hover:bg-[#E63980] items-center justify-center transition-all z-20 cursor-pointer"
                     aria-label="Next review"
                 >
                     <i class="ri-arrow-right-s-line text-xl"></i>
@@ -1098,11 +1118,11 @@
             </div>
 
             <!-- Dots -->
-            <div class="flex items-center justify-center gap-2 mt-8">
+            <div class="flex items-center justify-center gap-2 mt-8 reveal-on-scroll delay-150">
                 <template x-for="i in (total - perView + 1)" :key="i">
                     <button
                         @click="goTo(i - 1)"
-                        :class="currentIndex === (i - 1) ? 'w-8 bg-vibrant-rose' : 'w-2.5 bg-gray-300 hover:bg-gray-400'"
+                        :class="currentIndex === (i - 1) ? 'w-8 bg-[#E63980]' : 'w-2.5 bg-gray-300 hover:bg-gray-400'"
                         class="h-2.5 rounded-full transition-all duration-300 cursor-pointer"
                         :title="'Slide ' + i"
                     ></button>
@@ -1117,20 +1137,20 @@
     <section id="faq" class="py-18 sm:py-24 bg-[#FAF9FC] border-b border-purple-100/70">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-                <div class="flex items-center justify-center gap-2 text-xs font-bold tracking-widest text-[#6B57B2] uppercase mb-2">
+                <div class="flex items-center justify-center gap-2 text-xs font-bold tracking-widest text-[#6B57B2] uppercase mb-2 reveal-on-scroll">
                     <i class="ri-questionnaire-line"></i>
                     <span>FREQUENTLY ASKED QUESTIONS</span>
                 </div>
-                <h2 class="text-3xl sm:text-4xl font-bold font-heading text-[#1B2541] tracking-tight">
+                <h2 class="text-3xl sm:text-4xl font-bold font-heading text-[#1B2541] tracking-tight reveal-on-scroll delay-100">
                     Got Questions? We Have Answers
                 </h2>
-                <p class="text-sm text-gray-500 mt-2">
+                <p class="text-sm text-gray-500 mt-2 reveal-on-scroll delay-150">
                     Learn more about our pediatric skin safety, Dubai formulations, and wholesale distribution.
                 </p>
             </div>
 
             <!-- Accordion -->
-            <div x-data="{ activeAccordion: 1 }" class="space-y-4">
+            <div x-data="{ activeAccordion: 1 }" class="space-y-4 reveal-on-scroll delay-100">
                 
                 <!-- FAQ 1 -->
                 <div 
@@ -1263,7 +1283,7 @@
             </div>
 
             <!-- Still Have Questions Clean Banner -->
-            <div class="mt-12 sm:mt-16 bg-white rounded-3xl p-6 sm:p-8 border border-purple-100 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+            <div class="mt-12 sm:mt-16 bg-white rounded-3xl p-6 sm:p-8 border border-purple-100 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left reveal-on-scroll delay-150">
                 <div>
                     <h4 class="text-base sm:text-lg font-bold text-[#1B2541]">Still have questions?</h4>
                     <p class="text-xs sm:text-sm text-gray-500 mt-1">Our mother &amp; baby care team is here to assist you anytime.</p>
@@ -1271,7 +1291,7 @@
                 <div class="flex items-center gap-3 shrink-0">
                     <a 
                         href="#contact" 
-                        class="inline-flex items-center gap-2 px-6 py-3 bg-[#6B57B2] hover:bg-vibrant-rose text-white text-xs sm:text-sm font-bold rounded-full shadow-2xs hover:shadow-sm transition-all"
+                        class="inline-flex items-center gap-2 px-6 py-3 bg-[#E63980] hover:bg-[#d0236b] text-white text-xs sm:text-sm font-bold rounded-full shadow-sm hover:shadow-md transition-all active:scale-95"
                     >
                         <i class="ri-mail-send-line"></i>
                         <span>Contact Us</span>
@@ -1289,7 +1309,7 @@
         <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
             <div wire:click="closeQuickView" class="fixed inset-0 bg-gray-900/50 backdrop-blur-xs transition-opacity"></div>
 
-            <div class="inline-block align-bottom bg-white rounded-3xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-xl sm:w-full border border-purple-100">
+            <div class="inline-block align-bottom bg-white rounded-3xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-xl sm:w-full border border-purple-100 max-h-[90vh] overflow-y-auto">
                 <div class="p-6 sm:p-8 relative">
                     <button wire:click="closeQuickView" class="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-700 rounded-full hover:bg-gray-100 cursor-pointer">
                         <i class="ri-close-line text-xl"></i>
@@ -1313,9 +1333,9 @@
 
                             <!-- Specifications -->
                             <div class="pt-2 pb-1 space-y-1.5 text-xs text-gray-600">
-                                <p class="flex items-center gap-1.5"><i class="ri-check-line text-pastel-green font-bold"></i> pH 5.5 Balanced formulation</p>
-                                <p class="flex items-center gap-1.5"><i class="ri-check-line text-pastel-green font-bold"></i> 0% Harsh synthetic chemicals</p>
-                                <p class="flex items-center gap-1.5"><i class="ri-check-line text-pastel-green font-bold"></i> Dermatologist tested for newborn care</p>
+                                <p class="flex items-center gap-1.5"><i class="ri-check-line text-[#74B528] font-bold"></i> pH 5.5 Balanced formulation</p>
+                                <p class="flex items-center gap-1.5"><i class="ri-check-line text-[#74B528] font-bold"></i> 0% Harsh synthetic chemicals</p>
+                                <p class="flex items-center gap-1.5"><i class="ri-check-line text-[#74B528] font-bold"></i> Dermatologist tested for newborn care</p>
                             </div>
 
                             @if(!empty($selectedProduct['sizes']))
@@ -1323,7 +1343,7 @@
                                 <span class="text-[11px] font-bold text-gray-700 block mb-1.5">Available Sizes / Options:</span>
                                 <div class="flex flex-wrap gap-1.5">
                                     @foreach($selectedProduct['sizes'] as $size)
-                                    <span class="px-2.5 py-1 rounded-lg text-[10px] font-semibold bg-gray-50 text-gray-700 border border-purple-100">
+                                     <span class="px-2.5 py-1 rounded-lg text-[10px] font-semibold bg-gray-50 text-gray-700 border border-purple-100">
                                         {{ $size }}
                                     </span>
                                     @endforeach
@@ -1331,11 +1351,11 @@
                             </div>
                             @endif
 
-                            <div class="pt-3 flex gap-2.5">
+                            <div class="pt-3 flex flex-col sm:flex-row gap-2.5">
                                 <a
                                     href="#contact"
                                     wire:click="closeQuickView"
-                                    class="flex-1 py-2.5 px-4 bg-vibrant-rose hover:bg-pink-600 text-white text-xs font-bold rounded-full transition-all text-center shadow-xs"
+                                    class="flex-1 py-2.5 px-4 bg-[#E63980] hover:bg-[#d0236b] text-white text-xs font-bold rounded-full transition-all text-center shadow-xs"
                                 >
                                     Inquire About Product
                                 </a>

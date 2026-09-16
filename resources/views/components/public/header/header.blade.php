@@ -1,18 +1,21 @@
 <div x-data="{ mobileMenuOpen: false, searchOpen: false }">
-    <!-- Top Announcement Bar (Clean Swiss Pediatric Banner) -->
-    <aside class="bg-[#F4F4F6] border-b border-[#EEEEEE] py-2 px-4 text-center">
-        <div class="max-w-7xl mx-auto flex items-center justify-between text-xs tracking-wide text-gray-600">
-            <div class="hidden md:flex items-center gap-2 text-[#3E3465] font-semibold text-[11px] uppercase tracking-wider">
-                <span class="inline-block w-2 h-2 rounded-full bg-[#D9487D]"></span>
+    <!-- Top Announcement Bar (Clean Solid Brand Purple Strip) -->
+    <aside class="bg-[#6B57B2] py-2 px-4 text-center text-white">
+        <div class="max-w-7xl mx-auto flex items-center justify-between text-xs tracking-wide text-white/95">
+            <div class="hidden md:flex items-center gap-2 text-white font-bold text-[11px] uppercase tracking-wider">
+                <span class="inline-block w-2 h-2 rounded-full bg-[#E63980]"></span>
                 Pediatric Safety Standard
             </div>
-            <div class="mx-auto md:mx-0 text-center text-[#3E3465] text-xs font-medium tracking-tight">
+            <div class="mx-auto md:mx-0 text-center text-white text-xs font-medium tracking-tight">
                 Crafted with Pure Botanical Ingredients &amp; Zero Synthetic Fragrance
             </div>
-            <div class="hidden md:flex items-center gap-4 text-xs">
-                <a href="#swiss-standards" class="hover:text-[#3E3465] transition-colors">Safety Standards</a>
-                <span class="text-gray-300">|</span>
-                <a href="#b2b-products" class="hover:text-[#3E3465] transition-colors font-medium text-[#3E3465]">Wholesale &amp; Export</a>
+            <div class="hidden md:flex items-center gap-4 text-xs font-medium text-white/90">
+                <a href="#about-us" class="hover:text-white transition-colors">Safety Standards</a>
+                <span class="text-white/40">|</span>
+                <a href="#b2b-products" class="hover:text-white transition-colors font-bold text-white flex items-center gap-1">
+                    <span>Wholesale &amp; Export</span>
+                    <i class="ri-arrow-right-s-line text-xs"></i>
+                </a>
             </div>
         </div>
     </aside>
@@ -62,7 +65,7 @@
                     >
                         <i class="ri-search-line text-lg"></i>
                     </button>
-                    <a href="#contact" class="px-5 py-2 bg-[#3E3465] hover:bg-[#2D254C] text-white text-xs font-semibold rounded-full transition-all inline-flex items-center gap-1.5 active:scale-95 shadow-xs">
+                    <a href="#contact" class="px-5 py-2 bg-[#E63980] hover:bg-[#d0236b] text-white text-xs font-bold rounded-full transition-all inline-flex items-center gap-1.5 active:scale-95 shadow-sm hover:shadow-md">
                         <span>Contact Us</span>
                         <i class="ri-arrow-right-line text-xs"></i>
                     </a>
@@ -252,7 +255,7 @@
                 <a 
                     href="#contact" 
                     @click="mobileMenuOpen = false"
-                    class="w-full py-3 bg-[#3E3465] text-white text-xs font-semibold rounded-lg text-center block transition-colors"
+                    class="w-full py-3 bg-[#E63980] hover:bg-[#d0236b] text-white text-xs font-bold rounded-lg text-center block transition-colors shadow-sm"
                 >
                     Contact Support
                 </a>

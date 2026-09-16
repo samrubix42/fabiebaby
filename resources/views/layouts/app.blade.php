@@ -18,7 +18,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @livewireStyles
     </head>
-    <body class="bg-cream-bg text-gray-800 font-sans antialiased selection:bg-soft-pink selection:text-vibrant-rose min-h-screen flex flex-col justify-between relative">
+    <body class="bg-[#FAF9FC] text-[#1B2541] font-sans antialiased selection:bg-soft-pink selection:text-vibrant-rose min-h-screen flex flex-col justify-between relative">
         <livewire:public.header />
 
         <main class="flex-grow">

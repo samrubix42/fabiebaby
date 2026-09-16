@@ -7,7 +7,7 @@
     --font-sans: 'Quicksand', 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
     --font-heading: 'Quicksand', sans-serif;
 
-    /* Fabie Baby Intuitive Color Palette (Richer 1-Shade Deeper Palette) */
+    /* Fabie Baby Authentic Logo Colors */
     --color-soft-purple: #6B57B2;
     --color-deep-purple: #5725bb;
     --color-header-purple: #5725bb;
@@ -21,36 +21,40 @@
     --color-sky-blue: #2CB3DB;
     --color-soft-mint: #E1F6F3;
     --color-mint-teal: #24A997;
-    --color-cream-bg: #F8F6FD;
+    --color-cream-bg: #FAF9FC;
+
+    /* Primary Swiss/Clean mapping */
+    --color-primary: #6B57B2;
+    --color-primary-dark: #5725bb;
+    --color-primary-light: #7E6BBF;
+    --color-accent: #E63980;
+    --color-accent-hover: #D02B70;
+    --color-surface: #FFFFFF;
+    --color-surface-soft: #FAF9FC;
+    --color-border-subtle: #F0EDF7;
+    --color-text-main: #1B2541;
+    --color-text-muted: #64748B;
 }
 
 @layer utilities {
     .glass-card {
-        background: rgba(255, 255, 255, 0.88);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.7);
-    }
-    
-    .blob-bg {
-        border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
-    }
-
-    .badge-pulse {
-        animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(238, 238, 238, 0.8);
     }
 
     .soft-card-shadow {
-        box-shadow: 0 10px 30px -10px rgba(107, 87, 178, 0.08), 0 4px 12px -4px rgba(0, 0, 0, 0.03);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03), 0 10px 25px -5px rgba(62, 52, 101, 0.04);
     }
 
     .card-hover-effect {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .card-hover-effect:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 20px 35px -10px rgba(107, 87, 178, 0.15), 0 8px 16px -6px rgba(0, 0, 0, 0.04);
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px -8px rgba(62, 52, 101, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
     }
 
     .no-scrollbar::-webkit-scrollbar {

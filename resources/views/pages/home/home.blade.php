@@ -17,7 +17,7 @@
                 <div class="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent w-full md:w-3/5 lg:w-1/2"></div>
 
                 <!-- Left Content Overlay -->
-                <div class="absolute inset-0 flex items-center">
+                <div class="absolute inset-0 px-[5%] flex items-center">
                     <div class="max-w-xl px-6 sm:px-12 lg:px-16 space-y-3 sm:space-y-5">
                      
 
@@ -216,6 +216,108 @@
                         </button>
                     </div>
                 @endforeach
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Standards & Certified Quality Section (Brand Promises) -->
+    <section class="py-20 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold font-heading text-[#1B2541] mt-3">Brand Promises</h2>
+                <p class="text-gray-500 text-sm mt-2">Because they deserve the best — formulated with natural, safe ingredients to soothe, nurture, and protect your baby's delicate skin.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 1. Safe Ingredients -->
+                <div class="p-8 rounded-3xl bg-[#F8F6FD] border border-purple-100/70 hover:border-purple-300 hover:shadow-xl transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="w-20 h-20 mb-6 flex items-center justify-center group-hover:scale-105 transition-transform">
+                            <img src="{{ asset('brand_promises/Safe Ingredients.jpg') }}" alt="Safe Ingredients" class="w-full h-full object-contain rounded-2xl" />
+                        </div>
+                        <h3 class="text-xl font-bold font-heading text-[#1B2541] group-hover:text-vibrant-rose transition-colors mb-3">
+                            Safe Ingredients
+                        </h3>
+                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                            Time Tested ingredients are used. We make sure product remain high Quality. Free from over 200 Synthetic and Harsh Chemicals.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2. Product Testing -->
+                <div class="p-8 rounded-3xl bg-[#F8F6FD] border border-purple-100/70 hover:border-purple-300 hover:shadow-xl transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="w-20 h-20 mb-6 flex items-center justify-center group-hover:scale-105 transition-transform">
+                            <img src="{{ asset('brand_promises/Product Testing.png') }}" alt="Product Testing" class="w-full h-full object-contain rounded-2xl" />
+                        </div>
+                        <h3 class="text-xl font-bold font-heading text-[#1B2541] group-hover:text-vibrant-rose transition-colors mb-3">
+                            Product Testing
+                        </h3>
+                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                            Each product is Tested at Dubai Central Laboratory, which is highly acclaimed laboratory. Products are also approved by Dubai Municipality, UAE to produce and Sale in UAE Market.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 3. pH 5.5 -->
+                <div class="p-8 rounded-3xl bg-[#F8F6FD] border border-purple-100/70 hover:border-purple-300 hover:shadow-xl transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="w-20 h-20 mb-6 flex items-center justify-center group-hover:scale-105 transition-transform">
+                            <img src="{{ asset('brand_promises/pH 5.5.jpg') }}" alt="pH 5.5" class="w-full h-full object-contain rounded-2xl" />
+                        </div>
+                        <h3 class="text-xl font-bold font-heading text-[#1B2541] group-hover:text-vibrant-rose transition-colors mb-3">
+                            pH 5.5
+                        </h3>
+                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                            Each product has pH- 5.5, which is a neutral so that your baby’s skin is balanced and in good health, and therefore better protected against irritants in the environment.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 4. Hypoallergenic -->
+                <div class="p-8 rounded-3xl bg-[#F8F6FD] border border-purple-100/70 hover:border-purple-300 hover:shadow-xl transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="w-20 h-20 mb-6 flex items-center justify-center group-hover:scale-105 transition-transform">
+                            <img src="{{ asset('brand_promises/Hypoallergenic.jpg') }}" alt="Hypoallergenic" class="w-full h-full object-contain rounded-2xl" />
+                        </div>
+                        <h3 class="text-xl font-bold font-heading text-[#1B2541] group-hover:text-vibrant-rose transition-colors mb-3">
+                            Hypoallergenic
+                        </h3>
+                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                            Skin-compatible raw materials, which gently soothe, nurture and protect the skin. Strict adherence to international standards at each stage of the production.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 5. Eco-Friendly -->
+                <div class="p-8 rounded-3xl bg-[#F8F6FD] border border-purple-100/70 hover:border-purple-300 hover:shadow-xl transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="w-20 h-20 mb-6 flex items-center justify-center group-hover:scale-105 transition-transform">
+                            <img src="{{ asset('brand_promises/Eco-Friendly.png') }}" alt="Eco-Friendly" class="w-full h-full object-contain rounded-2xl" />
+                        </div>
+                        <h3 class="text-xl font-bold font-heading text-[#1B2541] group-hover:text-vibrant-rose transition-colors mb-3">
+                            Eco-Friendly
+                        </h3>
+                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                            Committed to environment-friendly packaging. Recyclable packaging material used. No animal testing.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 6. Service -->
+                <div class="p-8 rounded-3xl bg-[#F8F6FD] border border-purple-100/70 hover:border-purple-300 hover:shadow-xl transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="w-20 h-20 mb-6 flex items-center justify-center group-hover:scale-105 transition-transform">
+                            <img src="{{ asset('brand_promises/Service.png') }}" alt="Service" class="w-full h-full object-contain rounded-2xl" />
+                        </div>
+                        <h3 class="text-xl font-bold font-heading text-[#1B2541] group-hover:text-vibrant-rose transition-colors mb-3">
+                            Service
+                        </h3>
+                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                            High-quality products and services. It is our responsibility to fulfill all our business partners’ demands at any time.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

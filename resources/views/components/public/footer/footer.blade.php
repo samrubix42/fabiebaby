@@ -92,10 +92,10 @@
                     Parent Care & Guide
                 </h4>
                 <ul class="space-y-2.5 font-medium text-gray-600">
-                    <li><a href="#size-calculator" class="hover:text-vibrant-rose hover:translate-x-1 transition-all inline-flex items-center gap-1.5"><i class="ri-arrow-right-s-line text-vibrant-rose text-xs"></i> Diaper Size & Fit Finder</a></li>
-                    <li><a href="#size-calculator" class="hover:text-vibrant-rose hover:translate-x-1 transition-all inline-flex items-center gap-1.5"><i class="ri-arrow-right-s-line text-vibrant-rose text-xs"></i> Pediatric Skin Care Tips</a></li>
-                    <li><a href="#contact" class="hover:text-vibrant-rose hover:translate-x-1 transition-all inline-flex items-center gap-1.5"><i class="ri-arrow-right-s-line text-vibrant-rose text-xs"></i> Express Delivery & Returns</a></li>
-                    <li><a href="#contact" class="hover:text-vibrant-rose hover:translate-x-1 transition-all inline-flex items-center gap-1.5"><i class="ri-arrow-right-s-line text-vibrant-rose text-xs"></i> Dubai Lab Safety Reports</a></li>
+                    <li><a href="#faq" class="hover:text-vibrant-rose hover:translate-x-1 transition-all inline-flex items-center gap-1.5"><i class="ri-arrow-right-s-line text-vibrant-rose text-xs"></i> FAQs & Safety Answers</a></li>
+                    <li><a href="#about-us" class="hover:text-vibrant-rose hover:translate-x-1 transition-all inline-flex items-center gap-1.5"><i class="ri-arrow-right-s-line text-vibrant-rose text-xs"></i> Dubai Heritage & Story</a></li>
+                    <li><a href="#b2b-products" class="hover:text-vibrant-rose hover:translate-x-1 transition-all inline-flex items-center gap-1.5"><i class="ri-arrow-right-s-line text-vibrant-rose text-xs"></i> Wholesale & B2B Supply</a></li>
+                    <li><a href="#brand-promises" class="hover:text-vibrant-rose hover:translate-x-1 transition-all inline-flex items-center gap-1.5"><i class="ri-arrow-right-s-line text-vibrant-rose text-xs"></i> 6 Quality Brand Promises</a></li>
                     <li><a href="#contact" class="hover:text-vibrant-rose hover:translate-x-1 transition-all inline-flex items-center gap-1.5"><i class="ri-arrow-right-s-line text-vibrant-rose text-xs"></i> Contact Customer Care</a></li>
                 </ul>
             </div>

@@ -58,8 +58,11 @@
                     <button wire:click="selectCategory('Bath')" class="hover:text-vibrant-rose transition-colors py-2 border-b-2 {{ $activeCategory === 'Bath' ? 'border-vibrant-rose text-vibrant-rose font-bold' : 'border-transparent text-gray-700' }}">
                         Bath & Body
                     </button>
-                    <a href="#size-calculator" class="hover:text-vibrant-rose transition-colors py-2 border-b-2 border-transparent text-[#6B57B2] font-bold flex items-center gap-1.5">
-                        <i class="ri-scales-3-line text-base text-vibrant-rose"></i> Size Guide
+                    <a href="#about-us" class="hover:text-vibrant-rose transition-colors py-2 border-b-2 border-transparent text-gray-700">
+                        About Us
+                    </a>
+                    <a href="#b2b-products" class="hover:text-vibrant-rose transition-colors py-2 border-b-2 border-transparent text-[#6B57B2] font-bold flex items-center gap-1.5">
+                        <i class="ri-building-4-line text-base text-vibrant-rose"></i> B2B Wholesale
                     </a>
                 </nav>
 
@@ -207,12 +210,30 @@
                         </button>
 
                         <a 
-                            href="#size-calculator" 
+                            href="#about-us" 
+                            @click="mobileMenuOpen = false"
+                            class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
+                        >
+                            <span class="flex items-center gap-2.5"><i class="ri-heart-3-line text-[#6B57B2]"></i> About Fabie Baby</span>
+                            <i class="ri-arrow-right-s-line text-gray-400"></i>
+                        </a>
+
+                        <a 
+                            href="#b2b-products" 
                             @click="mobileMenuOpen = false"
                             class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-[#6B57B2] hover:bg-soft-purple/10 transition-colors"
                         >
-                            <span class="flex items-center gap-2.5"><i class="ri-scales-3-line text-vibrant-rose"></i> Diaper Size Calculator</span>
-                            <span class="text-[10px] bg-soft-pink text-vibrant-rose px-2 py-0.5 rounded-full font-bold">Helper</span>
+                            <span class="flex items-center gap-2.5"><i class="ri-building-4-line text-vibrant-rose"></i> B2B & Wholesale</span>
+                            <span class="text-[10px] bg-soft-pink text-vibrant-rose px-2 py-0.5 rounded-full font-bold">Trade</span>
+                        </a>
+
+                        <a 
+                            href="#faq" 
+                            @click="mobileMenuOpen = false"
+                            class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
+                        >
+                            <span class="flex items-center gap-2.5"><i class="ri-questionnaire-line text-warm-peach"></i> FAQs</span>
+                            <i class="ri-arrow-right-s-line text-gray-400"></i>
                         </a>
                     </div>
                 </div>

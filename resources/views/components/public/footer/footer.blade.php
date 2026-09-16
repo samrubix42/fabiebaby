@@ -1,29 +1,6 @@
 <footer id="contact" class="bg-[#F8F6FD] text-gray-600 pt-16 pb-12 border-t border-purple-100 text-xs relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <!-- Top Newsletter / Parent Club Box -->
-        <div class="bg-white rounded-3xl p-8 sm:p-10 border border-purple-100 shadow-sm mb-16 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8">
-            <div class="space-y-2 text-center lg:text-left max-w-xl">
-                <span class="text-xs font-extrabold uppercase tracking-wider text-vibrant-rose bg-soft-pink px-3.5 py-1 rounded-full">
-                    Join the Fabie Baby Parent Club
-                </span>
-                <h3 class="text-2xl sm:text-3xl font-bold font-heading text-[#1B2541] mt-2">
-                    Get 15% Off Your First Order
-                </h3>
-                <p class="text-gray-500 text-xs sm:text-sm">
-                    Receive gentle care tips, pediatrician insights, and exclusive subscriber offers directly to your inbox.
-                </p>
-            </div>
-
-            <form wire:submit.prevent="$set('toastMessage', 'Thank you for joining Fabie Baby Parent Club!')" class="w-full lg:w-auto flex flex-col sm:flex-row items-center gap-3">
-                <input type="email" placeholder="Enter your email address..." required class="w-full sm:w-80 px-5 py-3 bg-gray-50 border border-gray-200 rounded-full text-xs text-gray-800 focus:outline-none focus:border-vibrant-rose focus:bg-white transition-all shadow-inner" />
-                <button type="submit" class="w-full sm:w-auto px-7 py-3 bg-vibrant-rose text-white text-xs font-extrabold rounded-full shadow-md hover:bg-pink-600 transition-all active:scale-95 flex items-center justify-center gap-2">
-                    <span>Subscribe Now</span>
-                    <i class="ri-arrow-right-line text-sm"></i>
-                </button>
-            </form>
-        </div>
-
         <!-- Main 4-Column Footer Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
             <!-- Col 1: Brand Info & Social Links -->

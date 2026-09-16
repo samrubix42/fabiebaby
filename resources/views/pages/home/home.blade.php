@@ -50,7 +50,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 items-center">
                     <!-- Item 1: Safe & Gentle -->
-                    <div class="flex items-center gap-3 p-3 rounded-2xl hover:bg-soft-green/30 transition-colors">
+                    <div class="flex items-center gap-3 p-3 rounded-2xl hover:bg-soft-green/30 transition-colors reveal-on-scroll reveal-delay-1">
                         <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-soft-green flex items-center justify-center text-pastel-green shrink-0">
                             <i class="ri-plant-line text-xl sm:text-2xl"></i>
                         </div>
@@ -61,7 +61,7 @@
                     </div>
 
                     <!-- Item 2: Dermatologically Tested -->
-                    <div class="flex items-center gap-3 p-3 rounded-2xl hover:bg-soft-blue/40 transition-colors">
+                    <div class="flex items-center gap-3 p-3 rounded-2xl hover:bg-soft-blue/40 transition-colors reveal-on-scroll reveal-delay-2">
                         <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-soft-blue flex items-center justify-center text-sky-blue shrink-0">
                             <i class="ri-drop-line text-xl sm:text-2xl"></i>
                         </div>
@@ -72,7 +72,7 @@
                     </div>
 
                     <!-- Item 3: Pediatrician Recommended -->
-                    <div class="flex items-center gap-3 p-3 rounded-2xl hover:bg-purple-50 transition-colors">
+                    <div class="flex items-center gap-3 p-3 rounded-2xl hover:bg-purple-50 transition-colors reveal-on-scroll reveal-delay-3">
                         <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#6B57B2]/10 flex items-center justify-center text-[#6B57B2] shrink-0">
                             <i class="ri-user-smile-line text-xl sm:text-2xl"></i>
                         </div>
@@ -83,7 +83,7 @@
                     </div>
 
                     <!-- Item 4: Dubai Lab Certified -->
-                    <div class="flex items-center gap-3 p-3 rounded-2xl hover:bg-soft-pink/40 transition-colors">
+                    <div class="flex items-center gap-3 p-3 rounded-2xl hover:bg-soft-pink/40 transition-colors reveal-on-scroll reveal-delay-4">
                         <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-soft-pink flex items-center justify-center text-vibrant-rose shrink-0">
                             <i class="ri-shield-check-line text-xl sm:text-2xl"></i>
                         </div>
@@ -94,7 +94,7 @@
                     </div>
 
                     <!-- Item 5: pH 5.5 Balanced -->
-                    <div class="col-span-2 md:col-span-1 flex items-center justify-center sm:justify-start gap-3 p-3 rounded-2xl hover:bg-soft-orange/40 transition-colors">
+                    <div class="col-span-2 md:col-span-1 flex items-center justify-center sm:justify-start gap-3 p-3 rounded-2xl hover:bg-soft-orange/40 transition-colors reveal-on-scroll reveal-delay-5">
                         <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-soft-orange flex items-center justify-center text-warm-peach shrink-0">
                             <i class="ri-heart-3-line text-xl sm:text-2xl"></i>
                         </div>
@@ -112,7 +112,7 @@
             <div class="absolute -left-16 top-1/2 -translate-y-1/2 w-64 h-64 bg-soft-pink/40 rounded-full blur-3xl pointer-events-none"></div>
             <div class="absolute -right-16 top-1/2 -translate-y-1/2 w-64 h-64 bg-[#6B57B2]/10 rounded-full blur-3xl pointer-events-none"></div>
 
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-5 relative z-10">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-5 relative z-10 reveal-on-scroll-scale">
                 <!-- Brand Badge -->
                 <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold text-vibrant-rose bg-soft-pink tracking-wider uppercase">
                     <i class="ri-heart-3-fill text-vibrant-rose"></i>
@@ -152,7 +152,7 @@
         <!-- Interactive Category Explorer Section -->
         <section id="products" class="py-14 sm:py-20 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+                <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14 reveal-on-scroll">
                     <span class="text-xs font-bold uppercase tracking-wider text-vibrant-rose bg-soft-pink px-4 py-1.5 rounded-full inline-block">
                         Curated Product Range
                     </span>
@@ -172,7 +172,7 @@
                     <!-- 1. DIAPERS & PANTS (Top Left - Wide Span 6 on Desktop, Full Banner on Mobile) -->
                     <div
                         wire:click="setCategory('Diapers')"
-                        class="col-span-2 md:col-span-6 order-1 h-44 sm:h-56 md:h-72 lg:h-80 rounded-2xl sm:rounded-3xl overflow-hidden group cursor-pointer relative shadow-xs hover:shadow-lg transition-all duration-300">
+                        class="col-span-2 md:col-span-6 order-1 h-44 sm:h-56 md:h-72 lg:h-80 rounded-2xl sm:rounded-3xl overflow-hidden group cursor-pointer relative shadow-xs hover:shadow-lg transition-all duration-300 reveal-on-scroll-scale reveal-delay-1">
                         <img 
                             src="/images/cat_diapers.jpg" 
                             alt="Diapers & Pants" 
@@ -188,7 +188,7 @@
                     <!-- 2. BODYCARE (Top Middle - Span 3 on Desktop, Half Card on Mobile) -->
                     <div
                         wire:click="setCategory('Skincare')"
-                        class="col-span-1 md:col-span-3 order-2 h-36 sm:h-48 md:h-72 lg:h-80 rounded-2xl sm:rounded-3xl overflow-hidden group cursor-pointer relative shadow-xs hover:shadow-lg transition-all duration-300">
+                        class="col-span-1 md:col-span-3 order-2 h-36 sm:h-48 md:h-72 lg:h-80 rounded-2xl sm:rounded-3xl overflow-hidden group cursor-pointer relative shadow-xs hover:shadow-lg transition-all duration-300 reveal-on-scroll-scale reveal-delay-2">
                         <img 
                             src="/images/cat_bodycare.jpg" 
                             alt="Bodycare" 
@@ -204,7 +204,7 @@
                     <!-- 3. CLEANING (Top Right - Span 3 on Desktop, Half Card on Mobile) -->
                     <div
                         wire:click="setCategory('Bath')"
-                        class="col-span-1 md:col-span-3 order-3 h-36 sm:h-48 md:h-72 lg:h-80 rounded-2xl sm:rounded-3xl overflow-hidden group cursor-pointer relative shadow-xs hover:shadow-lg transition-all duration-300">
+                        class="col-span-1 md:col-span-3 order-3 h-36 sm:h-48 md:h-72 lg:h-80 rounded-2xl sm:rounded-3xl overflow-hidden group cursor-pointer relative shadow-xs hover:shadow-lg transition-all duration-300 reveal-on-scroll-scale reveal-delay-3">
                         <img 
                             src="/images/cat_cleaning.jpg" 
                             alt="Cleaning" 
@@ -220,7 +220,7 @@
                     <!-- 4. ACCESSORIES (Bottom Left - Span 3 on Desktop, Half Card on Mobile) -->
                     <div
                         wire:click="setCategory('All')"
-                        class="col-span-1 md:col-span-3 order-5 md:order-4 h-36 sm:h-48 md:h-64 lg:h-72 rounded-2xl sm:rounded-3xl overflow-hidden group cursor-pointer relative shadow-xs hover:shadow-lg transition-all duration-300">
+                        class="col-span-1 md:col-span-3 order-5 md:order-4 h-36 sm:h-48 md:h-64 lg:h-72 rounded-2xl sm:rounded-3xl overflow-hidden group cursor-pointer relative shadow-xs hover:shadow-lg transition-all duration-300 reveal-on-scroll-scale reveal-delay-4">
                         <img 
                             src="/images/cat_accessories.jpg" 
                             alt="Accessories" 
@@ -236,7 +236,7 @@
                     <!-- 5. WET WIPES (Bottom Middle - Wide Span 6 on Desktop, Full Banner on Mobile) -->
                     <div
                         wire:click="setCategory('Wipes')"
-                        class="col-span-2 md:col-span-6 order-4 md:order-5 h-44 sm:h-56 md:h-64 lg:h-72 rounded-2xl sm:rounded-3xl overflow-hidden group cursor-pointer relative shadow-xs hover:shadow-lg transition-all duration-300">
+                        class="col-span-2 md:col-span-6 order-4 md:order-5 h-44 sm:h-56 md:h-64 lg:h-72 rounded-2xl sm:rounded-3xl overflow-hidden group cursor-pointer relative shadow-xs hover:shadow-lg transition-all duration-300 reveal-on-scroll-scale reveal-delay-5">
                         <img 
                             src="/images/cat_wipes.jpg" 
                             alt="Wet Wipes" 
@@ -252,7 +252,7 @@
                     <!-- 6. FEEDING (Bottom Right - Span 3 on Desktop, Half Card on Mobile) -->
                     <div
                         wire:click="setCategory('All')"
-                        class="col-span-1 md:col-span-3 order-6 h-36 sm:h-48 md:h-64 lg:h-72 rounded-2xl sm:rounded-3xl overflow-hidden group cursor-pointer relative shadow-xs hover:shadow-lg transition-all duration-300">
+                        class="col-span-1 md:col-span-3 order-6 h-36 sm:h-48 md:h-64 lg:h-72 rounded-2xl sm:rounded-3xl overflow-hidden group cursor-pointer relative shadow-xs hover:shadow-lg transition-all duration-300 reveal-on-scroll-scale reveal-delay-6">
                         <img 
                             src="/images/cat_feeding.jpg" 
                             alt="Feeding" 
@@ -275,7 +275,7 @@
         <section class="py-16 sm:py-20 bg-[#F4F7FC] border-t border-purple-100/60 relative overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <!-- Header -->
-                <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 sm:mb-12 gap-4">
+                <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 sm:mb-12 gap-4 reveal-on-scroll">
                     <div>
                         <span class="text-xs font-bold uppercase tracking-wider text-[#6B57B2] bg-white px-3.5 py-1 rounded-full border border-purple-100 inline-block mb-2">
                             @if($activeCategory === 'All') Recommended For You @else Category: {{ $activeCategory }} @endif
@@ -297,7 +297,10 @@
                 <!-- Product Grid -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     @forelse($filteredProducts as $product)
-                    <div class="bg-white rounded-3xl p-5 sm:p-6 soft-card-shadow card-hover-effect border border-purple-100/70 flex flex-col justify-between group relative overflow-hidden">
+                    <div 
+                        class="bg-white rounded-3xl p-5 sm:p-6 soft-card-shadow card-hover-effect border border-purple-100/70 flex flex-col justify-between group relative overflow-hidden reveal-on-scroll"
+                        style="transition-delay: {{ ($loop->index % 4) * 120 }}ms"
+                    >
                         <div>
                             <!-- Category Tag Header (Clean & Minimal) -->
                             <div class="flex items-center justify-between mb-3">
@@ -363,7 +366,7 @@
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
 
                     <!-- Left Side: Mascot Character Illustration -->
-                    <div class="lg:col-span-5 flex items-center justify-center relative">
+                    <div class="lg:col-span-5 flex items-center justify-center relative reveal-on-scroll-left">
                         <!-- Soft Ambient Glow behind Mascot -->
                         <div class="absolute w-72 h-72 sm:w-88 sm:h-88 bg-gradient-to-tr from-soft-pink/50 via-purple-100/40 to-soft-blue/40 rounded-full blur-2xl pointer-events-none -z-10"></div>
 
@@ -374,7 +377,7 @@
                     </div>
 
                     <!-- Right Side: Clean Stitch Story Card -->
-                    <div class="lg:col-span-7">
+                    <div class="lg:col-span-7 reveal-on-scroll-right">
                         <div class=" relative overflow-hidden space-y-6">
 
                             <!-- Card Header: Pill Badge + Decorative Quote -->
@@ -452,7 +455,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 
                 <!-- Section Header -->
-                <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+                <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16 reveal-on-scroll">
                     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold text-vibrant-rose bg-soft-pink tracking-wider uppercase shadow-2xs mb-3">
                         <i class="ri-building-4-fill text-vibrant-rose"></i>
                         <span>B2B & Global Distribution</span>
@@ -469,7 +472,7 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
                     
                     <!-- Pillar 1: Retail & Supermarket Distribution -->
-                    <div class="bg-white rounded-3xl p-6 sm:p-7 border border-purple-100/80 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                    <div class="bg-white rounded-3xl p-6 sm:p-7 border border-purple-100/80 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group reveal-on-scroll reveal-delay-1">
                         <div class="space-y-4">
                             <div class="w-12 h-12 rounded-2xl bg-purple-50 flex items-center justify-center text-[#6B57B2] group-hover:bg-[#6B57B2] group-hover:text-white transition-colors">
                                 <i class="ri-store-3-line text-2xl"></i>
@@ -489,7 +492,7 @@
                     </div>
 
                     <!-- Pillar 2: Hospitals & Maternity Centers -->
-                    <div class="bg-white rounded-3xl p-6 sm:p-7 border border-purple-100/80 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                    <div class="bg-white rounded-3xl p-6 sm:p-7 border border-purple-100/80 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group reveal-on-scroll reveal-delay-2">
                         <div class="space-y-4">
                             <div class="w-12 h-12 rounded-2xl bg-pink-50 flex items-center justify-center text-vibrant-rose group-hover:bg-vibrant-rose group-hover:text-white transition-colors">
                                 <i class="ri-hospital-line text-2xl"></i>
@@ -509,7 +512,7 @@
                     </div>
 
                     <!-- Pillar 3: International Export & GCC Supply -->
-                    <div class="bg-white rounded-3xl p-6 sm:p-7 border border-purple-100/80 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                    <div class="bg-white rounded-3xl p-6 sm:p-7 border border-purple-100/80 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group reveal-on-scroll reveal-delay-3">
                         <div class="space-y-4">
                             <div class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-sky-500 group-hover:bg-sky-500 group-hover:text-white transition-colors">
                                 <i class="ri-global-line text-2xl"></i>
@@ -529,7 +532,7 @@
                     </div>
 
                     <!-- Pillar 4: Institutional & OEM Custom Bundling -->
-                    <div class="bg-white rounded-3xl p-6 sm:p-7 border border-purple-100/80 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                    <div class="bg-white rounded-3xl p-6 sm:p-7 border border-purple-100/80 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group reveal-on-scroll reveal-delay-4">
                         <div class="space-y-4">
                             <div class="w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center text-warm-peach group-hover:bg-warm-peach group-hover:text-white transition-colors">
                                 <i class="ri-gift-2-line text-2xl"></i>
@@ -565,7 +568,7 @@
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
                     
                     <!-- Left Side: Lifestyle Mother & Baby Image -->
-                    <div class="lg:col-span-6 relative">
+                    <div class="lg:col-span-6 relative reveal-on-scroll-left">
                         <div class="relative mx-auto max-w-md lg:max-w-none">
                             <!-- Soft Ambient Aura -->
                             <div class="absolute -inset-3 bg-gradient-to-tr from-soft-pink/50 via-purple-100/40 to-soft-blue/40 rounded-3xl blur-xl opacity-80 -z-10"></div>
@@ -593,7 +596,7 @@
                     </div>
 
                     <!-- Right Side: Clean Title, Concise Description & Two Buttons -->
-                    <div class="lg:col-span-6 space-y-6 text-left">
+                    <div class="lg:col-span-6 space-y-6 text-left reveal-on-scroll-right">
                         <!-- Eyebrow Tag -->
                         <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold text-vibrant-rose bg-soft-pink tracking-wider uppercase shadow-2xs">
                             <i class="ri-heart-3-fill text-vibrant-rose"></i>
@@ -636,7 +639,7 @@
         <!-- Brand Promises & Certified Quality Section -->
         <section id="brand-promises" class="py-16 sm:py-20 bg-white relative overflow-hidden border-t border-purple-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+                <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16 reveal-on-scroll">
                     <span class="text-xs font-bold uppercase tracking-wider text-[#6B57B2] bg-[#6B57B2]/10 px-4 py-1.5 rounded-full inline-block mb-2">
                         Our Quality Commitment
                     </span>
@@ -650,7 +653,7 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                     <!-- 1. Safe Ingredients -->
-                    <div class="p-6 sm:p-8 rounded-3xl bg-[#F8F6FD] border border-purple-100/70 hover:border-purple-300 soft-card-shadow card-hover-effect flex flex-col justify-between group">
+                    <div class="p-6 sm:p-8 rounded-3xl bg-[#F8F6FD] border border-purple-100/70 hover:border-purple-300 soft-card-shadow card-hover-effect flex flex-col justify-between group reveal-on-scroll reveal-delay-1">
                         <div>
                             <div class="w-16 h-16 sm:w-20 sm:h-20 mb-5 flex items-center justify-center group-hover:scale-105 transition-transform bg-white rounded-2xl p-2 border border-purple-100 shadow-2xs">
                                 <img src="{{ asset('brand_promises/Safe Ingredients.jpg') }}" alt="Safe Ingredients" class="w-full h-full object-contain rounded-xl" />
@@ -665,7 +668,7 @@
                     </div>
 
                     <!-- 2. Product Testing -->
-                    <div class="p-6 sm:p-8 rounded-3xl bg-[#F8F6FD] border border-purple-100/70 hover:border-purple-300 soft-card-shadow card-hover-effect flex flex-col justify-between group">
+                    <div class="p-6 sm:p-8 rounded-3xl bg-[#F8F6FD] border border-purple-100/70 hover:border-purple-300 soft-card-shadow card-hover-effect flex flex-col justify-between group reveal-on-scroll reveal-delay-2">
                         <div>
                             <div class="w-16 h-16 sm:w-20 sm:h-20 mb-5 flex items-center justify-center group-hover:scale-105 transition-transform bg-white rounded-2xl p-2 border border-purple-100 shadow-2xs">
                                 <img src="{{ asset('brand_promises/Product Testing.png') }}" alt="Product Testing" class="w-full h-full object-contain rounded-xl" />
@@ -680,7 +683,7 @@
                     </div>
 
                     <!-- 3. pH 5.5 Neutral Balance -->
-                    <div class="p-6 sm:p-8 rounded-3xl bg-[#F8F6FD] border border-purple-100/70 hover:border-purple-300 soft-card-shadow card-hover-effect flex flex-col justify-between group">
+                    <div class="p-6 sm:p-8 rounded-3xl bg-[#F8F6FD] border border-purple-100/70 hover:border-purple-300 soft-card-shadow card-hover-effect flex flex-col justify-between group reveal-on-scroll reveal-delay-3">
                         <div>
                             <div class="w-16 h-16 sm:w-20 sm:h-20 mb-5 flex items-center justify-center group-hover:scale-105 transition-transform bg-white rounded-2xl p-2 border border-purple-100 shadow-2xs">
                                 <img src="{{ asset('brand_promises/pH 5.5.jpg') }}" alt="pH 5.5" class="w-full h-full object-contain rounded-xl" />
@@ -695,7 +698,7 @@
                     </div>
 
                     <!-- 4. Hypoallergenic -->
-                    <div class="p-6 sm:p-8 rounded-3xl bg-[#F8F6FD] border border-purple-100/70 hover:border-purple-300 soft-card-shadow card-hover-effect flex flex-col justify-between group">
+                    <div class="p-6 sm:p-8 rounded-3xl bg-[#F8F6FD] border border-purple-100/70 hover:border-purple-300 soft-card-shadow card-hover-effect flex flex-col justify-between group reveal-on-scroll reveal-delay-4">
                         <div>
                             <div class="w-16 h-16 sm:w-20 sm:h-20 mb-5 flex items-center justify-center group-hover:scale-105 transition-transform bg-white rounded-2xl p-2 border border-purple-100 shadow-2xs">
                                 <img src="{{ asset('brand_promises/Hypoallergenic.jpg') }}" alt="Hypoallergenic" class="w-full h-full object-contain rounded-xl" />
@@ -710,7 +713,7 @@
                     </div>
 
                     <!-- 5. Eco-Friendly Packaging -->
-                    <div class="p-6 sm:p-8 rounded-3xl bg-[#F8F6FD] border border-purple-100/70 hover:border-purple-300 soft-card-shadow card-hover-effect flex flex-col justify-between group">
+                    <div class="p-6 sm:p-8 rounded-3xl bg-[#F8F6FD] border border-purple-100/70 hover:border-purple-300 soft-card-shadow card-hover-effect flex flex-col justify-between group reveal-on-scroll reveal-delay-5">
                         <div>
                             <div class="w-16 h-16 sm:w-20 sm:h-20 mb-5 flex items-center justify-center group-hover:scale-105 transition-transform bg-white rounded-2xl p-2 border border-purple-100 shadow-2xs">
                                 <img src="{{ asset('brand_promises/Eco-Friendly.png') }}" alt="Eco-Friendly" class="w-full h-full object-contain rounded-xl" />
@@ -725,7 +728,7 @@
                     </div>
 
                     <!-- 6. Dedicated Parent Service -->
-                    <div class="p-6 sm:p-8 rounded-3xl bg-[#F8F6FD] border border-purple-100/70 hover:border-purple-300 soft-card-shadow card-hover-effect flex flex-col justify-between group">
+                    <div class="p-6 sm:p-8 rounded-3xl bg-[#F8F6FD] border border-purple-100/70 hover:border-purple-300 soft-card-shadow card-hover-effect flex flex-col justify-between group reveal-on-scroll reveal-delay-6">
                         <div>
                             <div class="w-16 h-16 sm:w-20 sm:h-20 mb-5 flex items-center justify-center group-hover:scale-105 transition-transform bg-white rounded-2xl p-2 border border-purple-100 shadow-2xs">
                                 <img src="{{ asset('brand_promises/Service.png') }}" alt="Service" class="w-full h-full object-contain rounded-xl" />
@@ -788,7 +791,7 @@
             class="py-16 sm:py-24 bg-gradient-to-b from-[#F4F7FC] via-white to-[#F4F7FC] relative overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <!-- Section Header -->
-                <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-14">
+                <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-14 reveal-on-scroll">
                     <span class="text-xs font-bold uppercase tracking-wider text-vibrant-rose bg-soft-pink px-4 py-1.5 rounded-full inline-block mb-2">
                         Parent Stories
                     </span>
@@ -801,7 +804,7 @@
                 </div>
 
                 <!-- 3-at-a-time Slider Track Container -->
-                <div class="relative px-2 sm:px-4">
+                <div class="relative px-2 sm:px-4 reveal-on-scroll-scale">
                     <!-- Carousel Viewport -->
                     <div class="overflow-hidden py-4 -my-4">
                         <div
@@ -1055,7 +1058,7 @@
 
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <!-- Section Header -->
-                <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+                <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16 reveal-on-scroll">
                     <span class="inline-flex items-center gap-1.5 text-xs font-bold text-[#6B57B2] bg-white px-4 py-1.5 rounded-full border border-purple-100 shadow-2xs uppercase tracking-wider mb-3">
                         <i class="ri-questionnaire-line text-vibrant-rose"></i>
                         <span>Got Questions? We Have Answers</span>
@@ -1073,7 +1076,7 @@
                     
                     <!-- Item 1: Newborn Safety -->
                     <div 
-                        class="bg-white rounded-2xl sm:rounded-3xl border transition-all duration-300 overflow-hidden"
+                        class="bg-white rounded-2xl sm:rounded-3xl border transition-all duration-300 overflow-hidden reveal-on-scroll reveal-delay-1"
                         :class="activeAccordion === 1 ? 'border-purple-300 shadow-md ring-1 ring-purple-100' : 'border-purple-100/80 hover:border-purple-200 shadow-2xs'"
                     >
                         <button 
@@ -1111,7 +1114,7 @@
 
                     <!-- Item 2: Dubai Heritage & Testing -->
                     <div 
-                        class="bg-white rounded-2xl sm:rounded-3xl border transition-all duration-300 overflow-hidden"
+                        class="bg-white rounded-2xl sm:rounded-3xl border transition-all duration-300 overflow-hidden reveal-on-scroll reveal-delay-2"
                         :class="activeAccordion === 2 ? 'border-purple-300 shadow-md ring-1 ring-purple-100' : 'border-purple-100/80 hover:border-purple-200 shadow-2xs'"
                     >
                         <button 
@@ -1149,7 +1152,7 @@
 
                     <!-- Item 3: Diapers Dryness & Leak Protection -->
                     <div 
-                        class="bg-white rounded-2xl sm:rounded-3xl border transition-all duration-300 overflow-hidden"
+                        class="bg-white rounded-2xl sm:rounded-3xl border transition-all duration-300 overflow-hidden reveal-on-scroll reveal-delay-3"
                         :class="activeAccordion === 3 ? 'border-purple-300 shadow-md ring-1 ring-purple-100' : 'border-purple-100/80 hover:border-purple-200 shadow-2xs'"
                     >
                         <button 
@@ -1187,7 +1190,7 @@
 
                     <!-- Item 4: Wet Wipes Formula -->
                     <div 
-                        class="bg-white rounded-2xl sm:rounded-3xl border transition-all duration-300 overflow-hidden"
+                        class="bg-white rounded-2xl sm:rounded-3xl border transition-all duration-300 overflow-hidden reveal-on-scroll reveal-delay-4"
                         :class="activeAccordion === 4 ? 'border-purple-300 shadow-md ring-1 ring-purple-100' : 'border-purple-100/80 hover:border-purple-200 shadow-2xs'"
                     >
                         <button 
@@ -1225,7 +1228,7 @@
 
                     <!-- Item 5: Wholesale & B2B Inquiries -->
                     <div 
-                        class="bg-white rounded-2xl sm:rounded-3xl border transition-all duration-300 overflow-hidden"
+                        class="bg-white rounded-2xl sm:rounded-3xl border transition-all duration-300 overflow-hidden reveal-on-scroll reveal-delay-5"
                         :class="activeAccordion === 5 ? 'border-purple-300 shadow-md ring-1 ring-purple-100' : 'border-purple-100/80 hover:border-purple-200 shadow-2xs'"
                     >
                         <button 
@@ -1264,7 +1267,7 @@
                 </div>
 
                 <!-- Still Have Questions Clean Banner -->
-                <div class="mt-12 sm:mt-16 bg-white rounded-3xl p-6 sm:p-8 border border-purple-100 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+                <div class="mt-12 sm:mt-16 bg-white rounded-3xl p-6 sm:p-8 border border-purple-100 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left reveal-on-scroll">
                     <div class="flex flex-col sm:flex-row items-center gap-4">
                         <div class="w-12 h-12 rounded-2xl bg-soft-pink text-vibrant-rose flex items-center justify-center text-2xl shrink-0">
                             <i class="ri-customer-service-2-line"></i>
